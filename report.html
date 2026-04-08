@@ -602,6 +602,67 @@ body .references-section{
     grid-template-columns:1fr;
   }
 }
+
+/* MOBILE RESCUE OVERRIDES (REPORT) */
+@media(max-width:760px){
+  nav .wrap{padding:0 1rem}
+  .nav-inner{height:56px;gap:0.6rem}
+  .nav-logo{font-size:1.18rem}
+  nav a[download]{
+    font-size:0.62rem !important;
+    letter-spacing:0.08em !important;
+    padding:0.34rem 0.75rem !important;
+    border-width:1.5px !important;
+  }
+  .nav-back{font-size:0.62rem;letter-spacing:0.05em}
+
+  body .cover{
+    padding:2.4rem 0 1.7rem;
+    overflow:visible;
+  }
+  body .cover .wrap{padding:0 1rem}
+  body .cover-inner{
+    grid-template-columns:1fr;
+    gap:1.2rem;
+  }
+  .cover-title{
+    font-size:clamp(3.2rem,20vw,4.4rem);
+    line-height:0.98;
+    letter-spacing:-0.02em;
+    margin-bottom:0.9rem;
+  }
+  .cover-subtitle{
+    font-size:clamp(0.95rem,4.8vw,1.2rem);
+    line-height:1.4;
+    margin-bottom:0.55rem;
+  }
+  .cover-why{
+    font-size:0.92rem;
+    line-height:1.5;
+    margin-bottom:1.4rem;
+  }
+  .cover-meta{
+    margin-top:0.7rem;
+    padding:1rem 0 0;
+    row-gap:0.35rem;
+    column-gap:0.9rem;
+  }
+  .cover-meta-item{
+    font-size:0.62rem;
+    line-height:1.45;
+  }
+}
+
+@media(max-width:480px){
+  .nav-inner{height:54px}
+  .nav-back{display:none}
+  .nav-logo{font-size:1.08rem}
+  nav a[download]{
+    padding:0.32rem 0.68rem !important;
+    font-size:0.6rem !important;
+  }
+  .cover-title{font-size:clamp(2.6rem,18vw,3.6rem)}
+}
 </style>
 </head>
 <body>
