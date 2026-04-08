@@ -1,0 +1,1459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Unreached · Televeda · Social Isolation Evidence Review 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  /* PALETTE — richer purple, pulled from Televeda brand, not near-black */
+  --purple-deep:   #2D1060;
+  --purple-core:   #5B21B6;
+  --purple-mid:    #7C3AED;
+  --purple-light:  #C4B5FD;
+  --purple-pale:   #EDE9FE;
+  --purple-ghost:  #F5F3FF;
+
+  --gold:          #F59E0B;
+  --gold-warm:     #D97706;
+  --gold-pale:     #FFFBEB;
+  --gold-ghost:    #FEFCE8;
+
+  --ink:           #18103A;
+  --ink-mid:       #3730A3;
+  --ink-soft:      #4B4580;
+  --ink-muted:     #8B80C0;
+  --ink-faint:     #DDD8F0;
+  --surface:       #FAFAF9;
+  --white:         #FFFFFF;
+
+  --display:'Cormorant Garamond',Georgia,serif;
+  --sans:'DM Sans',system-ui,sans-serif;
+  --ease:cubic-bezier(0.16,1,0.3,1);
+}
+
+html{scroll-behavior:smooth}
+body{
+  background:var(--surface);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+/* PROGRESS BAR */
+#progress{
+  position:fixed;top:0;left:0;
+  height:2px;width:0;
+  background:var(--gold);
+  z-index:999;
+  transition:width 0.1s linear;
+}
+
+/* CONTAINERS */
+.wrap{max-width:1160px;margin:0 auto;padding:0 3rem}
+.wrap--mid{max-width:860px;margin:0 auto;padding:0 3rem}
+.wrap--narrow{max-width:680px;margin:0 auto;padding:0 3rem}
+@media(max-width:640px){.wrap,.wrap--mid,.wrap--narrow{padding:0 1.4rem}}
+
+.hero-banner{
+  background:#1F0A45;
+  border-bottom:1px solid rgba(196,181,253,0.12);
+}
+.hero-banner-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1rem;
+  min-height:34px;
+  padding:0.42rem 0;
+}
+.hero-banner-meta,
+.hero-banner-proof{
+  display:flex;
+  align-items:center;
+}
+.hero-banner-meta{
+  gap:0.8rem;
+  min-width:0;
+  flex-wrap:wrap;
+}
+.hero-banner-proof{
+  gap:0.42rem;
+  justify-content:flex-end;
+  flex-shrink:0;
+}
+.hero-banner-label,
+.hero-banner-item,
+.hero-banner-proof{
+  font-family:var(--sans);
+  font-size:0.68rem;
+  line-height:1.2;
+  text-transform:uppercase;
+}
+.hero-banner-label{
+  font-weight:500;
+  color:rgba(196,181,253,0.68);
+  letter-spacing:0.24em;
+}
+.hero-banner-item{
+  color:rgba(255,255,255,0.84);
+  font-weight:400;
+  letter-spacing:0.02em;
+  text-transform:none;
+  white-space:nowrap;
+}
+.hero-banner-sep{
+  color:rgba(196,181,253,0.42);
+  font-size:0.5rem;
+  line-height:1;
+}
+.hero-banner-proof{
+  color:var(--gold);
+  font-weight:700;
+  letter-spacing:0.12em;
+  white-space:nowrap;
+}
+.hero-banner-proof .hero-banner-sep{
+  color:var(--gold);
+}
+@media(max-width:900px){
+  .hero-banner-inner{
+    min-height:auto;
+    align-items:flex-start;
+    flex-direction:column;
+    gap:0.3rem;
+    padding-top:0.45rem;
+    padding-bottom:0.5rem;
+  }
+  .hero-banner-proof{
+    justify-content:flex-start;
+    white-space:normal;
+  }
+}
+
+
+
+/* --- HERO --- */
+.hero{
+  background:var(--purple-deep);
+  position:relative;overflow:hidden;
+  padding-bottom:0;
+}
+/* Atmosphere — lighter than the original, more breathable */
+.hero-glow{
+  position:absolute;top:-10%;right:5%;
+  width:70vw;height:70vw;max-width:800px;max-height:800px;
+  background:radial-gradient(ellipse at center,rgba(124,58,237,0.18) 0%,transparent 60%);
+  pointer-events:none;
+}
+.hero-glow-b{
+  position:absolute;bottom:-15%;left:-5%;
+  width:50vw;height:50vw;max-width:600px;max-height:600px;
+  background:radial-gradient(ellipse at center,rgba(245,158,11,0.06) 0%,transparent 55%);
+  pointer-events:none;
+}
+
+/* Two-col hero */
+.hero-body{
+  position:relative;z-index:2;
+  display:grid;
+  grid-template-columns:1fr 380px;
+  min-height:100vh;
+  align-items:stretch;
+}
+@media(max-width:1000px){.hero-body{grid-template-columns:1fr;min-height:auto}}
+
+/* Left: story first */
+.hero-left{
+  padding:5.5vh 3.5rem 5.5vh 0;
+  display:flex;flex-direction:column;justify-content:space-between;
+  border-right:1px solid rgba(124,58,237,0.18);
+}
+@media(max-width:1000px){.hero-left{border-right:none;padding:4.5vh 0 3vh}}
+
+/* THE WITNESS — Agnes Nez — given space and stillness */
+.witness{
+  margin-bottom:4.5vh;
+  padding-left:1.2rem;
+  border-left:2px solid rgba(245,158,11,0.5);
+}
+.witness-text{
+  font-family:var(--display);
+  font-size:clamp(1rem,1.6vw,1.22rem);
+  font-style:italic;font-weight:300;
+  color:rgba(196,181,253,0.75);
+  line-height:1.75;
+}
+.witness-name{
+  font-family:var(--display);
+  font-size:clamp(1rem,1.6vw,1.22rem);
+  font-style:normal;font-weight:600;
+  color:rgba(255,255,255,0.95);
+}
+.witness-close{
+  display:block;
+  font-family:var(--sans);font-size:0.75rem;font-weight:500;
+  letter-spacing:0.05em;color:rgba(245,158,11,0.85);
+  margin-top:0.6rem;
+}
+.witness-note{
+  font-family:var(--sans);font-size:0.62rem;
+  color:rgba(196,181,253,0.65);margin-top:0.6rem;
+  font-style:italic;letter-spacing:0.02em;
+}
+
+/* Hero title — correct overflow handling */
+.hero-title{
+  font-family:var(--display);
+  font-size:clamp(4.5rem,9.5vw,9rem);
+  font-weight:700;
+  line-height:0.88;
+  letter-spacing:-0.025em;
+  color:var(--white);
+  margin-bottom:2.5vh;
+  word-break:break-word;
+  overflow-wrap:break-word;
+  opacity:0;
+  animation:slideUp 0.9s var(--ease) 0.05s forwards;
+}
+
+/* Gold rule grows from zero */
+.hero-rule{
+  width:0;height:3px;
+  background:var(--gold);
+  margin-bottom:2.5vh;
+  animation:growRule 0.8s var(--ease) 0.65s forwards;
+}
+@keyframes growRule{to{width:52px}}
+
+.hero-sub{
+  font-family:var(--sans);font-size:clamp(0.82rem,1.2vw,0.94rem);
+  font-weight:300;color:rgba(196,181,253,0.80);
+  line-height:1.85;
+  margin-bottom:4vh;
+  opacity:0;animation:fadeIn 0.7s var(--ease) 0.5s forwards;
+}
+.hero-actions{
+  display:flex;align-items:center;gap:0.85rem;flex-wrap:wrap;
+  opacity:0;animation:fadeIn 0.7s var(--ease) 0.7s forwards;
+}
+.hero-scroll-cue{
+  display:flex;align-items:center;gap:0.5rem;
+  font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;
+  color:rgba(196,181,253,0.60);margin-top:0.75rem;font-weight:500;
+}
+.scroll-line{
+  width:0;height:1px;background:rgba(196,181,253,0.60);
+  animation:growRule 0.9s var(--ease) 1.2s forwards;
+}
+@keyframes growLine{to{width:32px}}
+
+.btn-primary{
+  display:inline-flex;align-items:center;gap:0.4rem;
+  font-family:var(--sans);font-size:0.73rem;font-weight:600;
+  letter-spacing:0.1em;text-transform:uppercase;
+  background:var(--gold);color:var(--purple-deep);
+  padding:0.9rem 1.85rem;border:2px solid var(--gold);
+  border-radius:3px;text-decoration:none;cursor:pointer;
+  transition:all 0.2s;white-space:nowrap;
+}
+.btn-primary:hover{background:var(--gold-warm);border-color:var(--gold-warm);color:var(--white)}
+.btn-ghost{
+  display:inline-flex;align-items:center;gap:0.4rem;
+  font-family:var(--sans);font-size:0.73rem;font-weight:400;
+  letter-spacing:0.06em;text-transform:uppercase;
+  background:transparent;color:rgba(255,255,255,0.45);
+  padding:0.9rem 1.85rem;border:1px solid rgba(255,255,255,0.15);
+  border-radius:3px;text-decoration:none;cursor:pointer;
+  transition:all 0.2s;
+}
+.btn-ghost:hover{border-color:rgba(255,255,255,0.38);color:var(--white)}
+
+/* Right: data — lighter purple, not black */
+.hero-right{
+  background:rgba(91,33,182,0.25);
+  border-left:1px solid rgba(124,58,237,0.18);
+  padding:4.5vh 2.2rem;
+  display:flex;flex-direction:column;
+  justify-content:center;gap:2.8vh;
+  opacity:0;animation:fadeIn 0.8s var(--ease) 0.25s forwards;
+}
+@media(max-width:1000px){
+  .hero-right{
+    border-left:none;border-top:1px solid rgba(124,58,237,0.22);
+    padding:3.5vh 0;
+  }
+}
+@media(max-width:640px){.hero-right{padding:3vh 0}}
+.dp-label{
+  font-size:0.59rem;font-weight:600;
+  letter-spacing:0.2em;text-transform:uppercase;
+  color:rgba(196,181,253,0.70);margin-bottom:0.45rem;
+}
+.dp-big{
+  font-family:var(--display);font-size:clamp(2.6rem,4.5vw,3.8rem);
+  font-weight:600;line-height:0.92;color:var(--white);
+  margin-bottom:0.4rem;
+}
+.dp-big em{color:var(--gold);font-style:normal}
+.dp-desc{
+  font-size:0.76rem;font-weight:300;
+  color:rgba(196,181,253,0.80);line-height:1.65;
+}
+
+/* Trend bars */
+.trend-panel{border-top:1px solid rgba(124,58,237,0.22);padding-top:2.2vh}
+.t-row{
+  display:grid;grid-template-columns:36px 1fr 38px;
+  align-items:center;gap:0.8rem;margin-bottom:1rem;
+}
+.t-row:last-of-type{margin-bottom:0}
+.t-yr{font-size:0.67rem;font-weight:300;color:rgba(196,181,253,0.70)}
+.t-track{height:2.5px;background:rgba(255,255,255,0.05);position:relative}
+.t-fill{position:absolute;top:0;left:0;height:100%;width:0;transition:width 1.8s var(--ease)}
+.t-past{background:rgba(139,92,246,0.4)}
+.t-now{background:var(--gold)}
+.t-pct{
+  font-family:var(--display);font-size:0.92rem;font-weight:500;
+  text-align:right;color:rgba(196,181,253,0.65);
+}
+.t-live{color:var(--gold)}
+.trend-note{
+  font-size:0.67rem;font-weight:300;font-style:italic;
+  color:rgba(196,181,253,0.65);margin-top:1vh;line-height:1.5;
+}
+
+.dp-divider{border-top:1px solid rgba(124,58,237,0.22);padding-top:2.2vh}
+.dp-cigarettes{
+  display:flex;align-items:baseline;gap:0.5rem;margin-bottom:0.35rem;
+}
+.dp-cigarettes-n{
+  font-family:var(--display);font-size:3rem;font-weight:600;
+  color:var(--white);line-height:1;
+}
+.dp-cigarettes-unit{
+  font-size:0.78rem;font-weight:300;
+  color:rgba(196,181,253,0.78);line-height:1.4;
+  white-space:nowrap;
+}
+
+/* --- ROUTING — immediately after hero --- */
+/* This now sits BEFORE the stat ribbon — answers "is this for me?" first */
+.routing{
+  background:var(--white);
+  padding:5.5rem 0;
+  position:relative;
+}
+.routing::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold);
+}
+.r-head{margin-bottom:3rem}
+.r-kicker{
+  font-size:0.6rem;font-weight:600;
+  letter-spacing:0.22em;text-transform:uppercase;
+  color:var(--purple-core);margin-bottom:0.7rem;
+  display:flex;align-items:center;gap:0.65rem;
+}
+.r-kicker::before{content:'';width:16px;height:1px;background:var(--gold);flex-shrink:0}
+.r-title{
+  font-family:var(--display);font-size:clamp(1.7rem,3.2vw,2.6rem);
+  font-weight:400;font-style:italic;
+  color:var(--ink);line-height:1.25;
+}
+.signs{display:flex;flex-direction:column}
+.sign{
+  display:grid;grid-template-columns:180px 1fr;
+  border-top:1px solid var(--ink-faint);
+  position:relative;cursor:default;
+  transition:background 0.2s;
+}
+.sign:last-child{border-bottom:1px solid var(--ink-faint)}
+@media(max-width:640px){.sign{grid-template-columns:1fr}}
+.sign:hover{background:rgba(91,33,182,0.025)}
+.sign::before{
+  content:'';position:absolute;
+  left:0;bottom:0;width:3px;height:0;
+  background:var(--gold);
+  transition:height 0.28s var(--ease);
+}
+.sign:hover::before{height:100%}
+.s-who{
+  padding:2.2rem 1.8rem 2.2rem 1.6rem;
+  border-right:1px solid var(--ink-faint);
+}
+@media(max-width:640px){.s-who{border-right:none;padding-bottom:0.4rem}}
+.s-role{
+  font-size:0.6rem;font-weight:600;
+  letter-spacing:0.16em;text-transform:uppercase;
+  color:var(--purple-core);margin-bottom:0.28rem;
+}
+.s-org{font-size:0.73rem;font-weight:300;color:var(--ink-muted);line-height:1.4}
+.s-right{padding:2.2rem 2rem 2.2rem 2.2rem}
+@media(max-width:640px){.s-right{padding:0.75rem 0 2rem}}
+.s-direct{
+  font-family:var(--display);font-size:1.12rem;font-style:italic;
+  font-weight:400;color:var(--ink);line-height:1.32;margin-bottom:0.55rem;
+}
+.s-desc{
+  font-size:0.8rem;font-weight:300;
+  color:var(--ink-soft);line-height:1.75;max-width:520px;
+}
+
+/* --- STAT RIBBON --- */
+.ribbon{
+  background:var(--purple-deep);
+  padding:2rem 0;
+}
+.ribbon-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+}
+@media(max-width:760px){.ribbon-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:400px){.ribbon-grid{grid-template-columns:1fr}}
+.r-stat{
+  padding:1rem 1.6rem;
+  border-right:1px solid rgba(124,58,237,0.3);
+  transition:background 0.2s;cursor:default;
+}
+.r-stat:last-child{border-right:none}
+@media(max-width:760px){
+  .r-stat:nth-child(2){border-right:none}
+  .r-stat:nth-child(3){border-top:1px solid rgba(124,58,237,0.3)}
+}
+.r-stat:hover{background:rgba(124,58,237,0.12)}
+.r-n{
+  font-family:var(--display);font-size:2.1rem;font-weight:600;
+  line-height:1;color:var(--gold);margin-bottom:0.3rem;
+}
+.r-l{
+  font-size:0.73rem;font-weight:300;
+  color:rgba(196,181,253,0.52);line-height:1.5;
+}
+
+/* --- BREATH — scale and costs --- */
+.breath{
+  background:var(--purple-ghost);
+  padding:6.5rem 0 5rem;
+  position:relative;overflow:hidden;
+}
+.breath-ghost{
+  position:absolute;left:50%;top:50%;
+  transform:translate(-50%,-50%);
+  font-family:var(--display);
+  font-size:clamp(14rem,28vw,24rem);
+  font-weight:600;line-height:1;
+  color:rgba(91,33,182,0.04);
+  pointer-events:none;user-select:none;white-space:nowrap;
+}
+.breath-inner{
+  position:relative;z-index:1;
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:5.5rem;align-items:stretch;
+}
+@media(max-width:700px){.breath-inner{grid-template-columns:1fr;gap:3rem}}
+.breath-kicker{
+  font-size:0.6rem;font-weight:600;
+  letter-spacing:0.22em;text-transform:uppercase;
+  color:var(--purple-core);margin-bottom:0.75rem;
+  display:flex;align-items:center;gap:0.65rem;
+}
+.breath-kicker::before{content:'';width:16px;height:1px;background:var(--purple-core);flex-shrink:0}
+.breath-title{
+  font-family:var(--display);
+  font-size:clamp(1.9rem,3.5vw,3rem);
+  font-weight:400;font-style:italic;
+  color:var(--ink);line-height:1.18;margin-bottom:1.8rem;
+}
+.breath-prose p{
+  font-size:0.9rem;font-weight:300;
+  color:var(--ink-soft);line-height:1.88;margin-bottom:1.1rem;
+}
+.breath-prose p:last-child{margin-bottom:0}
+.breath-prose strong{font-weight:600;color:var(--ink)}
+.stat-pull{
+  display:flex;flex-direction:column;gap:1.15rem;
+  width:100%;max-width:500px;margin-left:auto;align-items:stretch;
+  padding-top:0.2rem;height:100%;justify-content:space-between;
+}
+.sp-item{
+  padding:1.45rem 1.55rem 1.35rem;
+  background:var(--white);
+  border:1px solid rgba(139,128,192,0.2);
+  border-top:3px solid var(--purple-core);
+  box-shadow:0 18px 36px rgba(45,16,96,0.08);
+  position:relative;
+  overflow:hidden;
+  flex:1;
+  display:flex;flex-direction:column;justify-content:flex-start;
+}
+.sp-item::after{
+  content:'';position:absolute;right:-28px;bottom:-28px;
+  width:92px;height:92px;border-radius:50%;
+  border:1px solid rgba(91,33,182,0.08);
+  pointer-events:none;
+}
+.sp-num{
+  font-family:var(--display);font-size:2.75rem;font-weight:600;
+  line-height:0.96;color:var(--purple-core);margin-bottom:0.45rem;
+}
+.sp-desc{
+  font-size:0.79rem;font-weight:300;
+  color:var(--ink-soft);line-height:1.68;max-width:33ch;
+}
+.sp-cite{
+  display:inline-block;font-size:0.6rem;
+  letter-spacing:0.06em;color:rgba(91,33,182,0.42);
+  border-bottom:1px solid rgba(91,33,182,0.15);
+  margin-top:0.45rem;text-decoration:none;
+  transition:color 0.15s,border-color 0.15s;
+}
+.sp-cite:hover{color:var(--purple-core);border-color:var(--purple-core)}
+.sp-item:nth-child(1){border-top-color:var(--purple-core);}
+.sp-item:nth-child(2){
+  border-top-color:var(--gold-warm);
+}
+.sp-item:nth-child(2) .sp-num{color:var(--gold-warm)}
+.sp-item:nth-child(2)::after{border-color:rgba(217,119,6,0.12)}
+.sp-item:nth-child(3){
+  border-top-color:var(--purple-mid);
+}
+.sp-item:nth-child(3) .sp-num{color:var(--purple-mid)}
+
+/* --- FINDINGS — corrected pillar sizing --- */
+.findings{
+  background:var(--purple-deep);
+  padding:0 0 4.5rem;
+  position:relative;overflow:hidden;
+}
+.findings-glow{
+  position:absolute;top:-10%;right:-5%;
+  width:65vw;height:65vw;max-width:750px;max-height:750px;
+  background:radial-gradient(ellipse,rgba(124,58,237,0.14) 0%,transparent 60%);
+  pointer-events:none;
+}
+.findings-header{
+  padding:4.5rem 0 3.5rem;
+  border-bottom:1px solid rgba(124,58,237,0.22);
+}
+.f-kicker{
+  font-size:0.6rem;font-weight:600;
+  letter-spacing:0.22em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:0.7rem;
+  display:flex;align-items:center;gap:0.65rem;
+}
+.f-kicker::before{content:'';width:16px;height:1px;background:var(--gold);flex-shrink:0}
+.f-title{
+  font-family:var(--display);font-size:clamp(1.7rem,3.2vw,2.6rem);
+  font-weight:400;font-style:italic;
+  color:var(--white);line-height:1.22;
+}
+
+/* PILLARS — reduced ghost size, correct hierarchy */
+.pillar{
+  display:grid;grid-template-columns:1fr;
+  position:relative;
+  border-bottom:1px solid rgba(124,58,237,0.18);
+  overflow:hidden;
+}
+.pillar:last-child{border-bottom:none}
+.pillar-n-bg{
+  position:absolute;
+  left:-0.04em;top:-0.05em;
+  font-family:var(--display);
+  /* FIXED: was clamp(10rem,20vw,18rem) — too dominant */
+  font-size:clamp(6rem,11vw,9.5rem);
+  font-weight:600;line-height:1;
+  color:rgba(124,58,237,0.1);
+  pointer-events:none;user-select:none;
+  transition:color 0.3s;
+}
+.pillar:hover .pillar-n-bg{color:rgba(124,58,237,0.18)}
+.pillar-content{
+  position:relative;z-index:1;
+  padding:3.2rem 3rem 3.2rem calc(min(7rem,12vw) + 1.5rem);
+}
+@media(max-width:640px){
+  .pillar-content{padding:2.5rem 1.4rem}
+  .pillar-n-bg{font-size:5rem}
+}
+.p-n-small{
+  font-size:0.6rem;font-weight:600;
+  letter-spacing:0.18em;text-transform:uppercase;
+  color:rgba(245,158,11,0.45);margin-bottom:0.7rem;
+}
+.pillar h3{
+  font-family:var(--display);font-size:clamp(1.25rem,2.2vw,1.7rem);
+  font-style:italic;font-weight:400;color:var(--white);
+  line-height:1.3;margin-bottom:0.75rem;
+}
+.pillar p{
+  font-size:0.83rem;font-weight:300;
+  /* FIXED: was rgba(196,168,242,0.5) — too low contrast */
+  color:rgba(220,214,254,0.72);
+  line-height:1.82;max-width:580px;
+}
+.p-cite{
+  display:inline-flex;align-items:center;gap:0.28rem;
+  font-size:0.6rem;letter-spacing:0.06em;
+  color:rgba(245,158,11,0.42);border-bottom:1px solid rgba(245,158,11,0.18);
+  margin-top:0.75rem;text-decoration:none;
+  transition:color 0.15s,border-color 0.15s;
+}
+.p-cite:hover{color:var(--gold);border-color:var(--gold)}
+
+/* --- DESIGN FAILURE --- */
+.df{
+  background:var(--gold-ghost);
+  padding:6.5rem 0;
+  position:relative;overflow:hidden;
+}
+.df::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold)}
+.df-ghost{
+  position:absolute;bottom:-3rem;right:-2rem;
+  font-family:var(--display);font-size:clamp(8rem,18vw,17rem);
+  font-weight:600;line-height:1;
+  color:rgba(91,33,182,0.04);
+  pointer-events:none;user-select:none;white-space:nowrap;
+}
+.df-grid{
+  display:grid;grid-template-columns:1fr;
+  gap:0;align-items:start;position:relative;z-index:1;
+}
+@media(max-width:720px){.df-grid{gap:0}}
+.df-header{margin-bottom:2.2rem;max-width:920px}
+.df-full{max-width:1080px;margin-bottom:3rem}
+.df-lower{
+  display:grid;grid-template-columns:minmax(0,0.98fr) minmax(0,1fr);
+  gap:2.8rem;align-items:stretch;
+}
+@media(max-width:720px){.df-lower{grid-template-columns:1fr;gap:1rem}}
+.df-info-col{display:grid;grid-template-rows:1fr 1fr;gap:1rem}
+.df-kicker{
+  font-size:0.6rem;font-weight:600;
+  letter-spacing:0.22em;text-transform:uppercase;
+  color:var(--gold-warm);margin-bottom:0.7rem;
+  display:flex;align-items:center;gap:0.65rem;
+}
+.df-kicker::before{content:'';width:16px;height:1px;background:var(--gold-warm);flex-shrink:0}
+.df-title{
+  font-family:var(--display);font-size:clamp(1.7rem,2.8vw,2.4rem);
+  font-weight:400;font-style:italic;
+  color:var(--ink);line-height:1.18;margin-bottom:0;max-width:900px;
+}
+.df-prose p{
+  font-size:0.88rem;font-weight:300;
+  color:var(--ink-soft);line-height:1.88;margin-bottom:1.2rem;
+}
+.df-prose p:last-child{margin-bottom:0}
+.df-prose p + p{margin-top:0}
+.df-prose strong{font-weight:600;color:var(--ink)}
+.df-prose p.df-historical{
+  border-left:2px solid rgba(217,119,6,0.35);
+  padding-left:1rem;
+  background:rgba(245,158,11,0.03);
+  padding-top:0.5rem;padding-bottom:0.5rem;
+  margin-top:0.2rem;
+  color:var(--ink-soft);
+}
+.canyon-q{
+  background:var(--purple-deep);padding:2.1rem 2rem 1.7rem;
+  position:relative;
+}
+.canyon-q::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold)}
+.cq-text{
+  font-family:var(--display);font-size:1.28rem;font-style:italic;
+  font-weight:400;color:var(--white);line-height:1.52;margin-bottom:0.85rem;
+}
+.cq-attr{
+  font-size:0.58rem;font-weight:600;
+  letter-spacing:0.14em;text-transform:uppercase;
+  color:rgba(245,158,11,0.45);
+}
+.t-note{
+  display:flex;gap:0.7rem;align-items:flex-start;
+  padding:1rem;border:1px solid rgba(91,33,182,0.1);
+  background:rgba(91,33,182,0.025);margin-top:0;
+}
+.t-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0;margin-top:0.4rem}
+.t-note p{font-size:0.76rem;font-weight:300;color:var(--ink-soft);line-height:1.6}
+
+/* --- ARIZONA --- */
+.arizona{
+  background:var(--purple-pale);
+  padding:5.5rem 0;
+  position:relative;overflow:hidden;
+}
+.arizona::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold)}
+.az-ghost{
+  position:absolute;bottom:-2rem;left:-1rem;
+  font-family:var(--display);font-size:clamp(7rem,16vw,14rem);
+  font-weight:600;line-height:1;
+  color:rgba(91,33,182,0.04);
+  pointer-events:none;user-select:none;
+}
+.az-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:0;border:1px solid var(--ink-faint);
+  margin:2.5rem 0;position:relative;z-index:1;
+}
+@media(max-width:640px){.az-grid{grid-template-columns:1fr}}
+.az-cell{
+  padding:2.2rem 1.8rem;
+  border-right:1px solid var(--ink-faint);
+  position:relative;transition:background 0.2s;cursor:default;
+}
+.az-cell:last-child{border-right:none}
+@media(max-width:640px){
+  .az-cell{border-right:none;border-bottom:1px solid var(--ink-faint)}
+  .az-cell:last-child{border-bottom:none}
+}
+.az-cell::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:var(--purple-core);transform:scaleX(0);transform-origin:left;
+  transition:transform 0.32s var(--ease);
+}
+.az-cell:hover{background:rgba(91,33,182,0.04)}
+.az-cell:hover::before{transform:scaleX(1)}
+.az-n{
+  font-family:var(--display);font-size:2.8rem;font-weight:600;
+  line-height:1;color:var(--purple-core);margin-bottom:0.45rem;
+}
+.az-n em{font-size:1.3rem;font-style:normal;color:var(--purple-light)}
+.az-d{font-size:0.78rem;font-weight:300;color:var(--ink-soft);line-height:1.6}
+.az-caveat{
+  font-size:0.73rem;font-weight:300;font-style:italic;
+  color:var(--ink-muted);
+  border-left:2px solid var(--ink-faint);
+  padding-left:1.1rem;line-height:1.65;
+  max-width:580px;position:relative;z-index:1;
+}
+
+/* --- CTA --- */
+.cta{
+  background:var(--purple-deep);
+  padding:7rem 0;position:relative;overflow:hidden;
+}
+.cta::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold)}
+.cta-glow{
+  position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  width:110vw;height:110vw;max-width:1300px;max-height:1300px;
+  background:radial-gradient(ellipse,rgba(124,58,237,0.14) 0%,transparent 55%);
+  pointer-events:none;
+}
+.circle-lg,.circle-md,.circle-sm{position:absolute;pointer-events:none}
+.circle-lg{top:-180px;right:-180px;width:560px;height:560px;border-radius:50%;border:1px solid rgba(124,58,237,0.18)}
+.circle-md{bottom:70px;right:150px;width:220px;height:220px;border-radius:50%;background:rgba(245,158,11,0.025);border:1px solid rgba(245,158,11,0.07)}
+.circle-sm{bottom:30px;right:330px;width:90px;height:90px;border-radius:50%;background:rgba(124,58,237,0.06);border:1px solid rgba(124,58,237,0.14)}
+
+.cta-inner{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:5rem;align-items:start;position:relative;z-index:2;
+}
+@media(max-width:720px){.cta-inner{grid-template-columns:1fr;gap:2.5rem}}
+.cta-right-col{
+  display:flex;flex-direction:column;
+}
+.cta-right-col .cta-direct{
+  margin-top:0;
+  max-width:100%;
+}
+.cta-right-col .no-gate{
+  max-width:100%;
+}
+.cta h2{
+  font-family:var(--display);
+  font-size:clamp(1.65rem,3.5vw,3rem);
+  font-weight:400;font-style:italic;
+  color:var(--white);line-height:1.2;margin-bottom:1.1rem;
+}
+.cta-body{
+  font-size:0.87rem;font-weight:300;
+  color:rgba(196,181,253,0.75);max-width:440px;line-height:1.82;
+}
+.cta-direct{
+  margin-top:2rem;padding:1.5rem 1.8rem;
+  border:1px solid rgba(124,58,237,0.28);
+  background:rgba(124,58,237,0.06);max-width:440px;
+}
+.cta-direct__label{
+  font-size:0.58rem;font-weight:600;
+  letter-spacing:0.18em;text-transform:uppercase;
+  color:rgba(196,181,253,0.70);margin-bottom:0.7rem;
+}
+.cta-direct__line{display:flex;align-items:baseline;gap:0.5rem;margin-bottom:0.38rem}
+.cta-direct__line:last-child{margin-bottom:0}
+.cta-direct__role{
+  font-size:0.7rem;font-weight:300;
+  color:rgba(196,181,253,0.72);min-width:88px;
+}
+.cta-direct__email{
+  font-size:0.76rem;font-weight:400;
+  color:rgba(245,158,11,0.65);text-decoration:none;
+  border-bottom:1px solid rgba(245,158,11,0.2);
+  transition:color 0.15s,border-color 0.15s;
+}
+.cta-direct__email:hover{color:var(--gold);border-color:var(--gold)}
+.no-gate{
+  display:flex;align-items:flex-start;gap:0.6rem;
+  margin-top:1.1rem;padding:0.9rem 1.1rem;
+  border:1px solid rgba(245,158,11,0.12);max-width:440px;
+}
+.no-gate::before{
+  content:'';width:5px;height:5px;border-radius:50%;
+  background:var(--gold);flex-shrink:0;margin-top:0.48rem;opacity:0.7;
+}
+.no-gate p{font-size:0.73rem;font-weight:300;color:rgba(245,158,11,0.5);line-height:1.6}
+.no-gate strong{font-weight:700;color:rgba(245,158,11,0.88)}
+.cta-panel{
+  display:flex;flex-direction:column;
+  align-items:center;gap:0.75rem;min-width:190px;
+}
+@media(max-width:720px){.cta-panel{align-items:flex-start}}
+.btn-cta{
+  display:inline-flex;align-items:center;gap:0.4rem;
+  font-size:0.73rem;font-weight:700;
+  letter-spacing:0.1em;text-transform:uppercase;
+  background:var(--gold);color:var(--purple-deep);
+  padding:1rem 2rem;border:2px solid var(--gold);
+  border-radius:3px;text-decoration:none;cursor:pointer;
+  transition:all 0.2s;white-space:nowrap;
+}
+.btn-cta:hover{background:var(--gold-warm);border-color:var(--gold-warm);color:var(--white)}
+.btn-cta-ghost{
+  font-size:0.7rem;font-weight:400;
+  letter-spacing:0.07em;text-transform:uppercase;
+  color:rgba(196,181,253,0.65);text-decoration:none;
+  border-bottom:1px solid rgba(196,181,253,0.35);
+  padding-bottom:0.1rem;transition:all 0.15s;
+}
+.btn-cta-ghost:hover{color:rgba(196,181,253,0.90);border-color:rgba(196,181,253,0.60)}
+.cta-url{font-size:0.62rem;letter-spacing:0.06em;color:rgba(196,181,253,0.55)}
+.cta-more-reports{
+  margin-top:1rem;
+  font-size:0.72rem;font-weight:300;
+  color:rgba(196,181,253,0.65);
+  letter-spacing:0.02em;
+}
+.cta-more-reports__link{
+  color:rgba(196,181,253,0.80);
+  text-decoration:none;
+  border-bottom:1px solid rgba(196,181,253,0.45);
+  transition:color 0.15s,border-color 0.15s;
+}
+.cta-more-reports__link:hover{color:rgba(196,181,253,0.95);border-color:rgba(196,181,253,0.70)}
+
+/* --- SOFT OPT-IN — bottom of page --- */
+.optin{
+  background:var(--purple-ghost);
+  border-top:1px solid var(--ink-faint);
+  padding:3.2rem 0;
+}
+.optin-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:2rem;
+}
+.optin-text{flex:1;min-width:240px}
+.optin-text h3{
+  font-family:var(--display);font-size:1.3rem;font-style:italic;
+  font-weight:400;color:var(--ink);margin-bottom:0.25rem;line-height:1.2;
+}
+.optin-text p{font-size:0.78rem;font-weight:300;color:var(--ink-muted);line-height:1.6;max-width:380px}
+.optin-form{display:flex;gap:0.5rem;flex-wrap:wrap}
+.optin-input{
+  height:40px;padding:0 1rem;
+  font-family:var(--sans);font-size:0.82rem;
+  border:1.5px solid var(--ink-faint);border-radius:3px;
+  background:var(--white);color:var(--ink);outline:none;
+  width:240px;transition:border-color 0.18s;
+}
+.optin-input:focus{border-color:var(--purple-core)}
+.optin-btn{
+  height:40px;padding:0 1.4rem;
+  font-size:0.7rem;font-weight:700;
+  letter-spacing:0.08em;text-transform:uppercase;
+  background:var(--purple-core);color:var(--white);
+  border:none;border-radius:3px;cursor:pointer;
+  transition:background 0.18s;white-space:nowrap;
+}
+.optin-btn:hover{background:var(--purple-mid)}
+.optin-note{font-size:0.62rem;color:rgba(91,33,182,0.4);margin-top:0.5rem}
+
+/* --- FOOTER --- */
+
+/* --- ANIMATIONS --- */
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes slideUp{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.sv{opacity:0}
+.sv.on{animation:slideUp 0.75s var(--ease) forwards}
+.fv{opacity:0}
+.fv.on{animation:fadeIn 0.65s var(--ease) forwards}
+/* Fallback: if JS never fires, reveal everything after 2s */
+@keyframes svFallback{0%{opacity:0;transform:translateY(16px)}100%{opacity:1;transform:none}}
+.sv:not(.on){animation:svFallback 0.7s ease 2s both}
+.fv:not(.on){animation:fadeIn 0.7s ease 2s both}
+.d1{animation-delay:0.1s}
+.d2{animation-delay:0.22s}
+.d3{animation-delay:0.36s}
+.d4{animation-delay:0.5s}
+
+/* TELEVEDA LOCKED SHELL */
+#bar{position:fixed;top:0;left:0;height:2px;width:0;background:#F0A820;z-index:999;transition:width 0.08s linear}
+.televeda-shell-nav{position:sticky;top:0;z-index:300;background:#200338;border-bottom:1px solid rgba(94,31,174,0.3)}
+.televeda-shell-wrap{max-width:1160px;margin:0 auto;padding:0 3rem}
+@media(max-width:640px){.televeda-shell-wrap{padding:0 1.5rem}}
+.televeda-shell-nav .nav-inner{display:flex;align-items:center;justify-content:space-between;height:58px;gap:1rem}
+.televeda-shell-nav .nav-logo{font-family:'DM Sans',system-ui,sans-serif;font-size:1.22rem;font-weight:700;color:#FFFFFF;letter-spacing:-0.02em;text-decoration:none;flex-shrink:0}
+.televeda-shell-nav .nav-logo .u{color:#F0A820}
+.televeda-shell-nav .nav-links{display:flex;align-items:center;gap:0.15rem;flex:1;justify-content:center}
+@media(max-width:800px){.televeda-shell-nav .nav-links{display:none}}
+.televeda-shell-nav .nav-link{font-family:'DM Sans',system-ui,sans-serif;font-size:0.72rem;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;color:rgba(255,255,255,0.45);text-decoration:none;padding:0.4rem 0.85rem;border-radius:3px;position:relative;transition:color 0.15s,background 0.15s}
+.televeda-shell-nav .nav-link:hover{color:#FFFFFF;background:rgba(255,255,255,0.07)}
+.televeda-shell-nav .nav-link--active{color:#FFFFFF}
+.televeda-shell-nav .nav-link--active:not(.nav-dropdown-btn)::after{content:'';position:absolute;bottom:4px;left:0.85rem;right:0.85rem;height:1px;background:#F0A820}
+.televeda-shell-nav .nav-dropdown-btn.nav-link--active::before{content:'';position:absolute;bottom:4px;left:0.85rem;right:0.85rem;height:1px;background:#F0A820}
+.televeda-shell-nav .nav-back{font-family:'DM Sans',system-ui,sans-serif;font-size:0.7rem;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;color:rgba(255,255,255,0.4);text-decoration:none;display:flex;align-items:center;gap:0.4rem;transition:color 0.15s;flex-shrink:0}
+.televeda-shell-nav .nav-back:hover{color:#FFFFFF}
+.televeda-shell-nav .nav-dropdown{position:relative;display:inline-block}
+.televeda-shell-nav .nav-dropdown-btn{cursor:pointer;display:flex;align-items:center;gap:0.25rem}
+.televeda-shell-nav .nav-dropdown-btn::after{content:'';display:inline-block;width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-top:5px solid currentColor;opacity:0.6;transition:transform 0.2s cubic-bezier(0.16,1,0.3,1);transform-origin:center 45%}
+.televeda-shell-nav .nav-dropdown.open .nav-dropdown-btn::after{transform:rotate(180deg)}
+.televeda-shell-nav .nav-dropdown-menu{position:absolute;top:100%;left:0;background:#2d1055;border:1px solid rgba(94,31,174,0.4);border-radius:6px;box-shadow:0 4px 12px rgba(0,0,0,0.3);min-width:200px;opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity 0.2s cubic-bezier(0.16,1,0.3,1),transform 0.2s cubic-bezier(0.16,1,0.3,1),visibility 0.2s;z-index:100;margin-top:0.5rem;overflow:hidden}
+.televeda-shell-nav .nav-dropdown.open .nav-dropdown-menu{opacity:1;visibility:visible;transform:translateY(0)}
+.televeda-shell-nav .nav-dropdown-menu a{display:block;padding:0.75rem 1.25rem;color:rgba(255,255,255,0.7);text-decoration:none;font-size:0.72rem;font-weight:500;letter-spacing:0.05em;transition:background 0.15s ease,color 0.15s ease;border-bottom:1px solid rgba(94,31,174,0.2)}
+.televeda-shell-nav .nav-dropdown-menu a:last-child{border-bottom:none}
+.televeda-shell-nav .nav-dropdown-menu a:hover{background:rgba(94,31,174,0.15);color:#FFFFFF}
+.televeda-shell-footer{background:#200338;border-top:1px solid rgba(94,31,174,0.25);padding:2rem 0}
+.televeda-shell-footer .foot{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.televeda-shell-footer .foot-brand{font-family:'DM Sans',system-ui,sans-serif;font-size:0.78rem;font-weight:600;color:rgba(255,255,255,0.45);letter-spacing:-0.01em}
+.televeda-shell-footer .foot-brand .u{color:#F0A820}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+
+<nav class="televeda-shell-nav">
+  <div class="televeda-shell-wrap">
+    <div class="nav-inner">
+      <a class="nav-logo" href="index.html">telev<span class="u">e</span>da</a>
+      <div class="nav-links">
+        <a class="nav-link" href="article.html">Article</a>
+        <a class="nav-link" href="linkedin.html">LinkedIn</a>
+        <a class="nav-link" href="report.html">Report</a>
+        <div class="nav-dropdown">
+          <span class="nav-link nav-link--active nav-dropdown-btn">Landing Pages</span>
+          <div class="nav-dropdown-menu">
+            <a href="ungated v1.html">Ungated v1</a>
+            <a href="ungated v2.html">Ungated v2</a>
+            <a href="gated v1.html">Email Capture v1</a>
+            <a href="gate v2.html">Email Capture v2</a>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:1rem;flex-shrink:0">
+        <span aria-hidden="true" style="font-family:'DM Sans',system-ui,sans-serif;font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:transparent;background:transparent;border:2px solid transparent;padding:0.42rem 1.1rem;border-radius:4px;white-space:nowrap;visibility:hidden;pointer-events:none;user-select:none">Download</span>
+        <a class="nav-back" href="index.html">&#8592; Portfolio</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div id="progress"></div>
+
+<div class="hero-banner">
+  <div class="wrap hero-banner-inner">
+    <div class="hero-banner-meta">
+      <span class="hero-banner-label">Published with</span>
+      <span class="hero-banner-item">Arizona Dept. of Veterans' Services</span>
+      <span class="hero-banner-sep">&#9670;</span>
+      <span class="hero-banner-item">Arizona Dept. of Health Services</span>
+      <span class="hero-banner-sep">&#9670;</span>
+      <span class="hero-banner-item">National Public Health Week &middot; April 2026</span>
+    </div>
+    <div class="hero-banner-proof">
+      <span class="hero-banner-sep">&#9679;</span>
+      <span>Every claim &middot; Primary source</span>
+    </div>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow-b"></div>
+
+  <div class="wrap" style="padding-right:0;max-width:1220px">
+    <div class="hero-body">
+      <div class="hero-left">
+
+        <!-- AGNES NEZ — given space, given stillness, given a note -->
+        <blockquote class="witness" id="witnessBlock">
+          <p class="witness-text" id="witnessLine">
+            Her name is <span class="witness-name" id="witnessName">Agnes Nez.</span>
+            She is seventy-one. She lives on the Navajo Nation in northeastern Arizona. She served in the Army. She has a service-connected disability. She has not seen a VA provider in fourteen months. She is not in any social isolation dataset.
+          </p>
+          <span class="witness-close" id="witnessClose">She is who this report is about.</span>
+        </blockquote>
+
+        <div>
+          <p class="hero-eyebrow" style="font-family:var(--sans);font-size:0.6rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:3vh;opacity:0;animation:fadeIn 0.6s var(--ease) 0.1s forwards;display:flex;align-items:center;gap:0.7rem">
+            <span style="width:18px;height:1px;background:var(--gold);display:inline-block;flex-shrink:0"></span>
+            The 2026 Social Isolation Evidence Review
+          </p>
+          <h1 class="hero-title">Unreached</h1>
+          <div class="hero-rule"></div>
+          <p class="hero-sub">Evidence on social isolation among older adults, Veterans, and Native American communities, and which populations the current model still fails to reach.</p>
+        </div>
+
+        <div>
+          <div class="hero-actions">
+            <a href="#" class="btn-primary">Download free PDF</a>
+            <a href="#routing" class="btn-ghost">Who is this for?</a>
+          </div>
+          <div class="hero-scroll-cue" style="margin-top:0.9rem">
+            <div class="scroll-line" style="width:0;height:1px;background:rgba(196,181,253,0.2);animation:growRule 0.9s var(--ease) 1.2s forwards"></div>
+            <span style="font-size:0.59rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(196,181,253,0.22);font-weight:500">Continue</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Data panel — lighter background -->
+      <div class="hero-right">
+        <div>
+          <p class="dp-label">Americans 45+ who are now lonely</p>
+          <div class="dp-big"><em>4 in 10</em></div>
+          <p class="dp-desc">Up 5 points since 2018.<br>Held flat for eight years, then it broke.<br>A crisis that is not being managed.</p>
+        </div>
+
+        <div class="trend-panel" id="trendBars">
+          <p class="dp-label" style="margin-bottom:1rem">15-year trend · AARP Research, 2025</p>
+          <div class="t-row">
+            <span class="t-yr">2010</span>
+            <div class="t-track"><div class="t-fill t-past" data-w="35%"></div></div>
+            <span class="t-pct">35%</span>
+          </div>
+          <div class="t-row">
+            <span class="t-yr">2018</span>
+            <div class="t-track"><div class="t-fill t-past" data-w="35%"></div></div>
+            <span class="t-pct">35%</span>
+          </div>
+          <div class="t-row">
+            <span class="t-yr">2025</span>
+            <div class="t-track"><div class="t-fill t-now" data-w="40%"></div></div>
+            <span class="t-pct t-live">40%</span>
+          </div>
+          <p class="trend-note">Held flat for eight years. Then it broke.</p>
+        </div>
+
+        <div class="dp-divider">
+          <p class="dp-label">Mortality risk equivalent · Holt-Lunstad et al., 2010</p>
+          <div class="dp-cigarettes">
+            <span class="dp-cigarettes-n">15</span>
+            <span class="dp-cigarettes-unit">cigarettes a day</span>
+          </div>
+          <p class="dp-desc">Long-term social isolation is associated with a similar increase in risk of early death.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- --- ROUTING — first section after hero --- -->
+<section class="routing" id="routing">
+  <div class="wrap">
+    <div class="r-head">
+      <p class="r-kicker sv">Who this report is for</p>
+      <h2 class="r-title sv d1">Find yourself here before you read further.</h2>
+    </div>
+    <div class="signs">
+      <div class="sign sv">
+        <div class="s-who">
+          <p class="s-role">Population health</p>
+          <p class="s-org">Health system or managed care program lead</p>
+        </div>
+        <div class="s-right">
+          <p class="s-direct">Building the internal case for a social isolation program.</p>
+          <p class="s-desc">This report gives you the cost data, the intervention evidence, and the ROI framing your finance committee will recognise. Section three is where you start. Take the executive summary to your next budget meeting.</p>
+        </div>
+      </div>
+      <div class="sign sv d1">
+        <div class="s-who">
+          <p class="s-role">Tribal health</p>
+          <p class="s-org">Tribal health plan director or IHS area administrator</p>
+        </div>
+        <div class="s-right">
+          <p class="s-direct">Looking for evidence before committing to a program model.</p>
+          <p class="s-desc">Section four is written specifically for you. It names the design failures of standard digital health interventions in AI/AN communities, and what culturally responsive design actually looks like in practice. The cultural content was reviewed by a Din&eacute; advisor before publication.</p>
+        </div>
+      </div>
+      <div class="sign sv d2">
+        <div class="s-who">
+          <p class="s-role">VA and Veterans</p>
+          <p class="s-org">VA program coordinator or Veterans services director</p>
+        </div>
+        <div class="s-right">
+          <p class="s-direct">Trying to reach the women Veterans your current programming misses.</p>
+          <p class="s-desc">Section four covers the specific failure modes of standard VA social programming for women Veterans, including the MST context that most program designs ignore entirely. Section five describes what five years of Arizona implementation data looks like.</p>
+        </div>
+      </div>
+      <div class="sign sv d3">
+        <div class="s-who">
+          <p class="s-role">Federal and policy</p>
+          <p class="s-org">HRSA, ACL, CMS, or state Medicaid</p>
+        </div>
+        <div class="s-right">
+          <p class="s-direct">Evaluating models for funding or policy documentation.</p>
+          <p class="s-desc">The evidence review in section three distinguishes explicitly between RCT-grade findings and observational evidence. The methodology note is on the last page. Every statistic links to its primary source. The conflict of interest is declared on page one.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STAT RIBBON -->
+<div class="ribbon">
+  <div class="wrap">
+    <div class="ribbon-grid">
+      <div class="r-stat fv"><div class="r-n" data-target="40" data-suffix="">40%</div><div class="r-l">Adults 45+ are lonely, up from 35% in 2018 (AARP, 2025)</div></div>
+      <div class="r-stat fv"><div class="r-n">$6.7B</div><div class="r-l">Additional Medicare spending linked to social isolation annually</div></div>
+      <div class="r-stat fv"><div class="r-n">28</div><div class="r-l">Studies found from 1,500 screened on AI/AN women Veterans' health (2024)</div></div>
+      <div class="r-stat fv"><div class="r-n">5 yrs</div><div class="r-l">Arizona program data: implementation evidence, freely shared</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- BREATH — scale of the problem -->
+<section class="breath">
+  <div class="breath-ghost">6.7</div>
+  <div class="wrap">
+    <div class="breath-inner">
+      <div>
+        <p class="breath-kicker sv">Scale and cost</p>
+        <h2 class="breath-title sv d1">What isolation actually costs, and why current systems treat it as someone else's problem.</h2>
+        <div class="breath-prose sv d2">
+          <p>The mortality risk of chronic social isolation is comparable to smoking fifteen cigarettes a day, a magnitude exceeding that of obesity, and one that health systems have not responded to proportionately. Tobacco has infrastructure. Social connection does not.</p>
+          <p>Social isolation among midlife and older adults is associated with an estimated $6.7 billion in additional Medicare spending annually. That figure was calculated from 2017 and 2018 data. Loneliness prevalence has since risen five percentage points. The current cost is almost certainly higher. No updated analysis at this scale had been published at the time of writing.</p>
+          <p><strong>The cost burden falls hardest on the systems least equipped to absorb it.</strong> Tribal health programs operating under the Indian Health Service serve populations with elevated isolation risk while operating under chronic funding constraints. The VA's rural health program faces the same compression. The financial pressure of unaddressed isolation compounds the structural disadvantage that produced the isolation in the first place.</p>
+        </div>
+      </div>
+      <div class="stat-pull sv d2">
+        <div class="sp-item">
+          <div class="sp-num">29%</div>
+          <p class="sp-desc">Increased risk of coronary heart disease associated with loneliness and social isolation, from a systematic review and meta-analysis of prospective studies.</p>
+          <a href="#" class="sp-cite">Valtorta et al., Heart, 2016 ?</a>
+        </div>
+        <div class="sp-item">
+          <div class="sp-num">32%</div>
+          <p class="sp-desc">Increased risk of stroke. The cardiovascular associations are consistent across multiple large studies and multiple populations.</p>
+          <a href="#" class="sp-cite">Valtorta et al., Heart, 2016 ?</a>
+        </div>
+        <div class="sp-item">
+          <div class="sp-num">$6.7B</div>
+          <p class="sp-desc">Additional Medicare spending annually, calculated from 2017/18 data. Prevalence has risen five points since. This figure is a floor, not a ceiling.</p>
+          <a href="#" class="sp-cite">Flowers et al., AARP Public Policy Institute, 2017 ?</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINDINGS -->
+<section class="findings">
+  <div class="findings-glow"></div>
+  <div class="wrap">
+    <div class="findings-header sv">
+      <p class="f-kicker">The five findings</p>
+      <h2 class="f-title">What the evidence actually says: at what level of rigour, for which populations, under which conditions.</h2>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="pillar sv">
+      <div class="pillar-n-bg">01</div>
+      <div class="pillar-content">
+        <p class="p-n-small">Finding one</p>
+        <h3>The crisis is accelerating. The trajectory matters more than the snapshot.</h3>
+        <p>Four in ten Americans aged 45 and older are now lonely, a figure that rose five percentage points between 2018 and 2025, according to AARP's December 2025 survey tracking the same population at three points across fifteen years. The rate held stable for eight years then broke. The snapshot shows a crisis. The trajectory shows a crisis that current systems are not managing.</p>
+        <a href="#" class="p-cite">AARP Research, December 2025 ?</a>
+      </div>
+    </div>
+
+    <div class="pillar sv d1">
+      <div class="pillar-n-bg">02</div>
+      <div class="pillar-content">
+        <p class="p-n-small">Finding two</p>
+        <h3>The health consequences are comparable to tobacco. The response infrastructure is not.</h3>
+        <p>A 2015 meta-analysis drawing on data from 3.4 million participants found that loneliness and social isolation are associated with a 26% and 29% increased risk of premature mortality respectively, a magnitude the researchers compared to smoking up to fifteen cigarettes a day, and one that exceeds the risk associated with obesity. A separate 2016 systematic review found associated risks of 29% for coronary heart disease and 32% for stroke. Health systems have built substantial infrastructure around tobacco cessation. The evidence does not justify failing to do the same for social connection.</p>
+        <a href="#" class="p-cite">Holt-Lunstad, Smith, Baker, Harris, Stephenson. Perspectives on Psychological Science, 2015 ?</a>
+      </div>
+    </div>
+
+    <div class="pillar sv d2">
+      <div class="pillar-n-bg">03</div>
+      <div class="pillar-content">
+        <p class="p-n-small">Finding three</p>
+        <h3>The highest-burden populations are the ones current programs most consistently fail to reach.</h3>
+        <p>This is not coincidence. The populations bearing the highest burden (older adults in rural and underserved communities, Native American elders and Veterans, women Veterans outside metropolitan areas) are the ones existing intervention models were not designed for. They remain outside the frame because the reach was never attempted in the right way. The design failure is the subject of Section four.</p>
+      </div>
+    </div>
+
+    <div class="pillar sv d1">
+      <div class="pillar-n-bg">04</div>
+      <div class="pillar-content">
+        <p class="p-n-small">Finding four</p>
+        <h3>Virtual group programming reaches people the in-person model structurally cannot.</h3>
+        <p>Pilot and observational studies of group-based virtual programming, including a 2023 VHA feasibility study of the CONNECTED intervention, show consistent positive changes in social isolation scores, social support, anxiety, and depression at three months. For geographically isolated populations, the virtual model is not a substitute for in-person programming. It reaches people the in-person model cannot, because it does not require the participant to reach the program. This is presented as pilot and observational evidence. It is not presented as RCT-grade evidence. The field needs that trial. Televeda intends to contribute to producing it.</p>
+        <a href="#" class="p-cite">Foote and Tsai, 2023 ?</a>
+      </div>
+    </div>
+
+    <div class="pillar sv d2">
+      <div class="pillar-n-bg">05</div>
+      <div class="pillar-content">
+        <p class="p-n-small">Finding five</p>
+        <h3>The gap is not evidence. The evidence exists. The gap is implementation.</h3>
+        <p>The gap is funding directed at the right models, cultural adaptation that most existing programs have not achieved, and a willingness to design for the people who have been left outside the frame. Section six contains five specific recommendations with timelines, including the federal funding streams most health system leaders have not yet mapped against their planned programs.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DESIGN FAILURE -->
+<section class="df">
+  <div class="df-ghost">DESIGN</div>
+  <div class="wrap">
+    <div class="df-grid">
+      <div class="df-header">
+        <p class="df-kicker sv">Why programs fail these populations</p>
+        <h2 class="df-title sv d1">A design failure, not a resource failure.</h2>
+      </div>
+      <div class="df-prose df-full sv d2">
+          <p>Most social isolation interventions were designed for a specific person: middle-class, English-speaking, technology-comfortable, within reasonable distance of a provider, and navigating systems built, however imperfectly, with their needs in mind. <strong>That person exists. They are also not who this report is about.</strong></p>
+          <p>A wellness program translated into Din&eacute; Bizaad that retains the conceptual framework of individual psychological wellbeing is a translated program with untranslated assumptions. Navajo concepts of health are relational and collective. K'&eacute;, the kinship system through which a Din&eacute; person understands their place in the world, defines health as the maintenance of right relationship with family, clan, land, and community. A program built around the individual reconnecting does not understand what "community" means in this context.</p>
+          <p class="df-historical">The Phoenix Indian School operated from 1891 to 1990. For nearly a century, federal policy actively dismantled k'&eacute; within the living memory of Agnes Nez and the elders these programs are trying to serve. That history shapes the conditions in which health programs now operate. Understanding it is not a preliminary step to effective design; it is the design work itself.</p>
+      </div>
+      <div class="df-lower sv d2">
+        <div class="canyon-q">
+          <p class="cq-text">"The failure to reach these populations is not a resource failure or a technology failure. It is a design failure rooted in assumptions so embedded they are rarely examined."</p>
+          <p class="cq-attr">Unreached, Section Four</p>
+        </div>
+        <div class="df-info-col">
+        <div class="t-note">
+          <div class="t-dot" style="background:var(--purple-core)"></div>
+          <p>Cultural context and all data regarding AI/AN communities was reviewed by a Din&eacute; cultural advisor prior to publication. Errors that remain are the authors' responsibility.</p>
+        </div>
+        <div class="t-note">
+          <div class="t-dot" style="background:var(--gold-warm)"></div>
+          <p>Every data point links to its primary source. Where the evidence is strong, we say so. Where it is emerging, we say that too. Where there are genuine gaps, we name them.</p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ARIZONA -->
+<section class="arizona">
+  <div class="az-ghost">AZ</div>
+  <div class="wrap">
+    <p class="r-kicker sv">Five years · One state · Implementation evidence</p>
+    <h2 class="r-title sv d1" style="color:var(--ink);max-width:640px">From Navajo County and Apache County. Not a proof of concept.</h2>
+    <p class="sv d2" style="font-size:0.88rem;font-weight:300;color:var(--ink-soft);max-width:600px;line-height:1.88;margin-bottom:0;margin-top:1rem">Televeda's five-year partnership with the Arizona DHS and Arizona DVS produced program evaluation data for women Veterans who are homebound, rurally isolated, or too far from VA facilities to access in-person peer support, in the specific counties where this problem is most acute, with the population most consistently failed by standard programming.</p>
+    <div class="az-grid sv d2">
+      <div class="az-cell">
+        <div class="az-n">5 <em>years</em></div>
+        <div class="az-d">Program evaluation data across older adults, Veterans, and Native American communities in Arizona</div>
+      </div>
+      <div class="az-cell">
+        <div class="az-n">12<em>mo+</em></div>
+        <div class="az-d">Retention substantially above in-person benchmarks, which typically see significant attrition after month three</div>
+      </div>
+      <div class="az-cell">
+        <div class="az-n" style="margin-bottom:0.55rem">
+          <span style="font-size:2.8rem;display:block;line-height:1;color:var(--purple-core)">?</span>
+          <span style="font-family:var(--sans);font-size:0.6rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-muted);display:block;margin-top:0.25rem">Significantly lower</span>
+        </div>
+        <div class="az-d">Loneliness scores among women Veterans from baseline to three-month follow-up, a population standard programming consistently fails to retain</div>
+      </div>
+    </div>
+    <p class="az-caveat sv">Program evaluation findings, not controlled trial results. Presented as implementation evidence from conditions closely matching the populations this report describes. The field needs the controlled trial. Televeda intends to contribute to producing it.</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="cta-glow"></div>
+  <div class="circle-lg"></div>
+  <div class="circle-md"></div>
+  <div class="circle-sm"></div>
+  <div class="wrap">
+    <div class="cta-inner">
+      <div>
+        <h2 class="sv">The evidence review health system leaders are using in 2026.</h2>
+        <p class="cta-body sv d1">The executive summary circulates free and without registration. The full 12-page report contains five specific recommendations with timelines, five years of Arizona implementation data, and the complete evidence review. Conflict of interest declared on page one.</p>
+      </div>
+
+      <div class="cta-right-col sv d2">
+        <div class="cta-direct">
+          <p class="cta-direct__label">Direct contact</p>
+          <div class="cta-direct__line">
+            <span class="cta-direct__role">Research</span>
+            <a href="mailto:research@televeda.com" class="cta-direct__email">research@televeda.com</a>
+          </div>
+          <div class="cta-direct__line">
+            <span class="cta-direct__role">Media</span>
+            <a href="mailto:media@televeda.com" class="cta-direct__email">media@televeda.com</a>
+          </div>
+          <div class="cta-direct__line">
+            <span class="cta-direct__role">Partnerships</span>
+            <a href="mailto:partnerships@televeda.com" class="cta-direct__email">partnerships@televeda.com</a>
+          </div>
+        </div>
+
+        <div class="no-gate" style="margin-top:0.75rem;max-width:100%">
+          <p><strong>No registration. No email required.</strong> The summary opens directly. We do not gate evidence behind a form.</p>
+        </div>
+
+        <p class="cta-more-reports sv">For more research visit <a href="https://televeda.com/research" class="cta-more-reports__link">televeda.com/research</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOFT OPT-IN -->
+<section class="optin">
+  <div class="wrap">
+    <div class="optin-inner sv">
+      <div class="optin-text">
+        <h3>Research Updates</h3>
+        <p>One research email a month. Implementation data, program findings, and what five years in Arizona teaches us. Nothing else.</p>
+      </div>
+      <div>
+        <div class="optin-form">
+          <input type="email" class="optin-input" placeholder="your@email.com">
+          <button class="optin-btn">Stay informed</button>
+        </div>
+        <p class="optin-note">No sales calls. No third-party sharing. No more than monthly.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+/* Progress bar */
+window.addEventListener('scroll',()=>{
+  const pct=(window.scrollY/(document.body.scrollHeight-window.innerHeight))*100;
+  document.getElementById('progress').style.width=Math.min(pct,100)+'%';
+});
+
+/* Scroll observer */
+const io=new IntersectionObserver(e=>{
+  e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('on');io.unobserve(x.target)}});
+},{threshold:0.07});
+document.querySelectorAll('.sv,.fv').forEach(el=>io.observe(el));
+
+/* Hero fires immediately */
+document.querySelectorAll('.hero .sv,.hero .fv').forEach(el=>{
+  setTimeout(()=>el.classList.add('on'),80);
+});
+
+/* Trend bars — fired on scroll */
+function animateTrendBars(){
+  const tb=document.getElementById('trendBars');
+  if(!tb || tb.dataset.animated==='true') return;
+  tb.dataset.animated='true';
+  tb.querySelectorAll('.t-fill').forEach((b,i)=>{
+    setTimeout(()=>{b.style.width=b.dataset.w;},300+i*300);
+  });
+}
+
+const barIO=new IntersectionObserver(e=>{
+  e.forEach(x=>{
+    if(x.isIntersecting){
+      animateTrendBars();
+      barIO.unobserve(x.target);
+    }
+  });
+},{threshold:0.3});
+const tb=document.getElementById('trendBars');
+if(tb)barIO.observe(tb);
+setTimeout(()=>animateTrendBars(),800);
+
+/* Agnes Nez script omitted in source export. */
+
+</script>
+
+<footer class="televeda-shell-footer">
+  <div class="televeda-shell-wrap">
+    <div class="foot">
+      <span class="foot-brand">telev<span class="u">e</span>da &middot; National public health week &middot; April 2026</span>
+      <span class="foot-brand" style="color:rgba(255,255,255,0.3);font-weight:400">Director of Communications</span>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+/* Televeda locked shell behavior */
+(function(){
+  function setupDropdown(){
+    const dropdown = document.querySelector('.televeda-shell-nav .nav-dropdown');
+    const dropdownBtn = document.querySelector('.televeda-shell-nav .nav-dropdown-btn');
+    if (!dropdown || !dropdownBtn) return;
+
+    dropdownBtn.addEventListener('click', function(e){
+      e.stopPropagation();
+      dropdown.classList.toggle('open');
+    });
+
+    document.addEventListener('click', function(e){
+      if (!dropdown.contains(e.target)) {
+        dropdown.classList.remove('open');
+      }
+    });
+
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape') {
+        dropdown.classList.remove('open');
+      }
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupDropdown);
+  } else {
+    setupDropdown();
+  }
+
+  document.body.classList.add('js-ready');
+
+  function updateBar(){
+    const bar = document.getElementById('bar');
+    if (!bar) return;
+    const denom = document.body.scrollHeight - window.innerHeight;
+    const p = denom > 0 ? (window.scrollY / denom) * 100 : 0;
+    bar.style.width = Math.min(Math.max(p, 0), 100) + '%';
+  }
+
+  window.addEventListener('scroll', updateBar, { passive: true });
+  window.addEventListener('resize', updateBar);
+  updateBar();
+})();
+</script>
+</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Unreached - Televeda | April 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --p-deep:#280A50;--p-dark:#2C1860;--p-mid:#3D1F82;--p-core:#5E1FAE;
+  --p-bright:#8040D8;--p-light:#BCA8E8;--p-pale:#EDE8F8;--p-ghost:#F8F6FF;
+  --g:#E09010;--g-bright:#F0A820;--g-light:#F8D880;--g-pale:#FDF5E0;
+  --ink:#100820;--ink-mid:#2E1F50;--ink-soft:#5A4880;--ink-muted:#9080B8;
+  --ink-faint:#CCC0E0;--white:#FFFFFF;--near-white:#FAFAFE;
+  --teal:#12B5A5;
+  --display:'Cormorant Garamond',Georgia,serif;
+  --sans:'DM Sans',system-ui,sans-serif;
+  --ease:cubic-bezier(0.16,1,0.3,1);
+}
+html{scroll-behavior:smooth}
+body{background:var(--near-white);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.wrap{max-width:1160px;margin:0 auto;padding:0 2.5rem}
+.wrap-mid{max-width:800px;margin:0 auto;padding:0 2.5rem}
+.wrap-wide{max-width:1000px;margin:0 auto;padding:0 2.5rem}
+@media(max-width:600px){.wrap,.wrap-mid,.wrap-wide{padding:0 1.25rem}}
+
+#bar{position:fixed;top:0;left:0;height:2px;width:0;background:var(--g);z-index:999;transition:width 0.08s linear}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:200;background:var(--p-deep);border-bottom:1px solid rgba(94,31,174,0.3)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:58px;gap:1rem}
+.nav-logo{font-family:var(--sans);font-size:1.22rem;font-weight:700;color:var(--white);letter-spacing:-0.02em;text-decoration:none;flex-shrink:0}
+.nav-logo .u{color:var(--g-bright)}
+.nav-links{display:flex;align-items:center;gap:0.15rem;flex:1;justify-content:center}
+@media(max-width:800px){.nav-links{display:none}}
+.nav-link{font-family:var(--sans);font-size:0.72rem;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;color:rgba(255,255,255,0.45);text-decoration:none;padding:0.4rem 0.85rem;border-radius:3px;position:relative;transition:color 0.15s,background 0.15s}
+.nav-link:hover{color:var(--white);background:rgba(255,255,255,0.07)}
+.nav-link--gold{color:rgba(240,168,32,0.75);border:1px solid rgba(240,168,32,0.2)}
+.nav-link--gold:hover{color:var(--g-bright);background:rgba(240,168,32,0.07);border-color:rgba(240,168,32,0.4)}
+.nav-back{font-family:var(--sans);font-size:0.7rem;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;color:rgba(255,255,255,0.4);text-decoration:none;display:flex;align-items:center;gap:0.4rem;transition:color 0.15s;flex-shrink:0}
+.nav-back:hover{color:var(--white)}
+.nav-link--active{color:var(--white);}
+.nav-link--active:not(.nav-dropdown-btn)::after{content:'';position:absolute;bottom:4px;left:0.85rem;right:0.85rem;height:1px;background:var(--g-bright);}
+.nav-dropdown-btn.nav-link--active::before{content:'';position:absolute;bottom:4px;left:0.85rem;right:0.85rem;height:1px;background:var(--g-bright);}
+.nav-dropdown{position:relative;display:inline-block}
+.nav-dropdown-btn{cursor:pointer;display:flex;align-items:center;gap:0.25rem}
+.nav-dropdown-btn::after{content:'';display:inline-block;width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-top:5px solid currentColor;opacity:0.6;transition:transform 0.2s var(--ease);transform-origin:center 45%}
+.nav-dropdown.open .nav-dropdown-btn::after{transform:rotate(180deg)}
+.nav-dropdown-menu{position:absolute;top:100%;left:0;background:#2d1055;border:1px solid rgba(94,31,174,0.4);border-radius:6px;box-shadow:0 4px 12px rgba(0,0,0,0.3);min-width:200px;opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity 0.2s var(--ease),transform 0.2s var(--ease),visibility 0.2s;z-index:100;margin-top:0.5rem;overflow:hidden}
+.nav-dropdown.open .nav-dropdown-menu{opacity:1;visibility:visible;transform:translateY(0)}
+.nav-dropdown-menu a{display:block;padding:0.75rem 1.25rem;color:rgba(255,255,255,0.7);text-decoration:none;font-size:0.72rem;font-weight:500;letter-spacing:0.05em;transition:background 0.15s ease,color 0.15s ease;border-bottom:1px solid rgba(94,31,174,0.2)}
+.nav-dropdown-menu a:last-child{border-bottom:none}
+.nav-dropdown-menu a:hover{background:rgba(94,31,174,0.15);color:var(--white)}
+
+/* COVER */
+.cover{background:var(--p-deep);padding:5rem 0 2.5rem;overflow:hidden}
+.cover-inner{display:grid;grid-template-columns:1fr 340px;gap:4rem;align-items:end}
+@media(max-width:860px){.cover-inner{grid-template-columns:1fr}}
+.cover-collab{font-size:0.6rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:1.5rem}
+.cover-title{font-family:var(--sans);font-size:clamp(4rem,12vw,8rem);font-weight:900;line-height:0.9;letter-spacing:-0.04em;color:var(--white);margin-bottom:1.5rem}
+.cover-title span{display:block}
+.cover-subtitle{font-family:var(--display);font-size:clamp(1.1rem,2.5vw,1.4rem);font-weight:400;color:var(--p-light);line-height:1.4;margin-bottom:0.75rem;max-width:520px}
+.cover-why{font-family:var(--display);font-size:1rem;font-style:italic;color:rgba(255,255,255,0.35);margin-bottom:2.5rem}
+.cover-meta{display:flex;align-items:flex-start;flex-wrap:wrap;margin-top:1.2rem;row-gap:0.4rem;column-gap:1.5rem;padding:1.5rem 0;border-top:1px solid rgba(255,255,255,0.08)}
+.cover-meta-item{font-size:0.68rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:rgba(255,255,255,0.35);line-height:1.5}
+.cover-meta-item strong{display:block;color:rgba(255,255,255,0.6);font-size:0.72rem;margin-bottom:0.35rem}
+.cover-stats{align-self:end;padding-bottom:0}
+@media(max-width:860px){.cover-stats{display:none}}
+.cover-stat-block{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:4px;padding:1.75rem;margin-bottom:1rem}
+.cover-stat-block:last-child{margin-bottom:0}
+.cstat-num{font-family:var(--sans);font-size:3.5rem;font-weight:900;color:var(--g-bright);line-height:1;letter-spacing:-0.03em;margin-bottom:0.3rem}
+.cstat-label{font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.4);line-height:1.4}
+
+/* PARTNER BAR */
+.partner-bar{background:rgba(0,0,0,0.2);border-top:1px solid rgba(255,255,255,0.06);padding:1.25rem 0;margin-top:3rem}
+.partner-bar-inner{display:flex;align-items:center;gap:2.5rem;flex-wrap:wrap}
+.partner-label{font-size:0.58rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.25);white-space:nowrap}
+.partner-name{font-size:0.7rem;font-weight:500;color:rgba(255,255,255,0.35);letter-spacing:0.03em}
+
+/* SOURCING */
+.sourcing{background:var(--p-ghost);border-bottom:1px solid var(--ink-faint);padding:3rem 0}
+.sourcing-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
+@media(max-width:680px){.sourcing-grid{grid-template-columns:1fr}}
+.sourcing-block{border-left:2px solid var(--p-light);padding-left:1.5rem}
+.sourcing-eyebrow{font-size:0.6rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-muted);margin-bottom:0.6rem}
+.sourcing-title{font-family:var(--display);font-size:1.3rem;font-weight:600;color:var(--p-dark);margin-bottom:0.9rem}
+.sourcing-body{font-size:0.875rem;line-height:1.75;color:var(--ink-soft)}
+.sourcing-body p{margin-bottom:0.75rem}
+.sourcing-body p:last-child{margin-bottom:0}
+
+/* EXEC SUMMARY */
+.exec{padding:5rem 0}
+.section-eyebrow{font-size:0.6rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-muted);margin-bottom:0.75rem}
+.exec-title{font-family:var(--display);font-size:clamp(2rem,4vw,3rem);font-weight:600;color:var(--p-dark);line-height:1.1;margin-bottom:2rem;letter-spacing:-0.02em}
+.exec-lede{font-family:var(--display);font-size:1.05rem;font-style:italic;color:var(--ink-soft);line-height:1.7;padding:1.5rem 2rem;background:var(--p-ghost);border-left:3px solid var(--p-light);margin-bottom:2.5rem;border-radius:0 4px 4px 0}
+.exec-stats-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--ink-faint);border-radius:4px;overflow:hidden;margin-bottom:3rem}
+@media(max-width:600px){.exec-stats-row{grid-template-columns:1fr}}
+.exec-stat{background:var(--near-white);padding:1.5rem;text-align:center}
+.exec-stat-num{font-family:var(--sans);font-size:2.2rem;font-weight:900;color:var(--p-core);line-height:1;margin-bottom:0.3rem;letter-spacing:-0.03em}
+.exec-stat-label{font-size:0.75rem;color:var(--ink-soft);line-height:1.4;margin-bottom:0.2rem}
+.exec-stat-source{font-size:0.62rem;font-style:italic;color:var(--ink-muted)}
+.findings-label{font-size:0.6rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-muted);margin-bottom:1.25rem;padding-bottom:0.75rem;border-bottom:1px solid var(--ink-faint)}
+.finding{display:grid;grid-template-columns:48px 1fr;gap:1.25rem;padding:1.5rem 0;border-bottom:1px solid var(--ink-faint);align-items:start}
+.finding:last-child{border-bottom:none}
+.finding-num{font-family:var(--display);font-size:2rem;font-weight:300;color:var(--p-light);line-height:1;padding-top:0.1rem}
+.finding-body{font-size:0.93rem;line-height:1.75;color:var(--ink-soft)}
+.finding-body strong{color:var(--ink);font-weight:600}
+
+/* SECTION TEMPLATE */
+.report-section{padding:5rem 0;border-top:1px solid var(--ink-faint)}
+.section-header{display:grid;grid-template-columns:80px 1fr;gap:1.5rem;align-items:start;margin-bottom:3rem}
+@media(max-width:500px){.section-header{grid-template-columns:1fr}}
+.section-num{font-family:var(--display);font-size:5rem;font-weight:300;color:var(--p-pale);line-height:1;padding-top:0.2rem}
+@media(max-width:500px){.section-num{display:none}}
+.section-head-right .section-eyebrow{margin-bottom:0.4rem}
+.section-title{font-family:var(--display);font-size:clamp(1.8rem,4vw,2.6rem);font-weight:600;color:var(--p-dark);line-height:1.1;letter-spacing:-0.02em;margin-bottom:0.5rem}
+.section-deck{font-size:0.9rem;color:var(--ink-muted);font-style:italic;line-height:1.5}
+
+/* BODY TEXT */
+.rp{font-size:0.95rem;line-height:1.85;color:var(--ink-soft);margin-bottom:1.25rem}
+.rp strong{color:var(--ink);font-weight:600}
+
+/* SUBHEADS */
+.rh{font-family:var(--display);font-size:1.25rem;font-weight:600;color:var(--p-dark);margin:2.5rem 0 0.75rem;letter-spacing:-0.01em}
+
+/* DATA CALLOUT BOX */
+.data-box{background:var(--p-ghost);border:1px solid var(--p-pale);border-radius:4px;padding:1.75rem 2rem;margin:2rem 0}
+.data-box-label{font-size:0.58rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-muted);margin-bottom:1rem}
+.data-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:1.5rem}
+.data-cell .dn{font-family:var(--sans);font-size:2.2rem;font-weight:900;color:var(--p-core);line-height:1;letter-spacing:-0.03em;margin-bottom:0.2rem}
+.data-cell .dn--gold{color:var(--g-bright)}
+.data-cell .dl{font-size:0.75rem;font-weight:500;color:var(--ink-soft);line-height:1.4}
+.data-cell .ds{font-size:0.62rem;font-style:italic;color:var(--ink-muted);margin-top:0.2rem}
+
+/* STAT ROW */
+.stat-row{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--ink-faint);border-radius:4px;overflow:hidden;margin:2rem 0}
+@media(max-width:500px){.stat-row{grid-template-columns:1fr}}
+.stat-cell{background:var(--near-white);padding:1.5rem 1.75rem}
+.stat-cell .sn{font-family:var(--sans);font-size:2.6rem;font-weight:900;color:var(--p-core);line-height:1;letter-spacing:-0.03em;margin-bottom:0.25rem}
+.stat-cell .sn--g{color:var(--g-bright)}
+.stat-cell .sl{font-size:0.78rem;font-weight:500;color:var(--ink-soft);line-height:1.4}
+.stat-cell .ss{font-size:0.62rem;font-style:italic;color:var(--ink-muted);margin-top:0.2rem}
+
+/* PULL QUOTE */
+.pullquote{margin:2.5rem 0;padding:2rem 2.5rem;border-left:3px solid var(--g-bright);background:var(--g-pale)}
+.pullquote p{font-family:var(--display);font-size:1.3rem;font-style:italic;font-weight:500;line-height:1.45;color:var(--ink-mid);margin-bottom:0}
+.pullquote cite{display:block;margin-top:0.75rem;font-family:var(--sans);font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-muted);font-style:normal}
+
+/* PURPLE PULLQUOTE */
+.pullquote--purple{border-left-color:var(--p-core);background:var(--p-ghost)}
+.pullquote--purple p{color:var(--p-dark)}
+
+/* EVIDENCE GRID */
+.evidence-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0}
+@media(max-width:640px){.evidence-grid{grid-template-columns:1fr}}
+.ev-card{background:var(--near-white);border:1px solid var(--ink-faint);border-radius:4px;padding:1.5rem}
+.ev-card-top{display:flex;align-items:center;gap:0.5rem;margin-bottom:0.75rem}
+.ev-badge{font-size:0.58rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;padding:0.2rem 0.6rem;border-radius:2px}
+.ev-badge--strong{color:#1A8048;background:rgba(26,128,72,0.1);border:1px solid rgba(26,128,72,0.2)}
+.ev-badge--growing{color:var(--p-core);background:rgba(94,31,174,0.08);border:1px solid rgba(94,31,174,0.2)}
+.ev-badge--moderate{color:var(--g);background:rgba(224,144,16,0.08);border:1px solid rgba(224,144,16,0.2)}
+.ev-badge--gap{color:#B84040;background:rgba(184,64,64,0.08);border:1px solid rgba(184,64,64,0.2)}
+.ev-title{font-family:var(--display);font-size:1.05rem;font-weight:600;color:var(--ink);margin-bottom:0.5rem}
+.ev-body{font-size:0.8rem;line-height:1.7;color:var(--ink-soft)}
+
+/* POPULATION OVERLAP */
+.overlap-box{background:var(--p-ghost);border:1px solid var(--p-pale);border-radius:4px;padding:2rem;margin:2rem 0}
+.overlap-label{font-size:0.58rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-muted);margin-bottom:1.25rem}
+.overlap-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--ink-faint);border-radius:3px;overflow:hidden;margin-bottom:1rem}
+@media(max-width:580px){.overlap-grid{grid-template-columns:1fr}}
+.overlap-cell{background:var(--near-white);padding:1.25rem}
+.overlap-cell-title{font-family:var(--display);font-size:1rem;font-weight:600;color:var(--p-dark);margin-bottom:0.5rem}
+.overlap-cell-items{font-size:0.75rem;color:var(--ink-muted);line-height:1.65}
+.overlap-center{background:var(--p-deep)!important}
+.overlap-center .overlap-cell-title{color:var(--white)}
+.overlap-center .overlap-cell-items{color:var(--p-light)}
+.overlap-note{font-size:0.75rem;font-style:italic;color:var(--ink-muted);text-align:center}
+
+/* IHS/VA SPLIT */
+.system-split{display:grid;grid-template-columns:1fr 48px 1fr;gap:0;margin:2rem 0;border-radius:4px;overflow:hidden;border:1px solid var(--ink-faint)}
+@media(max-width:500px){.system-split{grid-template-columns:1fr}}
+.system-cell{background:var(--near-white);padding:1.5rem}
+.system-cell-label{font-size:0.62rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-muted);margin-bottom:0.6rem}
+.system-cell-title{font-family:var(--display);font-size:1.1rem;font-weight:600;color:var(--p-dark);margin-bottom:0.5rem}
+.system-cell-items{font-size:0.8rem;color:var(--ink-soft);line-height:1.7}
+.system-divider{background:var(--p-deep);display:flex;align-items:center;justify-content:center;font-size:1.2rem;color:var(--white);font-weight:300}
+@media(max-width:500px){.system-divider{padding:0.75rem;text-align:center}}
+
+/* WORKED EXAMPLE */
+.worked-example{background:var(--p-deep);border-radius:6px;padding:2rem 2.25rem;margin:2rem 0}
+.we-label{font-size:0.6rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:0.75rem}
+.we-body{font-size:0.88rem;line-height:1.8;color:rgba(255,255,255,0.6)}
+.we-body .hi{color:var(--g-bright);font-weight:600}
+.we-note{margin-top:0.75rem;font-size:0.8rem;font-style:italic;color:rgba(255,255,255,0.35)}
+
+/* PILOT STATS */
+.pilot-stats{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:1px;background:var(--ink-faint);border-radius:4px;overflow:hidden;margin:2rem 0}
+@media(max-width:680px){.pilot-stats{grid-template-columns:1fr 1fr}}
+@media(max-width:400px){.pilot-stats{grid-template-columns:1fr}}
+.ps-cell{background:var(--near-white);padding:1.25rem 1.5rem}
+.ps-num{font-family:var(--sans);font-size:2.2rem;font-weight:900;color:var(--p-core);line-height:1;letter-spacing:-0.03em;margin-bottom:0.25rem}
+.ps-num--g{color:var(--g-bright)}
+.ps-label{font-size:0.72rem;font-weight:500;color:var(--ink-soft);line-height:1.4}
+.ps-source{font-size:0.62rem;font-style:italic;color:var(--ink-muted);margin-top:0.2rem}
+
+/* SURVEY RESULTS */
+.survey-box{background:var(--p-ghost);border:1px solid var(--p-pale);border-radius:4px;padding:1.75rem 2rem;margin:2rem 0}
+.survey-label{font-size:0.58rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-muted);margin-bottom:0.4rem}
+.survey-sub{font-size:0.72rem;font-style:italic;color:var(--ink-muted);margin-bottom:1.5rem}
+.survey-bar-row{margin-bottom:1rem}
+.survey-bar-label{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:0.3rem}
+.survey-bar-text{font-size:0.82rem;color:var(--ink-soft)}
+.survey-bar-pct{font-size:0.88rem;font-weight:700;color:var(--p-core)}
+.survey-bar-track{background:var(--p-pale);border-radius:2px;height:6px;overflow:hidden}
+.survey-bar-fill{background:linear-gradient(90deg,var(--p-core),var(--p-bright));height:100%;border-radius:2px;transition:width 0.8s var(--ease)}
+
+/* TESTIMONIALS */
+.testimonial-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin:2rem 0}
+@media(max-width:680px){.testimonial-grid{grid-template-columns:1fr}}
+.testimonial{background:var(--near-white);border:1px solid var(--ink-faint);border-radius:4px;padding:1.5rem}
+.testimonial-quote{font-family:var(--display);font-size:0.95rem;font-style:italic;color:var(--ink-mid);line-height:1.6;margin-bottom:1rem}
+.testimonial-source{font-size:0.62rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-muted)}
+
+/* RECOMMENDATIONS */
+.rec-item{display:grid;grid-template-columns:44px 1fr;gap:1.25rem;padding:1.75rem 0;border-bottom:1px solid var(--ink-faint);align-items:start}
+.rec-item:last-child{border-bottom:none}
+.rec-num{width:36px;height:36px;background:var(--p-core);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.82rem;font-weight:700;color:var(--white);flex-shrink:0;margin-top:0.2rem}
+.rec-title{font-family:var(--display);font-size:1.1rem;font-weight:600;color:var(--p-dark);margin-bottom:0.5rem}
+.rec-body{font-size:0.85rem;line-height:1.75;color:var(--ink-soft)}
+.rec-body strong{color:var(--ink);font-weight:600}
+
+/* ENTRY GUIDE */
+.entry-guide{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--ink-faint);border-radius:4px;overflow:hidden;margin-bottom:2.5rem}
+@media(max-width:500px){.entry-guide{grid-template-columns:1fr}}
+.entry-cell{background:var(--p-ghost);padding:1.1rem 1.25rem}
+.entry-role{font-size:0.72rem;font-weight:700;color:var(--p-dark);margin-bottom:0.2rem}
+.entry-action{font-size:0.75rem;color:var(--ink-muted)}
+.entry-action strong{color:var(--p-core)}
+
+/* FUNDING GRID */
+.funding-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--ink-faint);border-radius:4px;overflow:hidden;margin:1.5rem 0}
+@media(max-width:500px){.funding-grid{grid-template-columns:1fr}}
+.funding-cell{background:var(--near-white);padding:1.25rem 1.5rem}
+.funding-cell--highlight{background:var(--p-ghost)}
+.funding-cell--full{grid-column:1/-1}
+.funding-name{font-size:0.82rem;font-weight:700;color:var(--p-dark);margin-bottom:0.3rem}
+.funding-desc{font-size:0.77rem;color:var(--ink-muted);line-height:1.5}
+.funding-note{font-size:0.8rem;color:var(--p-core);font-style:italic;line-height:1.6}
+
+/* METHODOLOGY */
+.methodology{background:var(--p-ghost);border-radius:4px;border:1px solid var(--p-pale);padding:1.75rem 2rem;margin:3rem 0}
+.methodology p{font-size:0.85rem;line-height:1.75;color:var(--ink-soft)}
+
+/* REFERENCES */
+.references-section{padding:4rem 0;border-top:1px solid var(--ink-faint)}
+.references-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.5rem 3rem}
+@media(max-width:640px){.references-grid{grid-template-columns:1fr}}
+.ref{display:grid;grid-template-columns:24px 1fr;gap:0.5rem;font-size:0.75rem;line-height:1.6;color:var(--ink-muted);padding:0.25rem 0}
+.ref-num{color:var(--p-core);font-weight:700;font-size:0.7rem}
+
+/* ABOUT */
+.about-section{background:var(--p-deep);padding:4rem 0}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+@media(max-width:680px){.about-grid{grid-template-columns:1fr}}
+.about-eyebrow{font-size:0.6rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:0.75rem}
+.about-title{font-family:var(--sans);font-size:3rem;font-weight:900;color:var(--white);letter-spacing:-0.04em;line-height:0.9;margin-bottom:1.5rem}
+.about-body{font-size:0.9rem;line-height:1.75;color:rgba(255,255,255,0.5);margin-bottom:1.5rem}
+.about-stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,0.08);border-radius:4px;overflow:hidden;margin-bottom:2rem}
+.about-stat{background:rgba(255,255,255,0.04);padding:1.25rem}
+.about-stat-num{font-family:var(--sans);font-size:2rem;font-weight:900;color:var(--g-bright);line-height:1;letter-spacing:-0.03em;margin-bottom:0.2rem}
+.about-stat-label{font-size:0.7rem;color:rgba(255,255,255,0.35)}
+.about-recognition-label{font-size:0.6rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:0.75rem}
+.about-rec-item{display:flex;gap:0.75rem;margin-bottom:0.75rem;font-size:0.82rem;color:rgba(255,255,255,0.5);line-height:1.5}
+.about-rec-icon{width:18px;height:18px;background:var(--p-core);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:0.1rem;font-size:0.65rem;color:var(--white)}
+.about-contact{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:4px;padding:1.5rem;margin-top:2rem}
+.about-contact-label{font-size:0.6rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:0.75rem}
+.about-contact a{display:block;font-size:0.88rem;color:var(--g-bright);text-decoration:none;margin-bottom:0.3rem}
+.about-contact a:hover{text-decoration:underline}
+
+/* FOOTER */
+footer{background:var(--p-deep);border-top:1px solid rgba(94,31,174,0.25);padding:2rem 0}
+.foot{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.foot-brand{font-family:var(--sans);font-size:0.78rem;font-weight:600;color:rgba(255,255,255,0.45);letter-spacing:-0.01em}
+.foot-brand .u{color:var(--g-bright)}
+.foot-links{display:flex;gap:1.5rem;flex-wrap:wrap}
+.foot-links a{font-size:0.72rem;color:rgba(255,255,255,0.3);text-decoration:none;letter-spacing:0.02em;transition:color 0.15s}
+.foot-links a:hover{color:var(--white)}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.cover-inner>*{opacity:0;animation:fadeUp 0.7s var(--ease) forwards}
+.cover-inner>*:nth-child(1){animation-delay:0.08s}
+.cover-inner>*:nth-child(2){animation-delay:0.18s}
+
+/* LATE LAYOUT OVERRIDES */
+.cover{
+  padding:4.4rem 0 2.9rem;
+}
+.cover .wrap{
+  max-width:1160px;
+}
+.cover-inner{
+  grid-template-columns:minmax(0,1.08fr) minmax(280px,0.72fr);
+  gap:2.75rem;
+  align-items:start;
+  max-width:1020px;
+  margin:0 auto;
+}
+.cover-title{
+  font-size:clamp(3.5rem,9vw,6.35rem);
+  margin-bottom:1.2rem;
+}
+.cover-subtitle{
+  max-width:620px;
+}
+.cover-why{
+  margin-bottom:2rem;
+  max-width:560px;
+}
+.cover-meta{
+  max-width:760px;
+  padding:1.25rem 0 0;
+}
+.cover-stats{
+  padding-top:0.4rem;
+}
+.cover-stat-block{
+  padding:1.45rem 1.35rem;
+}
+.partner-bar{
+  margin-top:2.2rem;
+}
+.partner-bar .wrap{
+  max-width:1020px;
+}
+@media(max-width:860px){
+  .cover{
+    padding:3.6rem 0 2.5rem;
+  }
+  .cover-inner{
+    max-width:none;
+    gap:1.75rem;
+  }
+}
+
+.about-section{
+  background:var(--p-deep);
+  padding:4.5rem 0 4rem;
+}
+.about-section .wrap{
+  max-width:1160px;
+}
+.about-shell{
+  max-width:1020px;
+  margin:0 auto 1.5rem;
+  display:grid;
+  grid-template-columns:minmax(0,1.02fr) minmax(280px,0.98fr);
+  gap:2rem;
+  align-items:start;
+}
+.about-main{
+  min-width:0;
+}
+.about-side{
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:6px;
+  padding:1.55rem 1.45rem 1.2rem;
+}
+.about-title{
+  margin-bottom:1.1rem;
+}
+.about-body{
+  max-width:640px;
+  margin-bottom:1.35rem;
+}
+.about-stats{
+  max-width:560px;
+  margin-bottom:0;
+}
+.about-rec-item{
+  margin-bottom:1rem;
+}
+.about-rec-item:last-child{
+  margin-bottom:0;
+}
+.about-contact-band{
+  max-width:1020px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:1.25rem 2rem;
+  align-items:center;
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:6px;
+  padding:1.35rem 1.5rem;
+}
+.about-contact-label{
+  margin:0;
+}
+.about-link-stack{
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:0;
+  flex-wrap:nowrap;
+}
+.about-link-stack a{
+  display:inline-flex;
+  align-items:center;
+  white-space:nowrap;
+  font-size:0.92rem;
+  color:var(--g-bright);
+  text-decoration:none;
+}
+.about-link-stack a + a{
+  position:relative;
+  margin-left:1rem;
+  padding-left:1rem;
+}
+.about-link-stack a + a::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:50%;
+  transform:translateY(-50%);
+  width:1px;
+  height:0.9rem;
+  background:rgba(255,255,255,0.22);
+}
+.about-link-stack a:hover{
+  text-decoration:underline;
+}
+@media(max-width:760px){
+  .about-shell,
+  .about-contact-band{
+    grid-template-columns:1fr;
+  }
+  .about-link-stack{
+    justify-content:flex-start;
+    gap:0;
+    flex-wrap:wrap;
+  }
+  .about-link-stack a + a{
+    margin-left:0.85rem;
+    padding-left:0.85rem;
+  }
+}
+
+.report-section:last-of-type{
+  padding-bottom:3.25rem;
+}
+.evidence-grid{
+  margin:1.5rem 0 0.85rem;
+}
+.evidence-grid + .rh{
+  margin-top:1.15rem;
+}
+.pullquote{
+  margin:1.85rem 0;
+}
+.data-box,
+.overlap-box,
+.survey-box,
+.methodology,
+.entry-cell,
+.funding-cell--highlight,
+.pullquote--purple{
+  background:#F1ECFE;
+}
+.data-box,
+.overlap-box,
+.survey-box,
+.methodology{
+  border-color:rgba(124,58,237,0.16);
+}
+.pullquote--purple{
+  border-left-color:var(--p-core);
+}
+.methodology{
+  margin:2rem 0 1.2rem;
+}
+.references-section{
+  padding:2.35rem 0 3rem;
+}
+.references-grid{
+  gap:0.45rem 2.5rem;
+}
+
+/* FINAL TUNING OVERRIDES */
+body .cover .wrap{
+  max-width:1000px;
+}
+body .cover-inner{
+  grid-template-columns:minmax(0,1.1fr) minmax(260px,0.68fr);
+  gap:2.45rem;
+  align-items:start;
+  max-width:none;
+  margin:0;
+}
+body .partner-bar .wrap{
+  max-width:1000px;
+}
+body .about-shell{
+  max-width:1000px;
+  margin:0 auto 0.9rem;
+  grid-template-columns:minmax(0,1.04fr) minmax(280px,0.96fr);
+  align-items:end;
+}
+body .about-side{
+  align-self:end;
+}
+body .about-contact-band{
+  max-width:1000px;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:1.3rem 2rem;
+}
+body .about-contact-label{
+  margin-bottom:0;
+  white-space:nowrap;
+}
+body .data-box,
+body .overlap-box,
+body .survey-box,
+body .methodology,
+body .entry-cell,
+body .funding-cell--highlight,
+body .pullquote--purple{
+  background:#EFE8FD;
+}
+body .data-box,
+body .overlap-box,
+body .survey-box,
+body .methodology{
+  border-color:rgba(124,58,237,0.2);
+}
+body .evidence-grid{
+  margin:1.5rem 0 0.8rem;
+}
+body .evidence-grid + .rh{
+  margin-top:1rem;
+}
+body .methodology{
+  margin:2rem 0 1rem;
+}
+body .references-section{
+  padding:2rem 0 3rem;
+}
+@media(max-width:760px){
+  body .about-contact-label{
+    white-space:normal;
+  }
+}
+
+/* MICRO POLISH OVERRIDES */
+body .cover{
+  padding:4.15rem 0 2.7rem;
+}
+body .cover-inner{
+  gap:2.2rem;
+}
+body .partner-bar{
+  margin-top:1.9rem;
+}
+body .about-shell{
+  margin:0 auto 0.55rem;
+}
+body .about-contact-band{
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:1.25rem 1.85rem;
+}
+body .data-box,
+body .overlap-box,
+body .survey-box,
+body .methodology,
+body .entry-cell,
+body .funding-cell--highlight,
+body .pullquote--purple{
+  background:#ECE4FD;
+}
+body .pullquote{
+  margin:1.55rem 0;
+}
+body .evidence-grid{
+  margin:1.25rem 0 0.45rem;
+}
+body .evidence-grid + .rh{
+  margin-top:0.7rem;
+}
+body .methodology{
+  margin:1.6rem 0 0.7rem;
+}
+body .references-section{
+  padding:1.55rem 0 3rem;
+}
+@media(max-width:760px){
+  body .about-contact-band{
+    grid-template-columns:1fr;
+  }
+}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+
+<nav>
+  <div class="wrap">
+    <div class="nav-inner">
+      <a class="nav-logo" href="index.html">telev<span class="u">e</span>da</a>
+      <div class="nav-links">
+        <a class="nav-link" href="article.html">Article</a>
+        <a class="nav-link" href="linkedin.html">LinkedIn</a>
+        <a class="nav-link nav-link--active" href="report.html">Report</a>
+        <div class="nav-dropdown">
+          <span class="nav-link nav-dropdown-btn">Landing Pages</span>
+          <div class="nav-dropdown-menu">
+            <a href="ungated v1.html">Ungated v1</a>
+            <a href="ungated v2.html">Ungated v2</a>
+            <a href="gated v1.html">Email Capture v1</a>
+            <a href="gate v2.html">Email Capture v2</a>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:1rem;flex-shrink:0">
+        <a href="assets/Unreached - Report Televeda.pdf" download style="font-family:var(--sans);font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#1E0660;background:var(--g-bright);border:2px solid var(--g-bright);padding:0.42rem 1.1rem;border-radius:4px;text-decoration:none;white-space:nowrap;transition:background 0.15s,border-color 0.15s" onmouseover="this.style.background='#D97706';this.style.borderColor='#D97706'" onmouseout="this.style.background='#F0A820';this.style.borderColor='#F0A820'">Download</a>
+        <a class="nav-back" href="index.html">&#8592; Portfolio</a>
+      </div>
+    </div>
+  </div>
+</nav>
+<!-- COVER -->
+<header class="cover">
+  <div class="wrap">
+    <div class="cover-inner">
+      <div>
+        <p class="cover-collab">Televeda &middot; April 2026</p>
+        <h1 class="cover-title"><span>UN</span><span>REACHED</span></h1>
+        <p class="cover-subtitle">Social Isolation Among Rural Older Adults, Veterans, and Native American Communities</p>
+        <p class="cover-why">Why the systems built to address it have consistently failed to reach them</p>
+        <div class="cover-meta">
+          <div class="cover-meta-item" style="width:100%;margin-bottom:0.25rem;margin-top:0.75rem"><strong>In Collaboration With</strong></div>
+          <div class="cover-meta-item">U.S. Dept. of Veterans Affairs</div>
+          <div class="cover-meta-item">Arizona Dept. of Veterans' Services</div>
+          <div class="cover-meta-item">Navajo Nation Veterans Administration</div>
+          <div class="cover-meta-item">Arizona Dept. of Health Services</div>
+        </div>
+      </div>
+      <div class="cover-stats">
+        <div class="cover-stat-block">
+          <div class="cstat-num">285</div>
+          <div class="cstat-label">Veterans reached in 2024 pilot</div>
+        </div>
+        <div class="cover-stat-block">
+          <div class="cstat-num">100%</div>
+          <div class="cstat-label">Reported feeling more connected</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- SOURCING & COI -->
+<section class="sourcing">
+  <div class="wrap-wide">
+    <div class="sourcing-grid">
+      <div class="sourcing-block">
+        <p class="sourcing-eyebrow">Sourcing Statement</p>
+        <h2 class="sourcing-title">On Evidence and Honesty</h2>
+        <div class="sourcing-body">
+          <p>This report cites primary sources throughout. Where the evidence is strong, we say so. Where it is emerging, we say that too. Where we draw on program evaluation data rather than independent research, we identify it as such. Key quantitative claims are paired with their source in the same section.</p>
+          <p>We distinguish throughout between peer-reviewed longitudinal evidence, government survey data, program evaluation findings, and participant self-report. These are different kinds of evidence. They warrant different weight. We have tried not to flatten that distinction in the service of a cleaner argument.</p>
+          <p>Where data carries significant methodological limitations, those limitations are stated in the body text.</p>
+        </div>
+      </div>
+      <div class="sourcing-block">
+        <p class="sourcing-eyebrow">Conflict of Interest</p>
+        <h2 class="sourcing-title">Disclosure</h2>
+        <div class="sourcing-body">
+          <p>This report was produced by Televeda. Section Five presents program evaluation data from Televeda's own Arizona partnerships. That data is identified throughout as internal evaluation evidence, not independent research. All other findings draw on published primary sources, cited directly.</p>
+          <p>We have tried to present the evidence honestly, including where it is thin, where studies are small, and where long-term outcomes remain unknown.</p>
+          <p>Readers evaluating program partnerships with Televeda should weigh Section Five accordingly as the most specific data currently available for these populations under these conditions, presented with the limitations named.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXECUTIVE SUMMARY -->
+<section class="exec">
+  <div class="wrap-wide">
+    <p class="section-eyebrow">Executive Summary</p>
+    <h2 class="exec-title">Five Findings on a Crisis the System Still Misses</h2>
+    <div class="exec-lede">
+      Agnes is seventy-one. She lives on the Navajo Nation in northeastern Arizona, where basic care can mean hours on roads that flood in spring and ice over in winter. She served in the Army and lives with a service-connected disability. She has not seen a VA provider in more than a year. She barely appears in the datasets that shape social-isolation policy, not because her need is unusual, but because the systems that produce those data still fail to reach people like her.
+    </div>
+    <div class="exec-stats-row">
+      <div class="exec-stat">
+        <div class="exec-stat-num">4 in 10</div>
+        <div class="exec-stat-label">Americans 45+ report loneliness</div>
+        <div class="exec-stat-source">AARP Research, Dec. 2025</div>
+      </div>
+      <div class="exec-stat">
+        <div class="exec-stat-num">+5pts</div>
+        <div class="exec-stat-label">Rise in loneliness since 2018 after 8 flat years</div>
+        <div class="exec-stat-source">AARP Research, Dec. 2025 (UCLA Loneliness Scale, n=3,276)</div>
+      </div>
+      <div class="exec-stat">
+        <div class="exec-stat-num">15</div>
+        <div class="exec-stat-label">Comparable cigarettes per day mortality risk</div>
+        <div class="exec-stat-source">Holt-Lunstad et al., 2010; Surgeon General, 2023</div>
+      </div>
+    </div>
+    <p class="findings-label">Five Key Findings</p>
+    <div class="finding">
+      <div class="finding-num">01</div>
+      <div class="finding-body">The crisis is worsening, and the trend matters as much as the current rate. <strong>Adults aged 45 to 59 are now lonelier than those over 60,</strong> overturning one of the field's oldest assumptions. For many people who reach older age isolated, the slide began much earlier.</div>
+    </div>
+    <div class="finding">
+      <div class="finding-num">02</div>
+      <div class="finding-body">The health consequences are substantial. Social isolation is associated with a <strong>29 percent increased risk of coronary heart disease and a 32 percent increased risk of stroke.</strong> The longer it goes unaddressed, the harder it becomes to reverse.</div>
+    </div>
+    <div class="finding">
+      <div class="finding-num">03</div>
+      <div class="finding-body">The populations carrying the greatest burden are the ones current programs most often miss: <strong>older adults in rural communities, Native American elders, Veterans, especially from post-9/11 service eras,</strong> and women Veterans who experienced military sexual trauma during service. Section Three explains why.</div>
+    </div>
+    <div class="finding">
+      <div class="finding-num">04</div>
+      <div class="finding-body">Group-based virtual programming produces <strong>measurable improvements</strong> in social isolation, perceived social support, anxiety, and depression among Veterans and older adults. For people who cannot make a multi-hour drive to a VA facility, virtual care is not a lesser substitute for in-person programming. It is often the only workable route.</div>
+    </div>
+    <div class="finding">
+      <div class="finding-num">05</div>
+      <div class="finding-body">The evidence gap is not the main problem. <strong>The real gap is implementation:</strong> funding directed to the right models, cultural adaptation that many programs still lack, and a willingness to design for people who have long been left outside the frame.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 01 -->
+<section class="report-section">
+  <div class="wrap-wide">
+    <div class="section-header">
+      <div class="section-num">01</div>
+      <div class="section-head-right">
+        <p class="section-eyebrow">Section One</p>
+        <h2 class="section-title">The People the Data Does Not See</h2>
+        <p class="section-deck">Who is isolated, how the numbers are changing, and who bears the heaviest burden</p>
+      </div>
+    </div>
+
+    <h3 class="rh">A Distinction on Which This Report Depends</h3>
+    <p class="rp">Social isolation is an objective condition: too little contact, too little relationship, too little support. Loneliness is something different. It is the felt experience of disconnection, and it can exist in a crowded room just as it can be absent in a sparse social network. The two are related, but they are not interchangeable, and they do not respond to the same interventions.</p>
+    <p class="rp">The three-item UCLA Loneliness Scale is a common screen for subjective loneliness; it is a flag for follow-up, not a diagnosis. PROMIS Social Isolation captures a different dimension: objective disconnection. This report uses both because the populations it describes often experience both at once, and conventional screening still misses much of that overlap.</p>
+
+    <h3 class="rh">Who Is Lonely and How the Numbers Are Moving</h3>
+    <p class="rp">Adults aged 45 to 59 are now lonelier than adults over 60. The December 2025 AARP survey, which tracks the same population across 2010, 2018, and 2025, upends a long-standing assumption in this field: that social isolation is chiefly a problem of late life.</p>
+
+    <div class="stat-row">
+      <div class="stat-cell">
+        <div class="sn">35% &rarr; 35% &rarr; 40%</div>
+        <div class="sl">Loneliness rate, adults 45+: 2010, 2018, 2025. Flat for 8 years, then accelerated.</div>
+        <div class="ss">AARP Research, 2025 (UCLA Loneliness Scale, n=3,276)</div>
+      </div>
+      <div class="stat-cell">
+        <div class="sn">42% / 37%</div>
+        <div class="sl">Men now report higher loneliness than women for the first time. 17% of men vs 13% of women have no close friends.</div>
+        <div class="ss">AARP, 2025</div>
+      </div>
+    </div>
+
+    <p class="rp">The break came after years of stability. The pandemic cut social ties at precisely the life stage when they are hardest to rebuild. At the same time, social media expanded the appearance of connection without restoring the institutions that once created it: congregations, clubs, neighborhood groups, and civic organizations. There is little reason to expect that loss to reverse on its own.</p>
+
+    <h3 class="rh">The Populations Bearing the Highest Burden</h3>
+    <p class="rp">Rural older adults face barriers that urban program models were never designed to cross: distance, weak transportation networks, and chronic conditions that limit mobility before any supportive social infrastructure is in place. When the nearest senior center is a forty-minute drive and that drive becomes impossible, the program has to reach across the gap. The gap will not close itself.</p>
+    <p class="rp">Veterans experience a distinct version of the same problem. Social isolation often begins not in old age but in the years after separation from service. The 2023 CONNECTED study (Eliacin et al.) found <strong>39% of surveyed Veterans reported significant social isolation,</strong> with especially high rates among Veterans under 55.</p>
+    <p class="rp">Women Veterans carry a distinct burden. Military sexual trauma is common among women Veterans; VA reports that about 1 in 3 women Veterans report MST when screened in VA care. PTSD is one of the most common mental health diagnoses related to MST, and women Veterans with MST histories have far higher PTSD rates than women Veterans without them (VA Women Veterans Health Care; Galovski et al., 2022). Women Veterans are the fastest-growing VA demographic and among the hardest to retain in standard social programming.</p>
+    <p class="rp">Native American communities face forms of structural disadvantage that the generic language of health disparity does not fully capture. On the Navajo Nation, some residents must travel 50 miles or more for basic services, and the reservation's broadband subscription rate was only 33% in the 2017&ndash;2021 ACS 5-year estimates.</p>
+
+    <div class="overlap-box">
+      <p class="overlap-label">Population Overlap Diagram &middot; Where Failure Concentrates</p>
+      <div class="overlap-grid">
+        <div class="overlap-cell">
+          <div class="overlap-cell-title">Rural Older Adults</div>
+          <div class="overlap-cell-items">Geographic distance &middot; Transportation barriers &middot; Peer attrition</div>
+        </div>
+        <div class="overlap-cell overlap-center">
+          <div class="overlap-cell-title">Din&eacute; Woman Veteran, 65+</div>
+          <div class="overlap-cell-items">Reached by none. Simultaneously eligible for services from multiple systems and effectively reached by none of them.</div>
+        </div>
+        <div class="overlap-cell">
+          <div class="overlap-cell-title">Veterans</div>
+          <div class="overlap-cell-items">Post-service transition &middot; MST &amp; PTSD &middot; System fragmentation</div>
+        </div>
+      </div>
+      <p class="overlap-note">Native American Communities: Institutional distrust &middot; IHS underfunding</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 02 -->
+<section class="report-section">
+  <div class="wrap-wide">
+    <div class="section-header">
+      <div class="section-num">02</div>
+      <div class="section-head-right">
+        <p class="section-eyebrow">Section Two</p>
+        <h2 class="section-title">What Isolation Actually Costs</h2>
+        <p class="section-deck">Health effects, mortality risk, and the financial case for acting earlier</p>
+      </div>
+    </div>
+
+    <p class="rp">Social isolation raises the risk of early death by about 30 percent, and that estimate has held up across large meta-analytic reviews. Wang and colleagues' 2023 meta-analysis of 90 prospective cohort studies involving 2.2 million people found social isolation associated with a <strong>32 percent increased risk of all-cause mortality</strong> and a 34 percent increased risk of cardiovascular mortality.</p>
+
+    <div class="data-box">
+      <p class="data-box-label">Comparative Mortality Risk &middot; Social Isolation vs. Other Major Risk Factors</p>
+      <div style="margin-bottom:0.5rem">
+        <div style="display:flex;justify-content:space-between;font-size:0.78rem;color:var(--ink-soft);margin-bottom:0.3rem"><span>Smoking (15/day)</span><span style="font-weight:700;color:var(--ink)">50%</span></div>
+        <div style="background:var(--p-pale);border-radius:2px;height:8px"><div style="width:100%;background:var(--p-core);height:100%;border-radius:2px"></div></div>
+      </div>
+      <div style="margin-bottom:0.5rem">
+        <div style="display:flex;justify-content:space-between;font-size:0.78rem;color:var(--ink-soft);margin-bottom:0.3rem"><span><strong style="color:var(--p-core)">Social Isolation</strong></span><span style="font-weight:700;color:var(--p-core)">29&ndash;32%</span></div>
+        <div style="background:var(--p-pale);border-radius:2px;height:8px"><div style="width:64%;background:var(--p-core);height:100%;border-radius:2px"></div></div>
+      </div>
+      <div style="margin-bottom:0.5rem">
+        <div style="display:flex;justify-content:space-between;font-size:0.78rem;color:var(--ink-soft);margin-bottom:0.3rem"><span>Obesity</span><span style="font-weight:700;color:var(--ink)">26%</span></div>
+        <div style="background:var(--p-pale);border-radius:2px;height:8px"><div style="width:52%;background:var(--ink-faint);height:100%;border-radius:2px"></div></div>
+      </div>
+      <div>
+        <div style="display:flex;justify-content:space-between;font-size:0.78rem;color:var(--ink-soft);margin-bottom:0.3rem"><span>Physical Inactivity</span><span style="font-weight:700;color:var(--ink)">25%</span></div>
+        <div style="background:var(--p-pale);border-radius:2px;height:8px"><div style="width:50%;background:var(--ink-faint);height:100%;border-radius:2px"></div></div>
+      </div>
+      <p style="font-size:0.62rem;font-style:italic;color:var(--ink-muted);margin-top:1rem">Sources: Holt-Lunstad et al., PLOS Medicine, 2010 (148 studies, 308,849 participants); Office of the Surgeon General, 2023</p>
+    </div>
+
+    <p class="rp">The cardiovascular evidence is strong on its own. Valtorta and colleagues' 2016 systematic review in <em>Heart</em>, spanning 23 longitudinal datasets and more than 181,000 adults followed for up to 21 years, found poor social relationships associated with a 29 percent increased risk of coronary heart disease and a 32 percent increased risk of stroke. Those effect sizes are in range with risks clinicians already take seriously.</p>
+    <p class="rp">Duration compounds the problem. Chen et al.'s 2024 analysis found that persistent, unresolved isolation carried higher cardiovascular and mortality risk than temporary or episodic isolation. By the time a health system notices someone who has been isolated for years, the window for lower-cost prevention may already be closing.</p>
+
+    <h3 class="rh">The Financial Case</h3>
+    <div class="data-box">
+      <p class="data-box-label">Medicare Cost Impact</p>
+      <div class="data-grid">
+        <div class="data-cell"><div class="dn dn--gold">$6.7B</div><div class="dl">Est. excess Medicare spend per year</div><div class="ds">Flowers et al., AARP 2017</div></div>
+        <div class="data-cell"><div class="dn">$1,608</div><div class="dl">Additional cost per isolated beneficiary per year</div><div class="ds">vs. socially connected peer</div></div>
+        <div class="data-cell"><div class="dn">+5pts</div><div class="dl">Loneliness prevalence rise since 2018</div><div class="ds">Floor is now higher than $6.7B estimate</div></div>
+      </div>
+    </div>
+
+    <div class="worked-example">
+      <p class="we-label">Worked Example &middot; Local Cost Modeling</p>
+      <p class="we-body">A regional health system with <span class="hi">8,000 Medicare beneficiaries aged 65+</span>, assuming a 25% social isolation prevalence consistent with the literature, faces roughly <span class="hi">$3.2 million per year</span> in excess Medicare spending attributable to isolation.<br><br>If a virtual group intervention reaching 500 of those beneficiaries costs $400,000 annually to operate and reduces isolation-related utilization by even <span class="hi">15%</span>, the cost offset exceeds the program cost in the first year.</p>
+      <p class="we-note">These figures are illustrative rather than predictive, but any health system can run the same calculation using its own population and utilization data.</p>
+    </div>
+
+    <div class="pullquote pullquote--purple">
+      <p>The financial pressure of untreated isolation compounds the structural disadvantage that produced the isolation in the first place. In practice, this means health systems are systematically spending more on late-stage intervention in the same populations where early, lower-cost prevention is least available.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 03 -->
+<section class="report-section">
+  <div class="wrap-wide">
+    <div class="section-header">
+      <div class="section-num">03</div>
+      <div class="section-head-right">
+        <p class="section-eyebrow">Section Three</p>
+        <h2 class="section-title">A Design Failure, Not a Resource Failure</h2>
+        <p class="section-deck">Why current programs miss rural older adults, Veterans, and Native American communities</p>
+      </div>
+    </div>
+
+    <p class="rp">Most social isolation interventions in the United States were designed around a particular user: middle-class, English-speaking, comfortable with technology, within reasonable reach of care, and moving through systems built with people like them in mind. That person is real. The people in this report are not that person.</p>
+
+    <div class="pullquote">
+      <p>"A program that was not built for you is not a program you failed to use. It is a program that failed to reach you."</p>
+    </div>
+
+    <h3 class="rh">Health Is Not an Individual Condition</h3>
+    <p class="rp">H&oacute;zh&oacute; is the Din&eacute; framework for health, balance, and beauty: right relationship with self, family, community, land, and the living world. Kahn-John (Din&eacute;) and Koithan describe it as a wellness philosophy that guides thought, behavior, speech, and action. In that framework, broken relationship is itself a health problem. Restoring relationship is part of the intervention.</p>
+    <p class="rp">K'&eacute;, the Din&eacute; kinship system through which h&oacute;zh&oacute; is lived and maintained, is the architecture of social life on the Navajo Nation. Clan relationships define obligation, belonging, and place. To be cut off from those relationships is to be unwell in a way English only partially captures.</p>
+    <p class="rp">Televeda's talking-circle model was built with Din&eacute; community leaders, traditional healers, and narrative therapists. When a participant introduces themselves in a Navajo Nation Talking Circle, the platform displays their name, tribe, and parents' clan. The k'&eacute; greeting that anchors Din&eacute; social life is preserved, and a virtual speaking token passes among participants as it would in person. The form carries the function.</p>
+
+    <div class="data-box">
+      <p class="data-box-label">The Design Incompatibility</p>
+      <p class="rp" style="margin-bottom:0">A wellness program translated into Din&eacute; Bizaad but still built around individual psychological well-being carries its original assumptions with it. It treats the individual as the unit of intervention; h&oacute;zh&oacute; and k'&eacute; treat the relationship as the unit. That mismatch cannot be fixed by translation alone. It requires a different design.</p>
+    </div>
+
+    <h3 class="rh">The Trust Deficit Has a Specific History and a Specific Author</h3>
+    <p class="rp">The Phoenix Indian School operated in Arizona from 1891 to 1990. For nearly a century, the federal government separated Din&eacute; children from their families, prohibited them from speaking their language, and stripped away the clan names through which a Din&eacute; person understands where they belong. That outcome was not incidental to the school's mission. It was the mission.</p>
+    <p class="rp">The federal government dismantled k'&eacute; as explicit policy for a century. Many of the elders these programs are now trying to serve lived through the end of that era. Both VA and IHS are federal institutions. Programs that treat the resulting distrust as a messaging problem have misunderstood it from the start.</p>
+
+    <div class="pullquote">
+      <p>"We are very particular about not being parachute droppers, because historically, that has been the case with all nonprofits."</p>
+      <cite>Mayank Mishra, Co-Founder, Televeda</cite>
+    </div>
+
+    <h3 class="rh">The IHS and the VA Were Not Designed to Find Each Other</h3>
+
+    <div class="system-split">
+      <div class="system-cell">
+        <div class="system-cell-label">IHS</div>
+        <div class="system-cell-title">Indian Health Service</div>
+        <div class="system-cell-items">Can reach her physically.<br>Has no social isolation program.<br>No referral channel to VA.</div>
+      </div>
+      <div class="system-divider">&ne;</div>
+      <div class="system-cell">
+        <div class="system-cell-label">VA</div>
+        <div class="system-cell-title">Veterans Health Administration</div>
+        <div class="system-cell-items">Has social isolation program.<br>She doesn't appear in utilization data.<br>Drive is impossible seasonally.</div>
+      </div>
+    </div>
+    <p class="rp" style="font-size:0.78rem;font-style:italic;color:var(--ink-muted)">Many fall between two systems not because either is indifferent to their wellbeing, but because neither was designed to find them. VA MIRECC VISN 19, 2024</p>
+  </div>
+</section>
+
+<!-- SECTION 04 -->
+<section class="report-section">
+  <div class="wrap-wide">
+    <div class="section-header">
+      <div class="section-num">04</div>
+      <div class="section-head-right">
+        <p class="section-eyebrow">Section Four</p>
+        <h2 class="section-title">What the Evidence Actually Shows</h2>
+        <p class="section-deck">What intervention research shows, how strong it is, and where the gaps remain</p>
+      </div>
+    </div>
+
+    <p class="rp">Across the intervention literature, peer connection is the active ingredient. Technology is a delivery mechanism, not the mechanism of change. A platform can distribute content, but if it does not build durable community, it is not doing the same work.</p>
+
+    <div class="evidence-grid">
+      <div class="ev-card">
+        <div class="ev-card-top"><span class="ev-badge ev-badge--strong">Strongest Evidence</span></div>
+        <div class="ev-title">In-Person Group Programming</div>
+        <div class="ev-body">Structured, recurring group programming reduces both subjective loneliness and objective isolation over time. Effects can persist at six- and twelve-month follow-up when the program itself lasts long enough. Its main limitation is reach: most of the evidence comes from people who can attend in person. Rural, homebound, and tribal adults are largely missing from that evidence base.</div>
+      </div>
+      <div class="ev-card">
+        <div class="ev-card-top"><span class="ev-badge ev-badge--growing">Growing Evidence &middot; Most Relevant Here</span></div>
+        <div class="ev-title">Group-Based Virtual Programming</div>
+        <div class="ev-body">In the CONNECTED study (Eliacin et al., 2023), a peer-facilitated virtual telehealth group intervention was piloted with 19 Veterans across two cohorts. The study found lower social isolation, greater perceived social support, and improvements in anxiety and depression. Just as important, telehealth removed access barriers that would have prevented participation in the first place.</div>
+      </div>
+      <div class="ev-card">
+        <div class="ev-card-top"><span class="ev-badge ev-badge--moderate">Moderate, Short-Term Effects</span></div>
+        <div class="ev-title">One-to-One Contact</div>
+        <div class="ev-body">Telephone and video-based peer contact can reduce loneliness in the short term for homebound older adults (Masi et al., 2011). Effects are generally smaller than those of group-based interventions and less likely to last once the program ends. A one-to-one relationship can start connection; it does not automatically create community.</div>
+      </div>
+      <div class="ev-card">
+        <div class="ev-card-top"><span class="ev-badge ev-badge--gap">Evidence Gap</span></div>
+        <div class="ev-title">AI/AN-Specific Programs</div>
+        <div class="ev-body">Good et al.'s 2024 scoping review in <em>Women's Health Issues</em>, which screened 1,508 publications and retained 28, found that most existing evidence came from women already engaged with VA services. That is part of why Televeda's Navajo Nation program data matters: there is very little implementation evidence for this population.</div>
+      </div>
+    </div>
+
+    <h3 class="rh">Format Matters: Synchronous vs. Asynchronous</h3>
+    <p class="rp">Evidence on remote connection remains limited and highly dependent on design. A 2020 rapid review of video-call interventions in older adults found a small and uncertain evidence base. The National Academies' 2020 report treats technology primarily as infrastructure for connection, not as an intervention in its own right. For health systems and tribal communities making infrastructure decisions, the more relevant standard is support for real-time video participation, not message delivery alone.</p>
+
+    <div class="pullquote pullquote--purple">
+      <p>"The gap is not evidence. The evidence exists. The gap is implementation, will, and money directed at the right models."</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 05 -->
+<section class="report-section">
+  <div class="wrap-wide">
+    <div class="section-header">
+      <div class="section-num">05</div>
+      <div class="section-head-right">
+        <p class="section-eyebrow">Section Five</p>
+        <h2 class="section-title">Five Years, One State</h2>
+        <p class="section-deck">What implementation evidence looks like in Televeda's Arizona partnerships</p>
+      </div>
+    </div>
+
+    <p class="rp" style="font-style:italic;color:var(--ink-muted)">The data from Televeda's Arizona partnerships is presented as program-evaluation evidence, not controlled-trial findings. It is the most specific evidence available for these populations under these conditions.</p>
+
+    <div style="display:flex;gap:0.75rem;flex-wrap:wrap;margin:1.5rem 0 2rem">
+      <span style="font-size:0.65rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:0.3rem 0.85rem;border:1px solid var(--g-bright);color:var(--g-bright);border-radius:2px">VA Mission Daybreak &mdash; 1st Place</span>
+      <span style="font-size:0.65rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:0.3rem 0.85rem;border:1px solid var(--p-light);color:var(--p-core);border-radius:2px">Fast Company &mdash; 2023 Honoree</span>
+      <span style="font-size:0.65rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:0.3rem 0.85rem;border:1px solid var(--p-light);color:var(--p-core);border-radius:2px">AZ Dept. Health &mdash; 5-Year Evaluation</span>
+    </div>
+
+    <p class="rp">In February 2023, the U.S. Department of Veterans Affairs named Televeda a first-place winner in Mission Daybreak, a $20 million challenge within the VA's long-term suicide-prevention strategy, for Project H&oacute;zh&oacute;. Fast Company later named the work a 2023 World Changing Ideas honoree. Arizona health-improvement materials have also highlighted Televeda in connection with telehealth access in underserved communities.</p>
+
+    <h3 class="rh">The Model Operates on Three Principles</h3>
+    <div class="rec-item">
+      <div class="rec-num">1</div>
+      <div><div class="rec-title">Sustained Peer Community, Not Content Delivery</div><div class="rec-body">The aim is not content delivery. It is to build durable peer relationships. That requires consistent groups, consistent facilitators, and enough time for trust to form. A group that meets briefly and disappears has not delivered the intervention.</div></div>
+    </div>
+    <div class="rec-item">
+      <div class="rec-num">2</div>
+      <div><div class="rec-title">Cultural Adaptation as a Design Requirement, Not a Feature</div><div class="rec-body">Talking circles are built around Din&eacute; kinship practices because Din&eacute; community leaders, healers, and narrative therapists helped design the model from the start. This was not a late-stage adaptation. It was core design work.</div></div>
+    </div>
+    <div class="rec-item">
+      <div class="rec-num">3</div>
+      <div><div class="rec-title">Reach as the Foundational Design Intent</div><div class="rec-body">Through the Arizona Department of Veterans' Services' Tribal Connectivity Project, "Roger That," Televeda and ADVS are deploying Starlink internet kits across Arizona's 22 federally recognized tribes. Four tribes have already received kits: the Gila River Indian Community, the Salt River Pima-Maricopa Indian Community, the San Carlos Apache Tribe, and the Navajo Nation.</div></div>
+    </div>
+
+    <div class="pullquote">
+      <p>"The Arizona Department of Veterans' Services is thrilled to bring internet access to our rural and tribal communities. Partnering with community organizations to deliver this vital resource aligns perfectly with our mission."</p>
+      <cite>Dylan Dalzotto &middot; Assistant Deputy Director, Public &amp; Intergovernmental Affairs, ADVS</cite>
+    </div>
+
+    <h3 class="rh">What the Program Data Shows</h3>
+    <p class="rp">In 2024, Televeda launched formal Talking Circles with the Navajo Nation Veterans Administration, signing a collaborative partnership agreement in February and launching pilots in May. The six-month pilot ran from June through December 2024.</p>
+
+    <div class="pilot-stats">
+      <div class="ps-cell"><div class="ps-num">245</div><div class="ps-label">AI/AN Veterans directly engaged in 2023 who would not otherwise have sought mental health services</div></div>
+      <div class="ps-cell"><div class="ps-num">285</div><div class="ps-label">Veterans engaging with platform during 6-month Navajo Nation pilot, Jun&ndash;Dec 2024</div></div>
+      <div class="ps-cell"><div class="ps-num ps-num--g">60%</div><div class="ps-label">Roger That participants who scheduled VA Benefits Counselor appointments by 2025</div></div>
+      <div class="ps-cell"><div class="ps-num">19</div><div class="ps-label">Veterans connected into VA system for the first time with no prior VA relationship</div></div>
+    </div>
+
+    <div class="survey-box">
+      <p class="survey-label">6-Month Pilot Survey Outcomes &middot; Navajo Nation Talking Circles, 2024</p>
+      <p class="survey-sub">Self-reported outcomes from pilot survey. Results reflect respondents.</p>
+      <div class="survey-bar-row">
+        <div class="survey-bar-label"><span class="survey-bar-text">Reported feeling happier and more connected</span><span class="survey-bar-pct">100%</span></div>
+        <div class="survey-bar-track"><div class="survey-bar-fill" style="width:100%"></div></div>
+      </div>
+      <div class="survey-bar-row">
+        <div class="survey-bar-label"><span class="survey-bar-text">Reported greater relaxation and overall wellbeing</span><span class="survey-bar-pct">96%</span></div>
+        <div class="survey-bar-track"><div class="survey-bar-fill" style="width:96%"></div></div>
+      </div>
+      <div class="survey-bar-row">
+        <div class="survey-bar-label"><span class="survey-bar-text">Reported feeling less lonely during the pilot period</span><span class="survey-bar-pct">95%</span></div>
+        <div class="survey-bar-track"><div class="survey-bar-fill" style="width:95%"></div></div>
+      </div>
+    </div>
+
+    <div class="testimonial-grid">
+      <div class="testimonial">
+        <div class="testimonial-quote">"The Talking Circle provided a space for veterans to open up about personal struggles and healing. I felt the support of my fellow veterans."</div>
+        <div class="testimonial-source">Northern Agency Veteran Participant</div>
+      </div>
+      <div class="testimonial">
+        <div class="testimonial-quote">"Veterans helping veterans has been the most effective form of support. These circles give us a space to discuss military experiences in ways family may not understand."</div>
+        <div class="testimonial-source">Fort Defiance Veteran Participant</div>
+      </div>
+      <div class="testimonial">
+        <div class="testimonial-quote">"The Talking Circle helps me feel supported, like we're all helping one another climb out of the hole together."</div>
+        <div class="testimonial-source">Eastern Agency Veteran Participant</div>
+      </div>
+    </div>
+
+    <p class="rp" style="font-size:0.82rem;font-style:italic;color:var(--ink-muted)">These are program-evaluation findings based in part on self-reported participant data. They show that the model reaches people standard VA and public-health programming often misses, that participants engage and return, and that early outcomes are encouraging. They do not tell us how the model would perform against a randomized control group.</p>
+  </div>
+</section>
+
+<!-- SECTION 06 -->
+<section class="report-section">
+  <div class="wrap-wide">
+    <div class="section-header">
+      <div class="section-num">06</div>
+      <div class="section-head-right">
+        <p class="section-eyebrow">Section Six</p>
+        <h2 class="section-title">Six Recommendations for Health System Leaders</h2>
+        <p class="section-deck">Specific recommendations, with named actors and practical next steps</p>
+      </div>
+    </div>
+
+    <div class="entry-guide">
+      <div class="entry-cell"><div class="entry-role">Health system / Managed care / Financial case</div><div class="entry-action">Start with <strong>Recommendations 1 and 2</strong></div></div>
+      <div class="entry-cell"><div class="entry-role">Tribal health plan director / IHS administrator</div><div class="entry-action">Go directly to <strong>Recommendation 3</strong></div></div>
+      <div class="entry-cell"><div class="entry-role">VA program coordinator</div><div class="entry-action"><strong>Recommendation 4</strong> is your entry point</div></div>
+      <div class="entry-cell"><div class="entry-role">Federal program officer (CMS, ACL, HRSA)</div><div class="entry-action">Start with <strong>Recommendation 6</strong>, then return to 3 and 4</div></div>
+    </div>
+
+    <div class="rec-item">
+      <div class="rec-num">1</div>
+      <div><div class="rec-title">Screen for Social Isolation as a Standard of Care by End of 2026</div><div class="rec-body">The three-item UCLA Loneliness Scale and PROMIS Social Isolation are both validated for clinical use and take less than five minutes to administer. CMS Z-codes now provide a billing mechanism for documenting social isolation in the clinical encounter. <strong>Screening without a referral pathway is theater.</strong> Before launching any screening initiative, map the referral options in your catchment area, including virtual programs for rural and homebound patients.</div></div>
+    </div>
+    <div class="rec-item">
+      <div class="rec-num">2</div>
+      <div><div class="rec-title">Measure Outcomes That Matter, and Measure Them Consistently</div><div class="rec-body">Attendance and satisfaction are easy to collect and poor proxies for health impact. Programs contracted by health systems should report changes in validated loneliness and isolation scores at baseline, three months, and twelve months at minimum. The <strong>$1,608 annual per-person cost differential</strong> documented by Flowers et al. (2017) provides a practical starting point for cost-benefit modeling.</div></div>
+    </div>
+    <div class="rec-item">
+      <div class="rec-num">3</div>
+      <div><div class="rec-title">Require Documented Cultural Adaptation Before Contracting</div><div class="rec-body">A social isolation program designed for urban older adults and extended to Native American or rural Veteran communities without redesign is not truly serving those communities. Health systems procuring social programming for these populations should require documented evidence of community co-design: named community partners, described adaptation processes, and demonstrated facilitator cultural competency built through lived relationship rather than pre-deployment training. <strong>The absence of that documentation is itself informative.</strong></div></div>
+    </div>
+    <div class="rec-item">
+      <div class="rec-num">4</div>
+      <div><div class="rec-title">Require IHS and VA Coordination for Any Program Serving Native American Veterans</div><div class="rec-body">A Native American Veteran may be eligible for services from both systems, but neither system was designed to coordinate with the other. Any program serving this population should include an explicit coordination mechanism between IHS and VA staff as a design requirement, not an aspiration. Tribal Veterans Representative programs have already shown that this gap can be bridged, as VA MIRECC VISN 19 documented in 2024.</div></div>
+    </div>
+    <div class="rec-item">
+      <div class="rec-num">5</div>
+      <div><div class="rec-title">Fund the Infrastructure Before the Program</div><div class="rec-body">Device access and reliable internet that can support real-time video participation are prerequisites, not amenities. <strong>42% of Veterans residing in rural or highly rural areas enrolled in VA healthcare do not have home internet capable of supporting VA telehealth services</strong> (VA Office of Health Equity). Programs launched into populations without that infrastructure predictably produce low enrollment and early dropout, then misread those failures as participant disengagement.</div></div>
+    </div>
+    <div class="rec-item">
+      <div class="rec-num">6</div>
+      <div>
+        <div class="rec-title">Map the Federal Funding Streams Before Writing the Next Grant</div>
+        <div class="rec-body" style="margin-bottom:1rem">The following mechanisms are already in circulation and have been used to fund social-isolation and community-connection programs for older adults, Veterans, and tribal communities:</div>
+        <div class="funding-grid">
+          <div class="funding-cell"><div class="funding-name">Older Americans Act (ACL)</div><div class="funding-desc">Funds work through Area Agencies on Aging and tribal organizations</div></div>
+          <div class="funding-cell"><div class="funding-name">HRSA Federal Office of Rural Health Policy</div><div class="funding-desc">Community-based health initiatives for underserved rural and tribal populations</div></div>
+          <div class="funding-cell"><div class="funding-name">VA Mission Daybreak</div><div class="funding-desc">Funds suicide prevention innovations specifically targeting AI/AN Veterans</div></div>
+          <div class="funding-cell"><div class="funding-name">VA Community Care Program</div><div class="funding-desc">Funds supplemental services for Veterans who cannot access VA care due to distance</div></div>
+          <div class="funding-cell funding-cell--highlight funding-cell--full"><div class="funding-name">ACL ARPA Social Isolation Investments</div><div class="funding-note">A newer and underused stream for organizations that already have an evidence base. It will not solve the funding problem, but it is more accessible than many program planners assume. Mapping the gap between available funding and actual need is more productive than waiting for the landscape to improve on its own.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="methodology">
+      <p class="section-eyebrow" style="margin-bottom:0.5rem">Methodology</p>
+      <p>This report synthesizes peer-reviewed literature, federal survey data, and government reports published between January 2020 and March 2026. Sources were identified through PubMed, PsycINFO, and Google Scholar searches, supplemented by materials from VA, IHS, ACL, HRSA, GAO, and CMS. We prioritized systematic reviews and meta-analyses, then large longitudinal studies, followed by smaller trials and program evaluations. Material methodological limitations are noted where relevant.</p>
+    </div>
+  </div>
+</section>
+
+<!-- REFERENCES -->
+<section class="references-section">
+  <div class="wrap-wide">
+    <p class="section-eyebrow" style="margin-bottom:1.5rem">References 1&ndash;28</p>
+    <div class="references-grid">
+      <div class="ref"><span class="ref-num">1.</span><span>Choi-Allum, L., and Rainville, C. <em>Disconnected: The Escalating Challenge of Loneliness Among Adults 45-Plus.</em> AARP Research, December 2025.</span></div>
+      <div class="ref"><span class="ref-num">2.</span><span>Wilson, C., and Moulton, B. <em>Loneliness Among Older Adults: A National Survey of Adults 45+.</em> AARP, 2010.</span></div>
+      <div class="ref"><span class="ref-num">3.</span><span>AARP Public Policy Institute. <em>Social Isolation and Loneliness Among Adults.</em> Washington, DC: AARP, 2018.</span></div>
+      <div class="ref"><span class="ref-num">4.</span><span>National Academies of Sciences, Engineering, and Medicine. <em>Social Isolation and Loneliness in Older Adults.</em> The National Academies Press, 2020.</span></div>
+      <div class="ref"><span class="ref-num">5.</span><span>Office of the Surgeon General. <em>Our Epidemic of Loneliness and Isolation.</em> U.S. DHHS, 2023.</span></div>
+      <div class="ref"><span class="ref-num">6.</span><span>Holt-Lunstad, J., Smith, T.B., and Layton, J.B. Social relationships and mortality risk. <em>PLOS Medicine,</em> 7(7), e1000316, 2010.</span></div>
+      <div class="ref"><span class="ref-num">7.</span><span>Holt-Lunstad, J., et al. Loneliness and social isolation as risk factors for mortality. <em>Perspectives on Psychological Science,</em> 10(2), 227&ndash;237, 2015.</span></div>
+      <div class="ref"><span class="ref-num">8.</span><span>Wang, F., et al. Social isolation, loneliness and mortality: 90 cohort studies. <em>Nature Human Behaviour,</em> 7(8), 1307&ndash;1319, 2023.</span></div>
+      <div class="ref"><span class="ref-num">9.</span><span>Valtorta, N.K., et al. Loneliness and social isolation as risk factors for coronary heart disease and stroke. <em>Heart,</em> 102(13), 1009&ndash;1016, 2016.</span></div>
+      <div class="ref"><span class="ref-num">10.</span><span>Hawkley, L.C., and Cacioppo, J.T. Loneliness matters. <em>Annals of Behavioral Medicine,</em> 40(2), 218&ndash;227, 2010.</span></div>
+      <div class="ref"><span class="ref-num">11.</span><span>Chen, Y., et al. Social isolation, loneliness and cardiovascular events. <em>Journal of Epidemiology and Global Health,</em> 14(3), 962&ndash;973, 2024.</span></div>
+      <div class="ref"><span class="ref-num">12.</span><span>Cene, C.W., et al. Effects of social isolation on cardiovascular and brain health. <em>Journal of the American Heart Association,</em> 11(16), 2022.</span></div>
+      <div class="ref"><span class="ref-num">13.</span><span>Noone, C., et al. Video calls for reducing social isolation and loneliness in older people: a rapid review. <em>Cochrane Database of Systematic Reviews,</em> 2020(5), CD013632.</span></div>
+      <div class="ref"><span class="ref-num">14.</span><span>Masi, C.M., Chen, H.-Y., Hawkley, L.C., and Cacioppo, J.T. A meta-analysis of interventions to reduce loneliness. <em>Personality and Social Psychology Review,</em> 15(3), 219&ndash;266, 2011.</span></div>
+      <div class="ref"><span class="ref-num">15.</span><span>Flowers, L., et al. <em>Medicare Spends More on Socially Isolated Older Adults.</em> AARP Public Policy Institute, November 2017.</span></div>
+      <div class="ref"><span class="ref-num">16.</span><span>Eliacin, J., et al. Peer-facilitated social isolation intervention in the VHA. <em>Journal of General Internal Medicine,</em> 38(16), 3460&ndash;3471, 2023.</span></div>
+      <div class="ref"><span class="ref-num">17.</span><span>Good, M.K., et al. Health and health care use of AI/AN women veterans: a scoping review. <em>Women's Health Issues,</em> 34(5), 455&ndash;464, 2024.</span></div>
+      <div class="ref"><span class="ref-num">18.</span><span>Galovski, T.E., et al. VA military sexual trauma research. <em>Journal of General Internal Medicine,</em> 37(Suppl 3), 825&ndash;832, 2022.</span></div>
+      <div class="ref"><span class="ref-num">19.</span><span>U.S. Department of Veterans Affairs. <em>Military Sexual Trauma - Women Veterans Health Care.</em> Accessed April 2026.</span></div>
+      <div class="ref"><span class="ref-num">20.</span><span>U.S. Census Bureau. <em>Broadband Access in Tribal Areas Lags Rest of the Nation.</em> 2024.</span></div>
+      <div class="ref"><span class="ref-num">21.</span><span>University of Arizona Center for Rural Health. <em>Navajo Nation constructs new medical facility to improve health care.</em> 2024.</span></div>
+      <div class="ref"><span class="ref-num">22.</span><span>VA MIRECC VISN 19. <em>Social Determinants of Health for Native American Veterans.</em> 2024.</span></div>
+      <div class="ref"><span class="ref-num">23.</span><span>Kahn-John, M. (Din&eacute;), and Koithan, M. The Din&eacute; H&oacute;zh&oacute; wellness philosophy. <em>Global Advances in Health and Medicine,</em> 4(3), 24&ndash;30, 2015.</span></div>
+      <div class="ref"><span class="ref-num">24.</span><span>Trennert, R.A. <em>The Phoenix Indian School: Forced Assimilation in Arizona, 1891&ndash;1935.</em> University of Oklahoma Press, 1988.</span></div>
+      <div class="ref"><span class="ref-num">25.</span><span>VA Office of Health Equity. <em>Access to Care Among Rural Veterans.</em> U.S. Department of Veterans Affairs.</span></div>
+      <div class="ref"><span class="ref-num">26.</span><span>Mission Daybreak. <em>Hero's Story by Televeda.</em> 2024.</span></div>
+      <div class="ref"><span class="ref-num">27.</span><span>Televeda. <em>Televeda receives Fast Company award honorable mention for Project H&oacute;zh&oacute; (The Hero's Story).</em> 2023.</span></div>
+      <div class="ref"><span class="ref-num">28.</span><span>Televeda. <em>Televeda included in 2024/2025 update in AzHIP report.</em> 2024.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section">
+  <div class="wrap">
+    <div class="about-shell">
+      <div class="about-main">
+        <p class="about-eyebrow">About</p>
+        <h2 class="about-title">TELEVEDA</h2>
+        <p class="about-body">Televeda is a digital health company founded in 2018 to reduce social isolation and expand digital access for Veterans, older adults, and Native American communities.</p>
+        <div class="about-stats">
+          <div class="about-stat"><div class="about-stat-num">29</div><div class="about-stat-label">Countries served</div></div>
+          <div class="about-stat"><div class="about-stat-num">2018</div><div class="about-stat-label">Founded</div></div>
+        </div>
+      </div>
+      <aside class="about-side">
+        <p class="about-recognition-label">Recognition</p>
+        <div class="about-rec-item"><div class="about-rec-icon">&#10003;</div><span>First-place winner, U.S. Department of Veterans Affairs Mission Daybreak Challenge, $20M grand challenge for Veteran suicide prevention innovation</span></div>
+        <div class="about-rec-item"><div class="about-rec-icon">&#10003;</div><span>Fast Company World Changing Ideas 2023 honoree</span></div>
+        <div class="about-rec-item"><div class="about-rec-icon">&#10003;</div><span>Included in Arizona Health Improvement Plan materials focused on telehealth access in underserved areas</span></div>
+      </aside>
+    </div>
+    <div class="about-contact-band">
+      <p class="about-contact-label">To discuss partnerships, program data, or implementation support</p>
+      <div class="about-link-stack">
+        <a href="mailto:outreach@televeda.com">outreach@televeda.com</a>
+        <a href="https://televeda.com/heros-story-project">televeda.com/heros-story-project</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <span class="foot-brand">telev<span class="u">e</span>da &middot; National public health week &middot; April 2026</span>
+      <span class="foot-brand" style="color:rgba(255,255,255,0.3);font-weight:400">Director of Communications</span>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+/* Dropdown toggle */
+document.addEventListener('DOMContentLoaded', function() {
+  const dropdown = document.querySelector('.nav-dropdown');
+  const dropdownBtn = document.querySelector('.nav-dropdown-btn');
+  if (dropdownBtn && dropdown) {
+    dropdownBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      dropdown.classList.toggle('open');
+    });
+    document.addEventListener('click', function(e) {
+      if (!dropdown.contains(e.target)) {
+        dropdown.classList.remove('open');
+      }
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && dropdown.classList.contains('open')) {
+        dropdown.classList.remove('open');
+      }
+    });
+  }
+});
+
+/* Scroll progress bar */
+document.body.classList.add('js-ready');
+window.addEventListener('scroll',()=>{
+  const p=(window.scrollY/(document.body.scrollHeight-window.innerHeight))*100;
+  const bar=document.getElementById('bar');
+  if(bar){bar.style.width=Math.min(p,100)+'%';}
+});
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

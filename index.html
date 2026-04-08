@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Maureen Essah Communications Portfolio Televeda</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --p-deep:    #280A50;
+  --p-dark:    #2C1860;
+  --p-mid:     #3D1F82;
+  --p-core:    #5E1FAE;
+  --p-bright:  #8040D8;
+  --p-light:   #BCA8E8;
+  --g:         #E09010;
+  --g-bright:  #F0A820;
+  --ink-muted: #9080B8;
+  --white:     #FFFFFF;
+  --teal:      #12B5A5;
+  --teal-dim:  rgba(18,181,165,0.15);
+  --teal-border: rgba(18,181,165,0.22);
+  --accent-cyan: #1CC9D6;
+  --accent-cyan-soft: rgba(28,201,214,0.09);
+  --accent-cyan-border: rgba(28,201,214,0.36);
+  --display: 'Cormorant Garamond', Georgia, serif;
+  --sans:    'DM Sans', system-ui, sans-serif;
+  --ease:    cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: #1A0535;
+  color: var(--white);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+.wrap { max-width: 960px; margin: 0 auto; padding: 0 2.5rem; }
+@media (max-width: 600px) { .wrap { padding: 0 1.25rem; } }
+
+/* HERO */
+.hero {
+  padding: 4.75rem 0 4.5rem;
+  text-align: center;
+}
+.hero-pill {
+  display: inline-flex; align-items: center; gap: 0.55rem;
+  font-size: 0.65rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--accent-cyan);
+  border: 1px solid var(--accent-cyan-border);
+  background: var(--accent-cyan-soft);
+  padding: 0.38rem 1rem; border-radius: 100px;
+  margin-bottom: 2.2rem;
+  opacity: 0; animation: up 0.7s var(--ease) 0.05s forwards;
+}
+.hero-pill-dot {
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--accent-cyan); flex-shrink: 0;
+}
+.hero-name {
+  font-family: var(--display);
+  font-size: clamp(2.8rem, 7vw, 5rem);
+  font-weight: 300; letter-spacing: -0.025em; line-height: 1.0;
+  color: var(--white); margin-bottom: 0.5rem;
+  opacity: 0; animation: up 0.7s var(--ease) 0.12s forwards;
+}
+.hero-role {
+  font-family: var(--display);
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  font-style: italic; font-weight: 400;
+  color: var(--p-light); margin-bottom: 2rem;
+  opacity: 0; animation: up 0.7s var(--ease) 0.19s forwards;
+}
+.hero-rule {
+  width: 40px; height: 1px; margin: 0 auto 2rem;
+  background: linear-gradient(90deg, transparent, var(--g-bright), transparent);
+  opacity: 0; animation: up 0.5s var(--ease) 0.24s forwards;
+}
+.hero-body {
+  max-width: 540px; margin: 0 auto 1rem;
+  font-size: 0.95rem; line-height: 1.8; color: rgba(255,255,255,0.5);
+  opacity: 0; animation: up 0.7s var(--ease) 0.3s forwards;
+}
+.hero-meta {
+  font-size: 0.75rem; color: rgba(255,255,255,0.28); letter-spacing: 0.03em;
+  opacity: 0; animation: up 0.7s var(--ease) 0.36s forwards;
+}
+.hero-meta strong { color: var(--g-bright); font-weight: 600; }
+
+/* SECTION WRAPPER */
+.portfolio { padding-bottom: 6rem; }
+
+/* CHAPTER LABEL */
+.chapter {
+  display: flex; align-items: center; gap: 1rem;
+  margin-bottom: 1.25rem;
+  opacity: 0; animation: up 0.6s var(--ease) 0.4s forwards;
+}
+.chapter + .chapter,
+.chapter-delayed { animation-delay: 0.5s; }
+.chapter-line {
+  flex: 1; height: 1px;
+  background: linear-gradient(90deg, rgba(188,168,232,0.15), transparent);
+}
+.chapter-text {
+  font-size: 0.6rem; font-weight: 700; letter-spacing: 0.22em;
+  text-transform: uppercase; color: rgba(255,255,255,0.32);
+  white-space: nowrap;
+}
+
+/* SPACING BETWEEN SECTIONS */
+.gap { margin-bottom: 3.5rem; }
+.gap-sm { margin-bottom: 1rem; }
+
+/* CARD BASE */
+.card {
+  display: block; position: relative;
+  text-decoration: none; color: inherit;
+  background: rgba(255,255,255,0.035);
+  border: 1px solid rgba(188,168,232,0.1);
+  border-radius: 6px; overflow: hidden;
+  transition: transform 0.28s var(--ease), background 0.28s var(--ease), border-color 0.28s var(--ease);
+}
+.card:hover {
+  transform: translateY(-3px);
+  background: rgba(255,255,255,0.065);
+}
+.card-top-bar {
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  opacity: 0; transition: opacity 0.28s;
+}
+.card:hover .card-top-bar { opacity: 1; }
+
+/* CARD PADDINGS */
+.card-body { padding: 1.8rem 2rem 1.7rem; }
+.card-body-sm { padding: 1.5rem 1.75rem 1.5rem; }
+
+/* BADGES */
+.badge {
+  display: inline-block;
+  font-size: 0.57rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+  padding: 0.22rem 0.65rem; border-radius: 2px; margin-bottom: 0.9rem;
+}
+.badge-article  { color: var(--accent-cyan); background: var(--accent-cyan-soft); border: 1px solid var(--accent-cyan-border); }
+.badge-linkedin { color: var(--accent-cyan); background: var(--accent-cyan-soft); border: 1px solid var(--accent-cyan-border); }
+.badge-report   { color: var(--accent-cyan); background: var(--accent-cyan-soft); border: 1px solid var(--accent-cyan-border); }
+.badge-ungated  { color: var(--accent-cyan); background: var(--accent-cyan-soft); border: 1px solid var(--accent-cyan-border); }
+.badge-capture  { color: var(--accent-cyan); background: var(--accent-cyan-soft); border: 1px solid var(--accent-cyan-border); }
+
+/* CARD NUMBER */
+.card-num {
+  position: absolute; top: 1.5rem; right: 1.75rem;
+  font-family: var(--display); font-size: 2.2rem; font-weight: 300;
+  color: rgba(255,255,255,0.11); line-height: 1; pointer-events: none;
+}
+
+/* TITLES */
+.card-title {
+  font-family: var(--display);
+  font-size: 1.5rem; font-weight: 500;
+  line-height: 1.15; letter-spacing: -0.01em;
+  color: var(--white); margin-bottom: 0.3rem;
+}
+.card-title em { font-style: italic; font-weight: 300; }
+.card-title-sm {
+  font-family: var(--display);
+  font-size: 1.2rem; font-weight: 500;
+  line-height: 1.2; color: var(--white); margin-bottom: 0.25rem;
+}
+.card-subtitle {
+  font-size: 0.77rem; color: rgba(255,255,255,0.32);
+  line-height: 1.45; margin-bottom: 0.85rem; font-style: italic;
+}
+.card-desc {
+  font-size: 0.83rem; line-height: 1.75;
+  color: rgba(255,255,255,0.4); margin-bottom: 1.4rem;
+}
+.card-desc-sm {
+  font-size: 0.8rem; line-height: 1.7;
+  color: rgba(255,255,255,0.38); margin-bottom: 1.2rem;
+}
+
+/* ARROW CTA */
+.card-cta {
+  display: inline-flex; align-items: center; gap: 0.45rem;
+  font-size: 0.66rem; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase;
+  color: rgba(255,255,255,0.25);
+  transition: color 0.22s, gap 0.22s;
+}
+.card:hover .card-cta { gap: 0.7rem; }
+
+/* Per-card hover colors for CTA */
+.card--article:hover  .card-cta { color: var(--teal); }
+.card--linkedin:hover .card-cta { color: #6BA3D6; }
+.card--report:hover   .card-cta { color: var(--g-bright); }
+.card--landing:hover  .card-cta { color: var(--p-light); }
+
+/* Top bar colors */
+.bar-article  { background: linear-gradient(90deg, var(--teal), #40D8C8); }
+.bar-linkedin { background: linear-gradient(90deg, #4A90D9, #6BA3D6); }
+.bar-report   { background: linear-gradient(90deg, var(--g), var(--g-bright)); }
+.bar-landing  { background: linear-gradient(90deg, var(--p-core), var(--p-bright)); }
+
+/* Card hover border colors */
+.card--article:hover  { border-color: var(--accent-cyan-border); }
+.card--linkedin:hover { border-color: var(--accent-cyan-border); }
+.card--report:hover   { border-color: var(--accent-cyan-border); }
+.card--landing:hover  { border-color: var(--accent-cyan-border); }
+
+/* FULL WIDTH CARD */
+.card-full { width: 100%; }
+
+/* TWO COLUMN GRID */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+@media (max-width: 640px) { .grid-2 { grid-template-columns: 1fr; } }
+
+/* LANDING PAGES BLOCK with left label */
+.landing-block {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 0 2.5rem;
+  align-items: start;
+}
+@media (max-width: 700px) {
+  .landing-block { grid-template-columns: 1fr; }
+  .landing-label { display: none; }
+}
+.landing-label {
+  padding-top: 0.25rem;
+  position: sticky; top: 80px;
+}
+.landing-label-eyebrow {
+  font-size: 0.58rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+  color: rgba(255,255,255,0.2); margin-bottom: 0.6rem;
+}
+.landing-label-title {
+  font-family: var(--display);
+  font-size: 1.5rem; font-weight: 300; font-style: italic;
+  color: rgba(255,255,255,0.35); line-height: 1.2; margin-bottom: 0.8rem;
+}
+.landing-label-note {
+  font-size: 0.73rem; line-height: 1.65;
+  color: rgba(255,255,255,0.2);
+}
+.landing-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+@media (max-width: 500px) { .landing-cards { grid-template-columns: 1fr; } }
+
+/* DIVIDER between ungated/email-capture groups */
+.landing-divider {
+  grid-column: 1 / -1;
+  display: flex; align-items: center; gap: 0.75rem;
+  margin: 0.25rem 0;
+}
+.landing-divider-line { flex: 1; height: 1px; background: rgba(188,168,232,0.08); }
+.landing-divider-text {
+  font-size: 0.57rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgba(255,255,255,0.18);
+}
+
+/* ANIMATIONS */
+@keyframes up {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.fade-1 { opacity: 0; animation: up 0.6s var(--ease) 0.42s forwards; }
+.fade-2 { opacity: 0; animation: up 0.6s var(--ease) 0.50s forwards; }
+.fade-3 { opacity: 0; animation: up 0.6s var(--ease) 0.58s forwards; }
+.fade-4 { opacity: 0; animation: up 0.6s var(--ease) 0.66s forwards; }
+.fade-5 { opacity: 0; animation: up 0.6s var(--ease) 0.74s forwards; }
+.fade-6 { opacity: 0; animation: up 0.6s var(--ease) 0.82s forwards; }
+
+/* HOME LOCKED HEADER/FOOTER */
+#bar{position:fixed;top:0;left:0;height:2px;width:0;background:var(--g-bright);z-index:999;transition:width 0.08s linear}
+.w{max-width:1160px;margin:0 auto;padding:0 3rem}
+@media(max-width:640px){.w{padding:0 1.5rem}}
+nav{position:sticky;top:0;z-index:200;background:#200338;border-bottom:1px solid rgba(94,31,174,0.3)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:58px;gap:1rem}
+.nav-logo{font-family:var(--sans);font-size:1.22rem;font-weight:700;color:var(--white);letter-spacing:-0.02em;text-decoration:none;flex-shrink:0}
+.nav-logo .u{color:var(--g-bright)}
+.nav-links{display:flex;align-items:center;gap:0.15rem;flex:1;justify-content:center}
+@media(max-width:800px){.nav-links{display:none}}
+.nav-link{font-family:var(--sans);font-size:0.72rem;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;color:rgba(255,255,255,0.45);text-decoration:none;padding:0.4rem 0.85rem;border-radius:3px;position:relative;transition:color 0.15s,background 0.15s}
+.nav-link:hover{color:var(--white);background:rgba(255,255,255,0.07)}
+.nav-link--active{color:var(--white)}
+.nav-link--active:not(.nav-dropdown-btn)::after{content:'';position:absolute;bottom:4px;left:0.85rem;right:0.85rem;height:1px;background:var(--g-bright)}
+.nav-dropdown-btn.nav-link--active::before{content:'';position:absolute;bottom:4px;left:0.85rem;right:0.85rem;height:1px;background:var(--g-bright)}
+.nav-back{font-family:var(--sans);font-size:0.7rem;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;color:rgba(255,255,255,0.4);text-decoration:none;display:flex;align-items:center;gap:0.4rem;transition:color 0.15s;flex-shrink:0}
+.nav-back:hover{color:var(--white)}
+.nav-dropdown{position:relative;display:inline-block}
+.nav-dropdown-btn{cursor:pointer;display:flex;align-items:center;gap:0.25rem}
+.nav-dropdown-btn::after{content:'';display:inline-block;width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-top:5px solid currentColor;opacity:0.6;transition:transform 0.2s var(--ease);transform-origin:center 45%}
+.nav-dropdown.open .nav-dropdown-btn::after{transform:rotate(180deg)}
+.nav-dropdown-menu{position:absolute;top:100%;left:0;background:#2d1055;border:1px solid rgba(94,31,174,0.4);border-radius:6px;box-shadow:0 4px 12px rgba(0,0,0,0.3);min-width:200px;opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity 0.2s var(--ease),transform 0.2s var(--ease),visibility 0.2s;z-index:100;margin-top:0.5rem;overflow:hidden}
+.nav-dropdown.open .nav-dropdown-menu{opacity:1;visibility:visible;transform:translateY(0)}
+.nav-dropdown-menu a{display:block;padding:0.75rem 1.25rem;color:rgba(255,255,255,0.7);text-decoration:none;font-size:0.72rem;font-weight:500;letter-spacing:0.05em;transition:background 0.15s ease,color 0.15s ease;border-bottom:1px solid rgba(94,31,174,0.2)}
+.nav-dropdown-menu a:last-child{border-bottom:none}
+.nav-dropdown-menu a:hover{background:rgba(94,31,174,0.15);color:var(--white)}
+footer{background:#200338;border-top:1px solid rgba(94,31,174,0.25);padding:2rem 0}
+.foot{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.foot-brand{font-family:var(--sans);font-size:0.78rem;font-weight:600;color:rgba(255,255,255,0.45);letter-spacing:-0.01em}
+.foot-brand .u{color:var(--g-bright)}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+
+<nav>
+  <div class="w">
+    <div class="nav-inner">
+      <a class="nav-logo" href="index.html">telev<span class="u">e</span>da</a>
+      <div class="nav-links">
+        <a class="nav-link" href="article.html">Article</a>
+        <a class="nav-link" href="linkedin.html">LinkedIn</a>
+        <a class="nav-link" href="report.html">Report</a>
+        <div class="nav-dropdown">
+          <span class="nav-link nav-dropdown-btn">Landing Pages</span>
+          <div class="nav-dropdown-menu">
+            <a href="ungated v1.html">Ungated v1</a>
+            <a href="ungated v2.html">Ungated v2</a>
+            <a href="gated v1.html">Email Capture v1</a>
+            <a href="gate v2.html">Email Capture v2</a>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:1rem;flex-shrink:0">
+        <span aria-hidden="true" style="font-family:var(--sans);font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:transparent;background:transparent;border:2px solid transparent;padding:0.42rem 1.1rem;border-radius:4px;white-space:nowrap;visibility:hidden;pointer-events:none;user-select:none">Download</span>
+        <a class="nav-back" href="index.html">&#8592; Portfolio</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <div class="wrap">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-pill"><span class="hero-pill-dot"></span>Application Work Sample</div>
+      <h1 class="hero-name">Maureen Essah</h1>
+      <p class="hero-role">Communications and Content Strategy</p>
+      <div class="hero-rule"></div>
+      <p class="hero-body">This portfolio highlights reporting, distribution, and campaign work built for Televeda's 2026 social isolation initiative in Arizona.</p>
+      <p class="hero-meta">Applying for: <strong>Director of Communications</strong> Televeda Remote</p>
+    </section>
+
+    <div class="portfolio">
+
+      <!-- CHAPTER 1: ARTICLE -->
+      <div class="chapter fade-1">
+        <span class="chapter-text">01 &nbsp; Reported Feature</span>
+        <span class="chapter-line"></span>
+      </div>
+
+      <div class="gap-sm fade-2">
+        <a class="card card--article card-full" href="article.html">
+          <div class="card-top-bar bar-article"></div>
+          <div class="card-body">
+            <span class="card-num">01</span>
+            <span class="badge badge-article">Feature Article</span>
+            <h2 class="card-title"><em>There Wasn't a Word for Any of It</em></h2>
+            <p class="card-subtitle">What Virtual Peer Support Does for Native American Women Veterans</p>
+            <p class="card-desc">A reported feature on Televeda's women Veterans peer support program, created with the Arizona Department of Veterans' Services. It follows Agnes Nez, who drives to a ridge on the Navajo Nation each Thursday night to find enough signal to join. The story focuses on access, trust, and what practical support looks like in rural communities.</p>
+            <span class="card-cta">Read article &rarr;</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- CHAPTER 2: LINKEDIN -->
+      <div class="gap"></div>
+      <div class="chapter fade-3">
+        <span class="chapter-text">02 &nbsp; Social Distribution</span>
+        <span class="chapter-line"></span>
+      </div>
+
+      <div class="gap-sm fade-4">
+        <a class="card card--linkedin card-full" href="linkedin.html">
+          <div class="card-top-bar bar-linkedin"></div>
+          <div class="card-body">
+            <span class="card-num">02</span>
+            <span class="badge badge-linkedin">LinkedIn 3 Posts</span>
+            <h2 class="card-title">Distribution Campaign for <em>Unreached</em></h2>
+            <p class="card-subtitle">Monday, April 6 &middot; Wednesday, April 8 &middot; Friday, April 10, 2026</p>
+            <p class="card-desc">Three posts published across launch week for different audiences: tribal health leaders and VA social workers first, then researchers and grant reviewers, then a data-forward launch post. Each post directs readers to the article or report from the first comment.</p>
+            <span class="card-cta">View posts &rarr;</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- CHAPTER 3: REPORT -->
+      <div class="gap"></div>
+      <div class="chapter fade-5">
+        <span class="chapter-text">03 &nbsp; Research Report</span>
+        <span class="chapter-line"></span>
+      </div>
+
+      <div class="gap-sm fade-6">
+        <a class="card card--report card-full" href="report.html">
+          <div class="card-top-bar bar-report"></div>
+          <div class="card-body">
+            <span class="card-num">03</span>
+            <span class="badge badge-report">Report</span>
+            <h2 class="card-title">Unreached</h2>
+            <p class="card-subtitle">Social Isolation Among Rural Older Adults, Veterans, and Native American Communities</p>
+            <p class="card-desc">An evidence review developed with the U.S. Department of Veterans Affairs, the Arizona Department of Health Services, and the Navajo Nation Veterans Administration. It presents five findings on who faces the highest isolation burden, why current programs miss them, and where implementation breaks down.</p>
+            <span class="card-cta">Read report &rarr;</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- CHAPTER 4: LANDING PAGES -->
+      <div class="gap"></div>
+      <div class="chapter" style="opacity:0;animation:up 0.6s var(--ease) 0.9s forwards">
+        <span class="chapter-text">04 &nbsp; Landing Pages</span>
+        <span class="chapter-line"></span>
+      </div>
+
+      <div class="landing-block" style="opacity:0;animation:up 0.6s var(--ease) 0.96s forwards">
+
+        <div class="landing-label">
+          <p class="landing-label-eyebrow">Campaign Pages</p>
+          <p class="landing-label-title">Four versions for Unreached</p>
+          <p class="landing-label-note">Two open-access versions for reach and two email-capture versions for lead generation, each testing a different entry point into the same report.</p>
+        </div>
+
+        <div class="landing-cards">
+
+          <!-- UNGATED -->
+          <div class="landing-divider">
+            <span class="landing-divider-line"></span>
+            <span class="landing-divider-text">Open Access</span>
+            <span class="landing-divider-line"></span>
+          </div>
+
+          <a class="card card--landing" href="ungated v1.html">
+            <div class="card-top-bar bar-landing"></div>
+            <div class="card-body-sm">
+              <span class="card-num">04</span>
+              <span class="badge badge-ungated">Ungated V1</span>
+              <h3 class="card-title-sm">Open Access Version One</h3>
+              <p class="card-desc-sm">Full report content publicly accessible. Designed for maximum reach and shareability.</p>
+              <span class="card-cta">View &rarr;</span>
+            </div>
+          </a>
+
+          <a class="card card--landing" href="ungated v2.html">
+            <div class="card-top-bar bar-landing"></div>
+            <div class="card-body-sm">
+              <span class="card-num">05</span>
+              <span class="badge badge-ungated">Ungated V2</span>
+              <h3 class="card-title-sm">Open Access Version Two</h3>
+              <p class="card-desc-sm">An alternate narrative frame and content hierarchy designed for a different audience entry point.</p>
+              <span class="card-cta">View &rarr;</span>
+            </div>
+          </a>
+
+          <!-- EMAIL CAPTURE -->
+          <div class="landing-divider">
+            <span class="landing-divider-line"></span>
+            <span class="landing-divider-text">Email Capture</span>
+            <span class="landing-divider-line"></span>
+          </div>
+
+          <a class="card card--landing" href="gated v1.html">
+            <div class="card-top-bar bar-landing"></div>
+            <div class="card-body-sm">
+              <span class="card-num">06</span>
+              <span class="badge badge-capture">Email Capture V1</span>
+              <h3 class="card-title-sm">Lead Capture Version One</h3>
+              <p class="card-desc-sm">Report download behind an email form. Editorial credibility maintained throughout.</p>
+              <span class="card-cta">View &rarr;</span>
+            </div>
+          </a>
+
+          <a class="card card--landing" href="gate v2.html">
+            <div class="card-top-bar bar-landing"></div>
+            <div class="card-body-sm">
+              <span class="card-num">07</span>
+              <span class="badge badge-capture">Email Capture V2</span>
+              <h3 class="card-title-sm">Lead Capture Version Two</h3>
+              <p class="card-desc-sm">A gate placed at a different scroll depth to test conversion against a different content threshold.</p>
+              <span class="card-cta">View &rarr;</span>
+            </div>
+          </a>
+
+        </div>
+      </div>
+
+    </div><!-- /portfolio -->
+  </div>
+</main>
+
+
+<footer>
+  <div class="w">
+    <div class="foot">
+      <span class="foot-brand">telev<span class="u">e</span>da &middot; National public health week &middot; April 2026</span>
+      <span class="foot-brand" style="color:rgba(255,255,255,0.3);font-weight:400">Director of Communications</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* Dropdown toggle */
+document.addEventListener('DOMContentLoaded', function() {
+  const dropdown = document.querySelector('.nav-dropdown');
+  const dropdownBtn = document.querySelector('.nav-dropdown-btn');
+  if (dropdownBtn && dropdown) {
+    dropdownBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      dropdown.classList.toggle('open');
+    });
+    document.addEventListener('click', function(e) {
+      if (!dropdown.contains(e.target)) {
+        dropdown.classList.remove('open');
+      }
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && dropdown.classList.contains('open')) {
+        dropdown.classList.remove('open');
+      }
+    });
+  }
+});
+
+/* Scroll progress bar */
+document.body.classList.add('js-ready');
+window.addEventListener('scroll',()=>{
+  const p=(window.scrollY/(document.body.scrollHeight-window.innerHeight))*100;
+  const bar=document.getElementById('bar');
+  if(bar){bar.style.width=Math.min(p,100)+'%';}
+});
+</script>
+</body>
+</html>
+
+
+

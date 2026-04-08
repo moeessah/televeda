@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>There Wasn't a Word for Any of It &middot; Televeda</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet"/>
+<style>
+/* â•â•â• FROZEN â€” NAV + FOOTER â•â•â• */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --p-deep:#280A50;--p-dark:#2C1860;--p-mid:#3D1F82;--p-core:#5E1FAE;
+  --p-bright:#8040D8;--p-light:#BCA8E8;--p-pale:#EDE8F8;--p-ghost:#F8F6FF;
+  --g:#E09010;--g-bright:#F0A820;--g-light:#F8D880;--g-pale:#FDF5E0;
+  --ink:#100820;--ink-mid:#2E1F50;--ink-soft:#5A4880;--ink-muted:#9080B8;
+  --ink-faint:#CCC0E0;--white:#FFFFFF;--near-white:#FAFAFE;
+  --teal:#12B5A5;
+  --display:'Cormorant Garamond',Georgia,serif;
+  --sans:'DM Sans',system-ui,sans-serif;
+  --ease:cubic-bezier(0.16,1,0.3,1);
+}
+html{scroll-behavior:smooth}
+body{background:var(--near-white);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.wrap{max-width:1160px;margin:0 auto;padding:0 2.5rem}
+.wrap-mid{max-width:800px;margin:0 auto;padding:0 2.5rem}
+.wrap-wide{max-width:1000px;margin:0 auto;padding:0 2.5rem}
+@media(max-width:600px){.wrap,.wrap-mid,.wrap-wide{padding:0 1.25rem}}
+#bar{position:fixed;top:0;left:0;height:2px;width:0;background:#F59E0B;z-index:999;transition:width 0.08s linear}
+nav{position:sticky;top:0;z-index:200;background:#200338;border-bottom:1px solid rgba(94,31,174,0.3)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:58px;gap:1rem}
+.nav-logo{font-family:var(--sans);font-size:1.22rem;font-weight:700;color:var(--white);letter-spacing:-0.02em;text-decoration:none;flex-shrink:0}
+.nav-logo .u{color:var(--g-bright)}
+.nav-links{display:flex;align-items:center;gap:0.15rem;flex:1;justify-content:center}
+@media(max-width:800px){.nav-links{display:none}}
+.nav-link{font-family:var(--sans);font-size:0.72rem;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;color:rgba(255,255,255,0.45);text-decoration:none;padding:0.4rem 0.85rem;border-radius:3px;position:relative;transition:color 0.15s,background 0.15s}
+.nav-link:hover{color:var(--white);background:rgba(255,255,255,0.07)}
+.nav-link--gold{color:rgba(240,168,32,0.75);border:1px solid rgba(240,168,32,0.2)}
+.nav-link--gold:hover{color:var(--g-bright);background:rgba(240,168,32,0.07);border-color:rgba(240,168,32,0.4)}
+.nav-link--active{color:var(--white);}
+.nav-link--active:not(.nav-dropdown-btn)::after{content:'';position:absolute;bottom:4px;left:0.85rem;right:0.85rem;height:1px;background:var(--g-bright);}
+.nav-dropdown-btn.nav-link--active::before{content:'';position:absolute;bottom:4px;left:0.85rem;right:0.85rem;height:1px;background:var(--g-bright);}
+.nav-back{font-family:var(--sans);font-size:0.7rem;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;color:rgba(255,255,255,0.4);text-decoration:none;display:flex;align-items:center;gap:0.4rem;transition:color 0.15s;flex-shrink:0}
+.nav-back:hover{color:var(--white)}
+.nav-dropdown{position:relative;display:inline-block}
+.nav-dropdown-btn{cursor:pointer;display:flex;align-items:center;gap:0.25rem}
+.nav-dropdown-btn::after{content:'';display:inline-block;width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-top:5px solid currentColor;opacity:0.6;transition:transform 0.2s var(--ease);transform-origin:center 45%}
+.nav-dropdown.open .nav-dropdown-btn::after{transform:rotate(180deg)}
+.nav-dropdown-menu{position:absolute;top:100%;left:0;background:#2d1055;border:1px solid rgba(94,31,174,0.4);border-radius:6px;box-shadow:0 4px 12px rgba(0,0,0,0.3);min-width:200px;opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity 0.2s var(--ease),transform 0.2s var(--ease),visibility 0.2s;z-index:100;margin-top:0.5rem;overflow:hidden}
+.nav-dropdown.open .nav-dropdown-menu{opacity:1;visibility:visible;transform:translateY(0)}
+.nav-dropdown-menu a{display:block;padding:0.75rem 1.25rem;color:rgba(255,255,255,0.7);text-decoration:none;font-size:0.72rem;font-weight:500;letter-spacing:0.05em;transition:background 0.15s ease,color 0.15s ease;border-bottom:1px solid rgba(94,31,174,0.2)}
+.nav-dropdown-menu a:last-child{border-bottom:none}
+.nav-dropdown-menu a:hover{background:rgba(94,31,174,0.15);color:var(--white)}
+footer{background:#200338;border-top:1px solid rgba(94,31,174,0.25);padding:2rem 0}
+.foot{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.foot-brand{font-family:var(--sans);font-size:0.78rem;font-weight:600;color:rgba(255,255,255,0.45);letter-spacing:-0.01em}
+.foot-brand .u{color:var(--g-bright)}
+.foot-links{display:flex;gap:1.5rem;flex-wrap:wrap}
+.foot-links a{font-size:0.72rem;color:rgba(255,255,255,0.3);text-decoration:none;letter-spacing:0.02em;transition:color 0.15s}
+.foot-links a:hover{color:var(--white)}
+/* â•â•â• END FROZEN â•â•â• */
+
+/* ARTICLE HEADER */
+.article-header{background:#200338;padding:2.9rem 0 0.45rem;overflow:hidden}
+.article-kicker{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.6rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--teal);border:1px solid rgba(18,181,165,0.3);background:rgba(18,181,165,0.08);padding:0.3rem 0.85rem;border-radius:2px;margin-bottom:1.5rem}
+.article-title{font-family:var(--display);font-size:clamp(2.4rem,6vw,4.2rem);font-weight:300;font-style:italic;line-height:1.08;letter-spacing:-0.02em;color:var(--white);margin-bottom:1rem;max-width:820px}
+.article-deck{font-family:var(--display);font-size:clamp(1rem,2.2vw,1.25rem);font-weight:400;line-height:1.45;color:var(--p-light);max-width:620px;margin-bottom:2rem}
+.article-meta-row{display:flex;align-items:center;gap:2rem;flex-wrap:wrap;padding:1rem 0;border-top:1px solid var(--ink-faint);border-bottom:1px solid var(--ink-faint);margin:0.9rem 0 1.35rem}
+.meta-author{display:flex;align-items:center;gap:0.75rem}
+.meta-author-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--p-core),var(--teal));display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:700;color:var(--white);flex-shrink:0}
+.meta-author-name{font-size:0.82rem;font-weight:600;color:var(--ink);line-height:1.2}
+.meta-author-title{font-size:0.72rem;color:var(--ink-soft)}
+.meta-divider{width:1px;height:28px;background:var(--ink-faint)}
+@media(max-width:500px){.meta-divider{display:none}}
+.meta-item{font-size:0.72rem;color:var(--ink-soft);line-height:1.4}
+.meta-item strong{color:var(--ink);font-weight:500;display:block}
+
+/* HERO IMAGE */
+body:not(.hero-ready) .hero-image-wrap,
+body:not(.hero-ready) .hero-caption{display:none}
+.hero-image-wrap{background:transparent;padding-top:0;margin:0 0 0.35rem}
+.hero-image{width:100%;max-width:none;margin:0 auto;max-height:560px;object-fit:cover;display:block;filter:brightness(0.88) saturate(1.05)}
+.hero-caption{background:transparent;width:100%;max-width:none;margin:0 0 0.8rem;padding:0}
+.article-body .hero-caption p{width:100%;max-width:none;margin:0;font-size:0.7rem;color:rgba(16,8,32,0.46);font-style:italic;font-weight:400;line-height:1.3;letter-spacing:0.01em;text-align:left;font-family:var(--sans)}
+
+/* DISCLOSURE */
+.disclosure{background:var(--p-ghost);border-left:3px solid var(--p-light);padding:0.65rem 1rem;margin:0;border-radius:0 3px 3px 0;display:flow-root}
+.disclosure p{font-size:0.76rem;font-style:italic;color:var(--ink-soft);line-height:1.34;max-width:100%}
+.disclosure p:last-child{margin-bottom:0}
+
+/* BODY */
+.article-body{padding:0.85rem 0 5rem}
+.article-lede{font-family:var(--sans);font-size:clamp(1rem,2vw,1.15rem);font-weight:500;line-height:1.7;color:var(--ink);margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid var(--ink-faint)}
+.article-body p{font-size:0.95rem;line-height:1.85;color:#1a0f30;margin-bottom:1.5rem;font-family:var(--sans);font-weight:400}
+.article-body h2{font-family:var(--sans);font-size:1.4rem;font-weight:600;color:var(--p-dark);margin:3rem 0 1.1rem;letter-spacing:-0.01em;line-height:1.2}
+
+/* PULL QUOTE â€” keep Cormorant for editorial feel */
+.pullquote{margin:3rem 0;padding:2rem 2.5rem;border-left:3px solid var(--g-bright);background:var(--g-pale)}
+.pullquote p{font-family:var(--display)!important;font-size:clamp(1.2rem,3vw,1.55rem)!important;font-style:italic;font-weight:500!important;line-height:1.45!important;color:var(--ink-mid)!important;margin-bottom:0!important}
+
+/* STAT */
+.stat-row{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--ink-faint);margin:2.5rem 0;border-radius:4px;overflow:hidden}
+@media(max-width:500px){.stat-row{grid-template-columns:1fr}}
+.stat-cell{background:var(--p-ghost);padding:1.5rem 1.75rem}
+.stat-number{font-family:var(--display);font-size:2.8rem;font-weight:600;color:var(--p-core);line-height:1;margin-bottom:0.3rem}
+.stat-label{font-size:0.78rem;font-weight:500;color:var(--ink-soft);line-height:1.4;font-family:var(--sans)}
+.stat-source{font-size:0.65rem;color:var(--ink-muted);margin-top:0.3rem;font-style:italic;font-family:var(--sans)}
+
+/* SECTION MARK */
+.section-mark{display:flex;align-items:center;gap:1rem;margin:3rem 0 2rem}
+.section-mark-line{flex:1;height:1px;background:var(--ink-faint)}
+.section-mark-text{font-size:0.6rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-muted);white-space:nowrap}
+
+/* CTA */
+.article-cta{background:var(--p-deep);border-radius:6px;padding:2.5rem;margin-top:0}
+.article-cta p{font-size:0.88rem!important;font-family:var(--sans)!important;font-style:italic;color:rgba(255,255,255,0.55)!important;line-height:1.75!important;margin-bottom:0!important}
+.article-cta a{color:var(--g-bright);text-decoration:none}
+.article-cta a:hover{text-decoration:underline}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.article-header .wrap-wide > *{opacity:0;animation:fadeUp 0.7s var(--ease) forwards}
+.article-kicker{animation-delay:0.05s}
+.article-title{animation-delay:0.12s}
+.article-deck{animation-delay:0.19s}
+.article-meta-row{animation-delay:0.26s}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+
+<nav>
+  <div class="wrap">
+    <div class="nav-inner">
+      <a class="nav-logo" href="index.html">telev<span class="u">e</span>da</a>
+      <div class="nav-links">
+        <a class="nav-link nav-link--active" href="article.html">Article</a>
+        <a class="nav-link" href="linkedin.html">LinkedIn</a>
+        <a class="nav-link" href="report.html">Report</a>
+        <div class="nav-dropdown">
+          <span class="nav-link nav-dropdown-btn">Landing Pages</span>
+          <div class="nav-dropdown-menu">
+            <a href="ungated v1.html">Ungated v1</a>
+            <a href="ungated v2.html">Ungated v2</a>
+            <a href="gated v1.html">Email Capture v1</a>
+            <a href="gate v2.html">Email Capture v2</a>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:1rem;flex-shrink:0">
+        <span aria-hidden="true" style="font-family:var(--sans);font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:transparent;background:transparent;border:2px solid transparent;padding:0.42rem 1.1rem;border-radius:4px;white-space:nowrap;visibility:hidden;pointer-events:none;user-select:none">Download</span>
+        <a class="nav-back" href="index.html">&#8592; Portfolio</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ARTICLE HEADER -->
+<header class="article-header">
+  <div class="wrap-wide">
+    <span class="article-kicker">Reported Feature</span>
+    <h1 class="article-title">There Wasn&#8217;t a Word for Any of It</h1>
+    <p class="article-deck">What Virtual Peer Support Does for Native American Women Veterans</p>
+  </div>
+</header>
+
+<!-- HERO IMAGE -->
+<div class="hero-image-wrap">
+  <img class="hero-image" src="article_1_hero.png" alt="Navajo County landscape, Arizona"/>
+  <div class="hero-caption">
+    <div class="wrap-wide">
+      <p>Monument Valley, Utah &mdash; Photo by Klaus Stebani</p>
+    </div>
+  </div>
+</div>
+
+<!-- ARTICLE BODY -->
+<main class="article-body">
+  <div class="wrap-wide">
+
+    <div class="article-meta-row">
+      <div class="meta-author">
+        <div class="meta-author-avatar">SG</div>
+        <div>
+          <div class="meta-author-name">Shruti Gurudanti</div>
+          <div class="meta-author-title">Founder, Televeda</div>
+        </div>
+      </div>
+      <div class="meta-divider"></div>
+      <div class="meta-item"><strong>Published</strong>April 2026</div>
+      <div class="meta-divider"></div>
+      <div class="meta-item"><strong>Program</strong>Arizona Dept. of Veterans&#8217; Services</div>
+    </div>
+
+    <div class="disclosure">
+      <p>A reported feature. Details are drawn from testimonies gathered through Televeda&#8217;s women Veterans peer support program, run in partnership with the Arizona Department of Veterans&#8217; Services. Names and identifying details have been changed at participants&#8217; request.</p>
+    </div>
+
+    <p class="article-lede" style="margin-top:2.5rem">Agnes Nez served two tours. She came home to a nation the VA had no map for. On Thursday nights, she drives to the top of a ridge, parks where the signal holds, and logs on.</p>
+
+    <p>By the time the session starts, the canyon below has gone dark. She has been up here thirty minutes already, long enough to watch the colour leave the sky in stages, long enough for the truck cab to go cold. She does not go back down until it is over. The road down is dirt and in the dark it is easy to miss the place where it narrows, where the shoulder drops away into nothing and you have to correct hard left or you are in the scrub. She knows the road. But she goes slow anyway, after, because there is always something in her that needs a few minutes to resettle.</p>
+
+    <p>She has never been late to a session. In eleven months, not once.</p>
+
+    <div class="section-mark">
+      <span class="section-mark-line"></span>
+      <span class="section-mark-text">The Distance</span>
+      <span class="section-mark-line"></span>
+    </div>
+
+    <p>The Navajo Nation has over 18,000 miles of roads. Fifteen thousand of them are unpaved dirt. In wet weather they flood and wash out and strand families for days at a time. In winter, at elevation, they ice over before the snowploughs come, if the snowploughs come at all. The nearest VA clinic from Agnes&#8217;s house is two hours in the direction of Flagstaff. Not two hours on a freeway. Two hours on roads that run red with mud in the spring and crack white in the August heat and kick up dust clouds at twenty miles an hour that coat the inside of the truck and settle in your lungs. She has made the drive. She makes it when something gets bad enough to justify the fuel, the full day, the forms.</p>
+
+    <div class="stat-row">
+      <div class="stat-cell">
+        <div class="stat-number">20,000</div>
+        <div class="stat-label">Native American women Veterans in the United States</div>
+        <div class="stat-source">Serving at higher rates than any other demographic group of women for over two centuries</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-number">28</div>
+        <div class="stat-label">Studies meeting inclusion criteria from 1,500 screened publications on their health</div>
+        <div class="stat-source">Women&#8217;s Health Issues scoping review, 2024</div>
+      </div>
+    </div>
+
+    <p>Fewer than a third of households on the Navajo Nation have a reliable broadband connection, a figure that has barely moved in a decade despite sustained federal commitments to change it. Agnes gets her signal from the ridge. Most nights it holds. Some nights it drops mid-session and she sits for a moment in the sudden silence before it comes back, and the faces reappear, and someone in the group says her name to check she is still there.</p>
+
+    <p>She always is.</p>
+
+    <div class="section-mark">
+      <span class="section-mark-line"></span>
+      <span class="section-mark-text">K&#8217;e</span>
+      <span class="section-mark-line"></span>
+    </div>
+
+    <p>There is a concept in Din&#233; culture called k&#8217;e. It does not translate cleanly into English, and that untranslatability is itself part of the story. A language carries the shape of the world it was built for, and English was not built for this.</p>
+
+    <p>K&#8217;e means kinship, but kinship as a living system rather than a bloodline. Every Din&#233; person is born into four clans: their mother&#8217;s, their father&#8217;s, their maternal grandfather&#8217;s, their paternal grandfather&#8217;s. Those ties are something you are, not just something you carry. When Din&#233; people meet for the first time, they introduce themselves by clan, each one in sequence, because you cannot know who someone is until you know who they belong to. You locate yourself in relation to everyone who came before. You know your obligations, your beloveds, your place in the web. Not as metaphor. As the actual architecture of identity. Who you are is not separable from who you are to.</p>
+
+    <p>Alongside k&#8217;e runs h&#243;zh&#243;: beauty, balance, the right relationship between a person and everything around them. It is the central aspiration of Din&#233; life, the state toward which prayer, ceremony, and daily conduct all reach. You know when you are in it. You know, just as surely, when you are not.</p>
+
+    <p>Agnes grew up knowing herself that way. Then she enlisted, and the Army had no framework for it. She deployed to a place that had no framework for it. She came back and found the web intact: her clans, her family, the land, the red and grey and ochre of the place that had held her since she was born. But she had shifted inside it. Something in the way she moved through the web had changed. She had become someone the web did not yet have a name for, and she did not have a name for herself either, and she spent three years not saying that to anyone because there was no one she could say it to who would know what she meant.</p>
+
+    <p>The gap she carried was not only psychological. It was ontological. She did not just feel lost. She could not locate herself in the system through which she had always known where she was. H&#243;zh&#243; was not broken. It was just somewhere she could see and could not get back to.</p>
+
+    <div class="section-mark">
+      <span class="section-mark-line"></span>
+      <span class="section-mark-text">What the System Was Built For</span>
+      <span class="section-mark-line"></span>
+    </div>
+
+    <p>The VA was built by men, for men, over decades when women were not a significant portion of the force. In rural areas, women-specific services are often simply not available. The nearest facility may be a day&#8217;s travel, and whether it runs a women&#8217;s program is a question that frequently does not have a good answer.</p>
+
+    <p>For Native American women Veterans, there is a second layer, and it is not logistical.</p>
+
+    <p>The Phoenix Indian School operated in Arizona from 1891 to 1990. For nearly a century, Din&#233; children were taken from their families and forbidden from speaking their language, from practicing their ceremonies, from using the clan names through which a person knows who they are and who they belong to. Children arrived speaking Din&#233; and left speaking a language that had no word for k&#8217;e. The federal government dismantled k&#8217;e as policy, deliberately, and for one hundred years. Agnes&#8217;s grandmother was alive for most of it. The VA is a federal institution. The distrust that Native American communities carry toward federal healthcare is not irrational and it is not ancient history. It is documented. It is receipted. All this lives in conflict with them wanting to serve the country as they proudly did.</p>
+
+    <p>One in four women Veterans reports having experienced military sexual trauma. Among that group the research is consistent: lower social support, greater stigma, PTSD rates that run nine times higher than Veterans who did not experience it. These are the women least likely to walk into a group run by an institution they have earned reasons not to trust. To fill out an intake form. To sit in a waiting room. To say, to a stranger in a clinical setting, what happened.</p>
+
+    <p>She made a choice. She did not walk in. She logged on.</p>
+
+    <div class="section-mark">
+      <span class="section-mark-line"></span>
+      <span class="section-mark-text">Thursday Nights</span>
+      <span class="section-mark-line"></span>
+    </div>
+
+    <p>Before the group, Thursday was the day before the day before the weekend. She would cook something or she wouldn&#8217;t, and after her grandson was in bed the house would go quiet in the way that is different from peaceful: the kind of quiet that has a gut-full of loneliness in it, that you become aware of all at once. She had things she didn&#8217;t talk about. The not-talking wasn&#8217;t heavy or dramatic. It was just a room inside her that she kept shut, and Thursday passed the same as any other night, and eventually it was Friday.</p>
+
+    <p>The facilitator has spent years working alongside tribal health programs in Arizona and New Mexico. She opens each session the same way: she asks where everyone is sitting. Not how they are. Where they physically are. Some women are in their kitchens. Some are parked somewhere, like Agnes. One is usually on a back porch with the phone propped against a flowerpot because the signal is better outside. The question does something deliberate: it puts bodies into the room. It says this is not a virtual meeting. It says you are somewhere, and I want to know where, and that matters.</p>
+
+    <p>She is not a therapist. She does not move the sessions toward resolution. What she has built, through years of showing up, is an ability to hold silence without filling it, to understand that in this room, quiet is not an absence but a form of presence. When something lands hard and the screen goes still, she waits. She has learned to wait past the point where discomfort says to speak, because what surfaces after that silence is almost always the thing the session needed.</p>
+
+    <p>On the first night Agnes attended, there were six women on screen and one with her camera off. Her connection in the chapter where she lived was too thin for video but steady enough for sound, and she spoke early, and often, which was interesting. You could not read her face but her voice located her precisely: the evenness of someone who has told her own story to enough strangers that the telling no longer costs her much. She had learned to be efficient with it, to give the version that moved the appointment forward. The group gave her somewhere to put what the efficient version had to leave out. In the space of twenty minutes she said three things she had not said anywhere else. She did not seem surprised. She seemed, if anything, slightly impatient, as if she had known this would happen eventually and was mildly irritated it had taken this long to find the room. She seemed, relieved. Like a child who finally gets to tell their favorite auntie all that has been bothering them.</p>
+
+    <p>Several weeks later, a different woman went quiet partway through a session and stayed that way. The facilitator did not redirect. She did not ask a bridging question or name the silence or suggest a next step. She left it there, alongside everything else in the room. The session ended with that woman still somewhere the group couldn&#8217;t reach. She was there the following week. She did not mention it and neither did anyone else, and the session went the way it went, and afterward she sent the facilitator a single message that said she had needed that. Not the resolution. The permission to not arrive at one.</p>
+
+    <p>They are from different clans, different chapters, different years of service. What they share is the shape their lives have taken: Din&#233;, female, Veteran, rural, and outside the frame of every system that was built, in theory, to find them. They talk about things that don&#8217;t fit in a twenty-minute appointment with a provider who does not know their clan, their land, their history, the specific weight of coming home to a place you love that no longer holds you the way it did. What it was to be a woman in that unit. What it cost. What you do with the person you became over there when the person you were before is still waiting at home, still entirely real, still entirely yours, and the two don&#8217;t fit inside each other anymore, and no one has given you the word for that, because the language that might have held it was taken before your grandmother was born.</p>
+
+    <div class="section-mark">
+      <span class="section-mark-line"></span>
+      <span class="section-mark-text">Not Fixed, But Not Alone</span>
+      <span class="section-mark-line"></span>
+    </div>
+
+    <div class="pullquote">
+      <p>&#8220;For a long time after I got back, I felt like I was between two places and I didn&#8217;t belong all the way to either one. The threads were still there. My clans, my family, the land. But something in the way I moved through them didn&#8217;t feel like home. And there wasn&#8217;t a word for it. And there was nobody I could say it to who would know what I meant.&#8221;</p>
+    </div>
+
+    <p>The facilitator did not move the session on. She let it sit in the room. Then she asked, quietly, who else had felt that.</p>
+
+    <p>Three women spoke at once.</p>
+
+    <p>The group has not fixed it. Agnes says this directly, without apology or qualification. It has not given the gap a name or made the threads go back to how they were or resolved the specific dislocation of being a person whom two worlds shaped and neither world fully held. What it has done is smaller than that, and more important: it means she is between two places with other people who are also between two places, and they have found, together, that this is a thing you can survive.</p>
+
+    <p>She is still two hours from the nearest VA clinic. The roads off the ridge are dirt and in spring they hold the water and in summer they are dust and neither season makes them easier.</p>
+
+    <p>A government program, running over a phone signal from the cab of a truck on a ridge in the dark, is what this country has managed to offer her so far. She knows that. She goes anyway.</p>
+
+    <p>On Thursdays she drives up and parks where the connection holds. The light leaves the canyon slowly and then all at once. She waits. And then the screen comes on, and the faces appear, and the facilitator asks where everyone is sitting, and for ninety minutes, in the truck, on the ridge, with the dark pressing against the windows on all sides, the screen in front of her is the brightest thing for miles.</p>
+
+    <div class="article-cta">
+      <p>In partnership with the Arizona Department of Veterans&#8217; Services, Televeda runs virtual peer support programs for women Veterans in Navajo County, Apache County, and for homebound and rurally isolated Veterans across Arizona. If you work in tribal health, Veterans services, or community care and want to understand how this model could reach your population, <a href="https://www.televeda.com/case-studies">click here</a>.</p>
+    </div>
+
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var heroWrap = document.querySelector('.hero-image-wrap');
+      var heroCaption = document.querySelector('.hero-caption');
+      var disclosure = document.querySelector('.disclosure');
+
+      if (!heroWrap || !heroCaption || !disclosure) {
+        document.body.classList.add('hero-ready');
+        return;
+      }
+
+      disclosure.parentNode.insertBefore(heroWrap, disclosure);
+      disclosure.parentNode.insertBefore(heroCaption, disclosure);
+      document.body.classList.add('hero-ready');
+    });
+  </script>
+</main>
+
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <span class="foot-brand">telev<span class="u">e</span>da &middot; National public health week &middot; April 2026</span>
+      <span class="foot-brand" style="color:rgba(255,255,255,0.3);font-weight:400">Director of Communications</span>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+/* Dropdown toggle */
+document.addEventListener('DOMContentLoaded', function() {
+  const dropdown = document.querySelector('.nav-dropdown');
+  const dropdownBtn = document.querySelector('.nav-dropdown-btn');
+  if (dropdownBtn && dropdown) {
+    dropdownBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      dropdown.classList.toggle('open');
+    });
+    document.addEventListener('click', function(e) {
+      if (!dropdown.contains(e.target)) {
+        dropdown.classList.remove('open');
+      }
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && dropdown.classList.contains('open')) {
+        dropdown.classList.remove('open');
+      }
+    });
+  }
+});
+
+/* Scroll progress bar */
+document.body.classList.add('js-ready');
+window.addEventListener('scroll',()=>{
+  const p=(window.scrollY/(document.body.scrollHeight-window.innerHeight))*100;
+  const bar=document.getElementById('bar');
+  if(bar){bar.style.width=Math.min(p,100)+'%';}
+});
+</script>
+</body>
+</html>
+
+
+
+

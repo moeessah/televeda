@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>LinkedIn Campaign &middot; Televeda &middot; April 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet"/>
+<style>
+/* BASE */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --p-deep:#280A50;--p-dark:#2C1860;--p-mid:#3D1F82;--p-core:#5E1FAE;
+  --p-bright:#8040D8;--p-light:#BCA8E8;--p-pale:#EDE8F8;--p-ghost:#F8F6FF;
+  --g:#E09010;--g-bright:#F0A820;--g-light:#F8D880;--g-pale:#FDF5E0;
+  --ink:#100820;--ink-mid:#2E1F50;--ink-soft:#5A4880;--ink-muted:#9080B8;
+  --ink-faint:#CCC0E0;--white:#FFFFFF;--near-white:#FAFAFE;
+  --teal:#12B5A5;
+  --display:'Cormorant Garamond',Georgia,serif;
+  --sans:'DM Sans',system-ui,sans-serif;
+  --ease:cubic-bezier(0.16,1,0.3,1);
+}
+html{scroll-behavior:smooth}
+body{background:var(--near-white);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.wrap{max-width:1160px;margin:0 auto;padding:0 2.5rem}
+.wrap-mid{max-width:800px;margin:0 auto;padding:0 2.5rem}
+.wrap-wide{max-width:1000px;margin:0 auto;padding:0 2.5rem}
+@media(max-width:600px){.wrap,.wrap-mid,.wrap-wide{padding:0 1.25rem}}
+#bar{position:fixed;top:0;left:0;height:2px;width:0;background:#F59E0B;z-index:999;transition:width 0.08s linear}
+/* END BASE */
+/* LOCKED NAV/FOOTER */
+nav{position:sticky;top:0;z-index:200;background:#200338;border-bottom:1px solid rgba(94,31,174,0.3)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:58px;gap:1rem}
+.nav-logo{font-family:var(--sans);font-size:1.22rem;font-weight:700;color:var(--white);letter-spacing:-0.02em;text-decoration:none;flex-shrink:0}
+.nav-logo .u{color:var(--g-bright)}
+.nav-links{display:flex;align-items:center;gap:0.15rem;flex:1;justify-content:center}
+@media(max-width:800px){.nav-links{display:none}}
+.nav-link{font-family:var(--sans);font-size:0.72rem;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;color:rgba(255,255,255,0.45);text-decoration:none;padding:0.4rem 0.85rem;border-radius:3px;position:relative;transition:color 0.15s,background 0.15s}
+.nav-link:hover{color:var(--white);background:rgba(255,255,255,0.07)}
+.nav-link--active{color:var(--white)}
+.nav-link--active:not(.nav-dropdown-btn)::after{content:'';position:absolute;bottom:4px;left:0.85rem;right:0.85rem;height:1px;background:var(--g-bright)}
+.nav-dropdown-btn.nav-link--active::before{content:'';position:absolute;bottom:4px;left:0.85rem;right:0.85rem;height:1px;background:var(--g-bright)}
+.nav-back{font-family:var(--sans);font-size:0.7rem;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;color:rgba(255,255,255,0.4);text-decoration:none;display:flex;align-items:center;gap:0.4rem;transition:color 0.15s;flex-shrink:0}
+.nav-back:hover{color:var(--white)}
+.nav-dropdown{position:relative;display:inline-block}
+.nav-dropdown-btn{cursor:pointer;display:flex;align-items:center;gap:0.25rem}
+.nav-dropdown-btn::after{content:'';display:inline-block;width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-top:5px solid currentColor;opacity:0.6;transition:transform 0.2s var(--ease);transform-origin:center 45%}
+.nav-dropdown.open .nav-dropdown-btn::after{transform:rotate(180deg)}
+.nav-dropdown-menu{position:absolute;top:100%;left:0;background:#2d1055;border:1px solid rgba(94,31,174,0.4);border-radius:6px;box-shadow:0 4px 12px rgba(0,0,0,0.3);min-width:200px;opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity 0.2s var(--ease),transform 0.2s var(--ease),visibility 0.2s;z-index:100;margin-top:0.5rem;overflow:hidden}
+.nav-dropdown.open .nav-dropdown-menu{opacity:1;visibility:visible;transform:translateY(0)}
+.nav-dropdown-menu a{display:block;padding:0.75rem 1.25rem;color:rgba(255,255,255,0.7);text-decoration:none;font-size:0.72rem;font-weight:500;letter-spacing:0.05em;transition:background 0.15s ease,color 0.15s ease;border-bottom:1px solid rgba(94,31,174,0.2)}
+.nav-dropdown-menu a:last-child{border-bottom:none}
+.nav-dropdown-menu a:hover{background:rgba(94,31,174,0.15);color:var(--white)}
+footer{background:#200338;border-top:1px solid rgba(94,31,174,0.25);padding:2rem 0}
+.foot{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.foot-brand{font-family:var(--sans);font-size:0.78rem;font-weight:600;color:rgba(255,255,255,0.45);letter-spacing:-0.01em}
+.foot-brand .u{color:var(--g-bright)}
+
+/* COVER */
+.campaign-hero{background:#200338;padding:4rem 0 3.5rem}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.6rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--teal);border:1px solid rgba(18,181,165,0.3);background:rgba(18,181,165,0.08);padding:0.3rem 0.85rem;border-radius:2px;margin-bottom:1.5rem}
+.hero-title{font-family:var(--display);font-size:clamp(2.2rem,5.2vw,3.7rem);font-weight:300;font-style:italic;color:var(--white);line-height:1.08;letter-spacing:-0.02em;margin-bottom:1rem;max-width:760px}
+.hero-sub{font-size:0.9rem;color:rgba(255,255,255,0.45);max-width:620px;line-height:1.7}
+
+/* POST SETS */
+.post-set{padding:5rem 0;border-top:1px solid var(--ink-faint)}
+.set-intro{display:grid;grid-template-columns:72px 1fr;gap:1.5rem;align-items:start;margin-bottom:3rem}
+@media(max-width:500px){.set-intro{grid-template-columns:1fr}}
+.set-num{font-family:var(--display);font-size:5rem;font-weight:300;color:rgba(94,31,174,0.32);line-height:1}
+@media(max-width:500px){.set-num{display:none}}
+.set-time{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.6rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.8);background:var(--p-core);border-radius:3px;padding:0.28rem 0.75rem;margin-bottom:0.85rem}
+.set-time-dot{width:5px;height:5px;border-radius:50%;background:var(--g-bright);flex-shrink:0}
+.set-title{font-family:var(--display);font-size:clamp(1.4rem,3vw,2rem);font-weight:600;color:var(--p-dark);line-height:1.1;letter-spacing:-0.01em;margin-bottom:0.5rem}
+
+/* image grid */
+.post-grid{display:grid;gap:1.25rem}
+.post-grid--3{grid-template-columns:repeat(3,1fr)}
+@media(max-width:760px){.post-grid--3{grid-template-columns:1fr 1fr}}
+@media(max-width:500px){.post-grid--3{grid-template-columns:1fr}}
+.post-card{position:relative;cursor:zoom-in;border-radius:5px;overflow:hidden;background:var(--white)}
+.post-card img{width:100%;height:auto;display:block;border-radius:5px;aspect-ratio:auto;object-fit:contain}
+
+/* copy + annotations */
+.post-body{margin-top:2.5rem;display:grid;grid-template-columns:1fr 1fr;gap:2.5rem}
+@media(max-width:680px){.post-body{grid-template-columns:1fr}}
+.copy-label{font-size:0.58rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-muted);margin-bottom:0.7rem;padding-bottom:0.5rem;border-bottom:1px solid var(--ink-faint)}
+.copy-text{font-size:0.84rem;line-height:1.82;color:var(--ink-soft)}
+.copy-text p{margin-bottom:0.7rem}
+.copy-text p:last-child{margin-bottom:0}
+.tags{margin-top:1rem;display:flex;flex-wrap:wrap;gap:0.35rem}
+.tag{font-size:0.6rem;color:var(--p-core);background:var(--p-ghost);border:1px solid var(--p-pale);border-radius:2px;padding:0.18rem 0.5rem;font-weight:500}
+.anno{font-size:0.82rem;line-height:1.75;color:var(--ink-soft)}
+.anno p{margin-bottom:0.65rem}
+.anno p:last-child{margin-bottom:0}
+.note{margin-top:1rem;padding:0.9rem 1.1rem;border-radius:0 3px 3px 0;font-size:0.78rem;line-height:1.65}
+.note--amber{background:var(--g-pale);border-left:3px solid var(--g-bright);color:var(--ink-soft)}
+.note--teal{background:rgba(18,181,165,0.07);border-left:3px solid var(--teal);color:var(--ink-soft)}
+
+/* additional */
+.additional{padding:4rem 0 5rem;border-top:1px solid var(--ink-faint);background:var(--p-ghost)}
+.add-label{font-size:0.58rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--ink-muted);margin-bottom:0.5rem}
+.add-title{font-family:var(--display);font-size:1.5rem;font-weight:600;color:var(--p-dark);margin-bottom:2rem}
+
+/* lightbox */
+.lb{display:none;position:fixed;inset:0;background:rgba(10,2,24,0.94);z-index:9000;align-items:center;justify-content:center;padding:1.5rem}
+.lb.on{display:flex}
+.lb img{max-width:480px;max-height:92vh;width:100%;object-fit:contain;border-radius:5px}
+.lb-x{position:absolute;top:1.25rem;right:1.25rem;background:none;border:1px solid rgba(255,255,255,0.18);color:rgba(255,255,255,0.5);width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center}
+.lb-x:hover{background:rgba(255,255,255,0.08);color:#fff}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+
+<nav>
+  <div class="wrap">
+    <div class="nav-inner">
+      <a class="nav-logo" href="index.html">telev<span class="u">e</span>da</a>
+      <div class="nav-links">
+        <a class="nav-link" href="article.html">Article</a>
+        <a class="nav-link nav-link--active" href="linkedin.html">LinkedIn</a>
+        <a class="nav-link" href="report.html">Report</a>
+        <div class="nav-dropdown">
+          <span class="nav-link nav-dropdown-btn">Landing Pages</span>
+          <div class="nav-dropdown-menu">
+            <a href="ungated v1.html">Ungated v1</a>
+            <a href="ungated v2.html">Ungated v2</a>
+            <a href="gated v1.html">Email Capture v1</a>
+            <a href="gate v2.html">Email Capture v2</a>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:1rem;flex-shrink:0">
+        <span aria-hidden="true" style="font-family:var(--sans);font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:transparent;background:transparent;border:2px solid transparent;padding:0.42rem 1.1rem;border-radius:4px;white-space:nowrap;visibility:hidden;pointer-events:none;user-select:none">Download</span>
+        <a class="nav-back" href="index.html">&#8592; Portfolio</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<section class="campaign-hero">
+  <div class="wrap-wide">
+    <p class="hero-eyebrow">LinkedIn Campaign</p>
+    <h1 class="hero-title">Three posts built around Unreached</h1>
+    <p class="hero-sub">A three-post LinkedIn sequence tied to the Unreached report and reported feature, timed to National Minority Health Month and National Public Health Week.</p>
+  </div>
+</section>
+
+<!-- SET 1 -->
+<section class="post-set">
+  <div class="wrap-wide">
+    <div class="set-intro">
+      <div class="set-num">01</div>
+      <div>
+        <div class="set-time"><span class="set-time-dot"></span>Monday 6 April &middot; 7:30 AM CT</div>
+        <h2 class="set-title">"She did not walk in. She logged on."</h2>
+      </div>
+    </div>
+
+    <div class="post-grid post-grid--3">
+      <div class="post-card" onclick="lb('assets/Televeda%20linkedin%20images%20logo/Televeda%20linkedin%20posts%20(1).png')">
+      <img src="assets/Televeda%20linkedin%20images%20logo/Televeda%20linkedin%20posts%20(1).png" alt="She did not walk in variant 1" loading="lazy" decoding="async" width="1080" height="1350"/>
+    </div>
+      <div class="post-card" onclick="lb('assets/Televeda%20linkedin%20images%20logo/Televeda%20linkedin%20posts%20(4).png')">
+      <img src="assets/Televeda%20linkedin%20images%20logo/Televeda%20linkedin%20posts%20(4).png" alt="She did not walk in variant 2" loading="lazy" decoding="async" width="1080" height="1350"/>
+    </div>
+      <div class="post-card" onclick="lb('assets/Televeda%20linkedin%20images%20logo/Televeda%20linkedin%20posts%20(7).png')">
+      <img src="assets/Televeda%20linkedin%20images%20logo/Televeda%20linkedin%20posts%20(7).png" alt="She did not walk in variant 3" loading="lazy" decoding="async" width="1080" height="1350"/>
+    </div>
+    </div>
+
+    <div class="post-body">
+      <div>
+        <p class="copy-label">LinkedIn copy</p>
+        <div class="copy-text">
+          <p>There are roughly 20,000 Native American women Veterans in the United States. They serve at higher rates than women in any other demographic group.</p>
+          <p>Only twenty-eight studies have ever been published on their health.</p>
+          <p>We spent time with a women Veterans peer support group run through the Arizona Department of Veterans&rsquo; Services, reaching women in Navajo County, Apache County, and homebound Veterans with no other route to peer support.</p>
+          <p>This is where the story starts.</p>
+        </div>
+      </div>
+      <div>
+        <p class="copy-label">Notes</p>
+        <div class="anno">
+          <p>The human story opens the week. The quote lands without context, which is the point: VA and tribal health contacts will recognize it before they finish the sentence. Most people scrolling on a Monday morning will understand it before they register what program it&rsquo;s about.</p>
+          <p>Link to the article in the first comment. 7:30 AM CT catches the professional scroll before the workday closes in.</p>
+        </div>
+        <div class="tags">
+          <span class="tag">@AZ Dept of Veterans&rsquo; Services</span>
+          <span class="tag">#NationalMinorityHealthMonth</span>
+          <span class="tag">#WomenVeterans</span>
+          <span class="tag">#HealthEquity</span>
+          <span class="tag">#NavajoNation</span>
+          <span class="tag">#SocialIsolation</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SET 2 -->
+<section class="post-set">
+  <div class="wrap-wide">
+    <div class="set-intro">
+      <div class="set-num">02</div>
+      <div>
+        <div class="set-time"><span class="set-time-dot"></span>Wednesday 8 April &middot; 7:30 AM CT</div>
+        <h2 class="set-title">"The distrust is not irrational."</h2>
+      </div>
+    </div>
+
+    <div class="post-grid post-grid--3">
+      <div class="post-card" onclick="lb('assets/Televeda%20linkedin%20images%20logo/Televeda%20linkedin%20posts%20(2).png')">
+      <img src="assets/Televeda%20linkedin%20images%20logo/Televeda%20linkedin%20posts%20(2).png" alt="The distrust is not irrational variant 1" loading="lazy" decoding="async" width="1080" height="1350"/>
+    </div>
+      <div class="post-card" onclick="lb('assets/Televeda%20linkedin%20images%20logo/Televeda%20linkedin%20posts%20(8).png')">
+      <img src="assets/Televeda%20linkedin%20images%20logo/Televeda%20linkedin%20posts%20(8).png" alt="The distrust is not irrational variant 2" loading="lazy" decoding="async" width="1080" height="1350"/>
+    </div>
+      <div class="post-card" onclick="lb('assets/Televeda%20linkedin%20images%20logo/Televeda%20linkedin%20posts%20(5).png')">
+      <img src="assets/Televeda%20linkedin%20images%20logo/Televeda%20linkedin%20posts%20(5).png" alt="The distrust is not irrational variant 3" loading="lazy" decoding="async" width="1080" height="1350"/>
+    </div>
+    </div>
+
+    <div class="post-body">
+      <div>
+        <p class="copy-label">LinkedIn copy</p>
+        <div class="copy-text">
+          <p>The Phoenix Indian School operated in Arizona from 1891 to 1990. For nearly a century, Din&eacute; children were separated from their families, forbidden from speaking their language, stripped of the clan names through which a person knows who they belong to.</p>
+          <p>The VA is a federal institution.</p>
+          <p>When we talk about why Native American communities are underserved by healthcare systems, we often frame it as a logistics problem. Distance. Bandwidth. Access.</p>
+          <p>It is also a history problem.</p>
+          <p>We wrote about this, and about the women Veterans peer support program trying to change it, for National Minority Health Month.</p>
+        </div>
+      </div>
+      <div>
+        <p class="copy-label">Notes</p>
+        <div class="anno">
+          <p>Shifts the frame from logistics to history. Different day, different audience: tribal health directors, HHS officers, health equity researchers. The sentence lands not because it&rsquo;s surprising, but because few organizations with direct involvement state it this plainly.</p>
+          <div class="note note--amber">Deliberately pointed at federal healthcare. The audience it might unsettle is not this audience, and softening the copy to avoid it would undercut the whole point.</div>
+        </div>
+        <div class="tags">
+          <span class="tag">#NationalMinorityHealthMonth</span>
+          <span class="tag">#HealthEquity</span>
+          <span class="tag">#NativeAmericanHealth</span>
+          <span class="tag">#VeteransHealth</span>
+          <span class="tag">#TribalHealth</span>
+          <span class="tag">#SocialDeterminantsOfHealth</span>
+          <span class="tag">#SeniorHealth</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SET 3 -->
+<section class="post-set">
+  <div class="wrap-wide">
+    <div class="set-intro">
+      <div class="set-num">03</div>
+      <div>
+        <div class="set-time"><span class="set-time-dot"></span>Friday 10 April &middot; 9 AM CT &middot; Report launch</div>
+        <h2 class="set-title">28 studies. 20,000 veterans.</h2>
+      </div>
+    </div>
+
+    <div class="post-grid post-grid--3">
+      <div class="post-card" onclick="lb('assets/Televeda%20linkedin%20images%20logo/Televeda%20linkedin%20posts%20(3).png')">
+      <img src="assets/Televeda%20linkedin%20images%20logo/Televeda%20linkedin%20posts%20(3).png" alt="28 studies 20K veterans variant 1" loading="lazy" decoding="async" width="1080" height="1350"/>
+    </div>
+      <div class="post-card" onclick="lb('assets/Televeda%20linkedin%20images%20logo/Televeda%20linkedin%20posts%20(9).png')">
+      <img src="assets/Televeda%20linkedin%20images%20logo/Televeda%20linkedin%20posts%20(9).png" alt="28 studies 20K veterans variant 2" loading="lazy" decoding="async" width="1080" height="1350"/>
+    </div>
+      <div class="post-card" onclick="lb('assets/Televeda%20linkedin%20images%20logo/Televeda%20linkedin%20posts%20(6).png')">
+      <img src="assets/Televeda%20linkedin%20images%20logo/Televeda%20linkedin%20posts%20(6).png" alt="28 studies 20K veterans variant 3" loading="lazy" decoding="async" width="1080" height="1350"/>
+    </div>
+    </div>
+
+    <div class="post-body">
+      <div>
+        <p class="copy-label">LinkedIn copy</p>
+        <div class="copy-text">
+          <p>Twenty-eight studies.</p>
+          <p>That is how many peer-reviewed publications, from a screen of 1,500, met the inclusion criteria when researchers in 2024 tried to understand the health of Native American women Veterans.</p>
+          <p>There are approximately 20,000 of them in the United States. They serve at higher rates than women of any other demographic group. They have done so for over two centuries.</p>
+          <p>Twenty-eight studies.</p>
+          <p>Today we&rsquo;re releasing State of Social Isolation 2026, a free ungated review of what the research says about loneliness, health outcomes, and what helps.</p>
+        </div>
+      </div>
+      <div>
+        <p class="copy-label">Notes</p>
+        <div class="anno">
+          <p>Report launch day. The ratio lands before any headline does. Researchers and grant reviewers will stop on this one.</p>
+          <p>Goes live the same morning as the report page. Link to the report in the first comment, not the article.</p>
+          <div class="note note--teal">The copy opens and closes on "Twenty-eight studies." That repetition is intentional. It should stay.</div>
+        </div>
+        <div class="tags">
+          <span class="tag">#NationalPublicHealthWeek</span>
+          <span class="tag">#HealthEquity</span>
+          <span class="tag">#SocialIsolation</span>
+          <span class="tag">#NativeAmericanHealth</span>
+          <span class="tag">#WomenVeterans</span>
+          <span class="tag">#PopulationHealth</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ADDITIONAL ASSETS -->
+<section class="additional">
+  <div class="wrap-wide">
+    <p class="add-label">Additional assets</p>
+    <h2 class="add-title">Outside the three-post sequence</h2>
+    <div class="post-grid post-grid--3">
+      <div class="post-card" onclick="lb('assets/Televeda%20linkedin%20images%20logo/Televeda%20linkedin%20posts%20(10).png')">
+      <img src="assets/Televeda%20linkedin%20images%20logo/Televeda%20linkedin%20posts%20(10).png" alt="UNREACHED report cover" loading="lazy" decoding="async" width="1080" height="1350"/>
+    </div>
+      <div class="post-card" onclick="lb('assets/Televeda%20linkedin%20images%20logo/Televeda%20linkedin%20posts%20(11).png')">
+      <img src="assets/Televeda%20linkedin%20images%20logo/Televeda%20linkedin%20posts%20(11).png" alt="What does it mean to serve your country" loading="lazy" decoding="async" width="1080" height="1350"/>
+    </div>
+      <div class="post-card" onclick="lb('assets/Televeda%20linkedin%20images%20logo/Televeda%20linkedin%20posts%20(12).png')">
+      <img src="assets/Televeda%20linkedin%20images%20logo/Televeda%20linkedin%20posts%20(12).png" alt="There wasn't a word for it" loading="lazy" decoding="async" width="1080" height="1350"/>
+    </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <span class="foot-brand">telev<span class="u">e</span>da &middot; National public health week &middot; April 2026</span>
+      <span class="foot-brand" style="color:rgba(255,255,255,0.3);font-weight:400">Director of Communications</span>
+    </div>
+  </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lb" id="lbox" onclick="lbClose(event)">
+  <button class="lb-x" onclick="lbClose()">&times;</button>
+  <img id="lbimg" src="" alt=""/>
+</div>
+
+<script>
+function lb(src){document.getElementById('lbimg').src=src;document.getElementById('lbox').classList.add('on');document.body.style.overflow='hidden'}
+function lbClose(e){if(!e||e.target===document.getElementById('lbox')||e.target.classList.contains('lb-x')){document.getElementById('lbox').classList.remove('on');document.body.style.overflow='';document.getElementById('lbimg').src=''}}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')lbClose()})
+
+/* Dropdown toggle */
+document.addEventListener('DOMContentLoaded', function() {
+  const dropdown = document.querySelector('.nav-dropdown');
+  const dropdownBtn = document.querySelector('.nav-dropdown-btn');
+  if (dropdownBtn && dropdown) {
+    dropdownBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      dropdown.classList.toggle('open');
+    });
+    document.addEventListener('click', function(e) {
+      if (!dropdown.contains(e.target)) {
+        dropdown.classList.remove('open');
+      }
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && dropdown.classList.contains('open')) {
+        dropdown.classList.remove('open');
+      }
+    });
+  }
+});
+
+/* Scroll progress bar */
+document.body.classList.add('js-ready');
+window.addEventListener('scroll',()=>{
+  const p=(window.scrollY/(document.body.scrollHeight-window.innerHeight))*100;
+  const bar=document.getElementById('bar');
+  if(bar){bar.style.width=Math.min(p,100)+'%';}
+});
+</script>
+</body>
+</html>
+
+
